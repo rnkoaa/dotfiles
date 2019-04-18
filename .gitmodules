@@ -1,3 +1,0 @@
-[submodule "vim/pack/shapeshed/start/vim-airline"]
-	path = vim/pack/shapeshed/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
