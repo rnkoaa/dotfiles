@@ -45,7 +45,9 @@ bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 
 # bind ctrl+r for history searching
-bindkey '^R' history-incremental-search-backward
+bindkey -M viins ‘^r’ history-incremental-search-backward
+bindkey -M vicmd ‘^r’ history-incremental-search-backward
+# bindkey '^R' history-incremental-search-backward
 
 alias ll='ls -l'
 alias c='clear'
@@ -56,6 +58,15 @@ alias zshprofile='vim ~/dotfiles/zsh/.zshprofile'
 # fos() {
 #     source Workspace/fit/fit-openstack/ost_functions.sh
 # }
+
+function zle-line-init zle-keymap-select {
+	RPS1="${${KEYMAP/Vicmd/ -- NORMAL — }/(main|viins)/ -- INSERT } "
+	RPS2=$RPS1
+	zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 alias bastion='ssh cloud-user@$BASTION_IP'
 
