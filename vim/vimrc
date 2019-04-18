@@ -1,0 +1,25 @@
+set number
+inoremap jk <ESC> 
+
+let mapleader = "," 
+
+filetype plugin indent on
+syntax on
+set encoding=utf-8
+set shell=/usr/local/bin/zsh
+set relativenumber
+set showcmd
+set hidden
+set ruler
+set ttyfast
+set expandtab
+
+set wrap
+set linebreak
+set nolist
+set formatoptions=qrn1
+set spell spelllang=en_us
+set colorcolumn=80
+
+" colorscheme solarized
+" set background=light

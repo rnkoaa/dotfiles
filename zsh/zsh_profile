@@ -1,0 +1,61 @@
+# Environment variables
+JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+JAVA_10_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
+JAVA_11_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
+
+export JAVA_HOME=$JAVA_8_HOME
+export PATH=$PATH:$JAVA_HOME/bin
+
+export POSTGRES_HOME=/usr/local/Cellar/postgresql/10.5
+export PATH=$PATH:$POSTGRES_HOME/bin
+
+export GO_HOME=/usr/local/go/bin
+export PATH=$PATH:$GO_HOME
+
+# export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
+export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
+export PATH=$PATH:$KAFKA_HOME/bin
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
+
+jdk8 () {
+	export JAVA_HOME=$JAVA_8_HOME
+        export PATH=$PATH:$JAVA_HOME/bin
+}
+
+jdk10() {
+	export JAVA_HOME=$JAVA_10_HOME
+	export PATH=$PATH:$JAVA_HOME/bin
+}
+
+jdk11() {
+	export JAVA_HOME=$JAVA_11_HOME
+	export PATH=$PATH:$JAVA_HOME/bin
+}
+
+mkd(){
+    mkdir -p "$@" && cd "$@"
+}
+
+mk(){
+    mkdir -p "$@"
+}
+
+# vim mode movement on the commandline
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+
+# bind ctrl+r for history searching
+bindkey '^R' history-incremental-search-backward
+
+alias ll='ls -l'
+alias c='clear'
+alias dcompose='docker-compose "$@"'
+alias vimrc='vim ~/dotfiles/vim/.vimrc'
+alias zshprofile='vim ~/dotfiles/zsh/.zshprofile'
+
+# fos() {
+#     source Workspace/fit/fit-openstack/ost_functions.sh
+# }
+
+alias bastion='ssh cloud-user@$BASTION_IP'
+
