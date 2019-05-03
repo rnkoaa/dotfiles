@@ -47,7 +47,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 # bind ctrl+r for history searching
 bindkey -M viins ‘^r’ history-incremental-search-backward
 bindkey -M vicmd ‘^r’ history-incremental-search-backward
-# bindkey '^R' history-incremental-search-backward
+bindkey '^R' history-incremental-search-backward
 
 alias ll='ls -l'
 alias c='clear'
