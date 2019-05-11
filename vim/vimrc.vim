@@ -15,7 +15,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
 
@@ -44,7 +44,7 @@ let mapleader = ","
 filetype plugin indent on
 syntax on
 set encoding=utf-8
-set shell=/usr/local/bin/zsh
+" set shell=/usr/local/bin/zsh
 set number
 set relativenumber
 set incsearch
@@ -78,3 +78,9 @@ let g:indentLine_setColors = 0
 " expand html with <c-y>, (ctrl + y) then ,
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+
+" nerdtree mappings
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark 
+map <leader>nf :NERDTreeFind<cr>
