@@ -19,6 +19,12 @@ Plug 'bling/vim-airline'
 " Plug 'Yggdroot/indentLine'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mattn/emmet-vim'
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'itchyny/lightline.vim'
+Plug 'joom/vim-commentary'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'vim-scripts/mru.vim'
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -38,6 +44,7 @@ set number
 inoremap jk <ESC> 
 
 " normal mode mappings
+" copy to the end of the file
 noremap Y y$
 
 let mapleader = "," 
