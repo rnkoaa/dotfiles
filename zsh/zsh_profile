@@ -1,5 +1,9 @@
 # Environment variables
-JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+
+JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
 JAVA_10_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
 JAVA_11_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
 
@@ -44,16 +48,33 @@ mk(){
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 
+# `v` is already mapped to visual mode, so we need to use a different key to
+# open Vim
+# bindkey -M vicmd "^V" edit-command-line
+
 # bind ctrl+r for history searching
 bindkey -M viins ‘^r’ history-incremental-search-backward
 bindkey -M vicmd ‘^r’ history-incremental-search-backward
 bindkey '^R' history-incremental-search-backward
 
-alias ll='ls -l'
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+ # bind ctrl+r for history searching
+bindkey '^R' history-incremental-search-backward
+
+bindkey '^[[3~' delete-char
+bindkey '^[3;5~' delete-char
+
 alias c='clear'
-alias dcompose='docker-compose "$@"'
+alias dc='docker-compose "$@"'
 alias vimrc='vim ~/dotfiles/vim/.vimrc'
-alias zshprofile='vim ~/dotfiles/zsh/.zshprofile'
+alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
+alias bfg='java -jar /usr/local/bin/bfg.jar'
+alias vim='/usr/local/bin/vim'
+alias ll='ls -l'
 
 # fos() {
 #     source Workspace/fit/fit-openstack/ost_functions.sh
@@ -68,7 +89,10 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-antibody bundle zsh-users/zsh-autosuggestions
-
 alias bastion='ssh cloud-user@$BASTION_IP'
+source ~/dotfiles/zsh/zsh_aliases
+
+# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
+export KEYTIMEOUT=20
+
 
