@@ -1,2 +1,6 @@
 
 alias hg='history | grep'
+alias mcp='mvn clean package'
+alias mc='mvn clean'
+alias mp='mvn package'
+#

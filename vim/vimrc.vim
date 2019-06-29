@@ -1,30 +1,27 @@
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
+" https://github.com/aonemd/aaku/blob/master/vim/vimrc
 
 call plug#begin('~/.vim/plugged')
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'scrooloose/nerdcommenter'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-" Plug 'bling/vim-airline'
-" Plug 'Yggdroot/indentLine'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'itchyny/lightline.vim'
 Plug 'joom/vim-commentary'
-" Plug 'michaeljsmith/vim-indent-object'
 Plug 'vim-scripts/mru.vim'
+Plug 'w0rp/ale'
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -35,7 +32,9 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " insert closing pairs
 Plug 'jiangmiao/auto-pairs'
 
-" themes
+" cassandra(cql syntax highlighting)
+Plug 'elubow/cql-vim'
+"themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
@@ -43,9 +42,10 @@ Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
 
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
 
-set number
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+let g:deoplete#enable_at_startup = 0
 
 " Mappings
 inoremap jk <ESC> 
@@ -74,9 +74,9 @@ set ruler
 set ttyfast
 set ttimeout
 set ttimeoutlen=50
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set nobackup
 set noswapfile
@@ -114,6 +114,19 @@ let g:indentLine_setColors = 0
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
+autocmd! FileType c    setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd! FileType java setlocal ts=4 sts=4 sw=4 expandtab
+autocmd! FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+
+"move lines around
+nnoremap <leader>k :m-2<cr>==
+nnoremap <leader>j :m+<cr>==
+xnoremap <leader>k :m-2<cr>gv=gv
+xnoremap <leader>j :m'>+<cr>gv=gv
+
+"keep text selected after indentation
+vnoremap < <gv
+vnoremap > >gv
 
 " nerdtree mappings
 " map <leader>nn :NERDTreeToggle<cr>
@@ -127,4 +140,84 @@ let g:netrw_localrmdir='rm -r'
 
 "toggle netrw on the left side of the editor
 nnoremap <leader>n :Lexplore<CR>
+
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+
+" command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+" -------------------------------------------------------------------------------------------------
+" coc.nvim default settings
+" -------------------------------------------------------------------------------------------------
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
