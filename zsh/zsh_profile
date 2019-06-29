@@ -70,11 +70,12 @@ bindkey '^[3;5~' delete-char
 
 alias c='clear'
 alias dc='docker-compose "$@"'
-alias vimrc='vim ~/dotfiles/vim/.vimrc'
+alias vimrc='nvim ~/dotfiles/vim/.vimrc'
 alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
 alias bfg='java -jar /usr/local/bin/bfg.jar'
 alias vim='/usr/local/bin/vim'
 alias ll='ls -l'
+alias grcb='./gradlew clean build'
 
 # fos() {
 #     source Workspace/fit/fit-openstack/ost_functions.sh
@@ -91,6 +92,8 @@ zle -N zle-keymap-select
 
 alias bastion='ssh cloud-user@$BASTION_IP'
 source ~/dotfiles/zsh/zsh_aliases
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=20
