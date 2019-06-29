@@ -27,3 +27,11 @@ In `~/.vimrc`
         source ~/dotfiles/vim/vimrc
 ```
 
+## Powerlevel 9k
+[Gist Powerlevel 9k](https://gist.github.com/kevin-smets/8568070)
+
+## Zsh Autosuggestions
+[Link](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
+
+
+
