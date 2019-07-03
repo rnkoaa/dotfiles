@@ -29,18 +29,31 @@ Plug 'elubow/cql-vim'
 
 "themes
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'rakr/vim-one', {'as': 'one'}
 Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
+Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
 Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
 
 call plug#end()
 
-" Mappings
+" key Mappings
 inoremap jk <ESC> 
 
 " normal mode mappings
 " copy to the end of the file
 noremap Y y$
+
+"Better window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-j>j
+" nnoremap <C-k> <C-k>k
+" nnoremap <C-l> <C-l>l
 
 let mapleader = "," 
 
@@ -92,7 +105,8 @@ set splitright
 set autoindent
 
 "colorscheme dracula 
-color peaksea
+" color peaksea
+colorscheme one
 set background=dark
 set termguicolors
 
