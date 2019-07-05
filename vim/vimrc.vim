@@ -39,7 +39,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
 Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
-
+Plug 'stephpy/vim-yaml'
 call plug#end()
 
 
@@ -221,3 +221,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+
+" set list
+" set listchars=""                      " reset
+" set listchars=tab:→\
+" set listchars+=trail:·
+" set listchars+=space:·

@@ -4,3 +4,4 @@ alias mcp='mvn clean package'
 alias mc='mvn clean'
 alias mp='mvn package'
 #
+alias s='source ~/.zshrc'
