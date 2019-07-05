@@ -5,3 +5,5 @@ alias mc='mvn clean'
 alias mp='mvn package'
 #
 alias s='source ~/.zshrc'
+alias h='cd ~'
+alias e='exit'

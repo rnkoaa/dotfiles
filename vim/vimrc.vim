@@ -27,6 +27,11 @@ Plug 'jiangmiao/auto-pairs'
 " cassandra(cql syntax highlighting)
 Plug 'elubow/cql-vim'
 
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
 "themes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rakr/vim-one', {'as': 'one'}
@@ -45,15 +50,20 @@ inoremap jk <ESC>
 noremap Y y$
 
 "Better window navigation
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
 
 " nnoremap <C-h> <C-w>h
 " nnoremap <C-j> <C-j>j
 " nnoremap <C-k> <C-k>k
 " nnoremap <C-l> <C-l>l
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 let mapleader = "," 
 
@@ -150,6 +160,7 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal tabstop=2
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
+
 
 augroup END
 
