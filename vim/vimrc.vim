@@ -3,14 +3,6 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -34,29 +26,40 @@ Plug 'jiangmiao/auto-pairs'
 
 " cassandra(cql syntax highlighting)
 Plug 'elubow/cql-vim'
+
 "themes
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'rakr/vim-one', {'as': 'one'}
 Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
+Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
 Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
 Plug 'stephpy/vim-yaml'
 call plug#end()
 
-
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
-let g:deoplete#enable_at_startup = 0
-
-" Mappings
+" key Mappings
 inoremap jk <ESC> 
 
 " normal mode mappings
 " copy to the end of the file
 noremap Y y$
 
+"Better window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-j>j
+" nnoremap <C-k> <C-k>k
+" nnoremap <C-l> <C-l>l
+
 let mapleader = "," 
 
 filetype plugin indent on
+" filetype indent on      " load filetype-specific indent files
+
 syntax on
 set encoding=utf-8
 " set shell=/usr/local/bin/zsh
@@ -68,7 +71,9 @@ set hlsearch
 set ignorecase
 set smartcase
 
-set showcmd
+set lazyredraw          " redraw only when we need to.
+set showmatch           " highlight matching [{()}]
+set showcmd            " show command in bottom bar
 set hidden
 set ruler
 set ttyfast
@@ -82,11 +87,11 @@ set nobackup
 set noswapfile
 set nowrap
 set backspace=indent,eol,start
-set wildmenu
+set wildmenu             " visual autocomplete for command menu
 set wildmode=longest:full,full
 set laststatus=2
 
-set cursorline
+set cursorline           " highlight current line
 
 " set wrap
 " set linebreak
@@ -100,23 +105,68 @@ set splitright
 set autoindent
 
 "colorscheme dracula 
-color peaksea
+" color peaksea
+colorscheme one
 set background=dark
 set termguicolors
 
-let g:indentLine_char_list = ['┊', '|', '¦', '┆' ]
-"let g:indentLine_char = '┊'
-let g:indentLine_setColors = 0
+" toggle gundo
+" nnoremap <leader>u :GundoToggle<CR>
+
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" let g:indentLine_char_list = ['┊', '|', '¦', '┆' ]
+" "let g:indentLine_char = '┊'
+" let g:indentLine_setColors = 0
 
 " emmet 
 " Enable just for html/css
 " expand html with <c-y>, (ctrl + y) then ,
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
-autocmd! FileType c    setlocal ts=4 sts=4 sw=4 noexpandtab
-autocmd! FileType java setlocal ts=4 sts=4 sw=4 expandtab
-autocmd! FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+" AutoGroups
+augroup configgroup
+  autocmd!
+  " autocmd! FileType c    setlocal ts=4 sts=4 sw=4 noexpandtab
+  " autocmd! FileType java setlocal ts=4 sts=4 sw=4 expandtab
+  " autocmd! FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  let g:user_emmet_install_global = 0
+  autocmd FileType html,css EmmetInstall
+
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+
+  autocmd VimEnter * highlight clear SignColumn
+  autocmd FileType java setlocal noexpandtab
+  autocmd FileType java setlocal list
+  autocmd FileType java setlocal listchars=tab:+\ ,eol:-
+  autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+
+  autocmd FileType python setlocal commentstring=#\ %s
+  autocmd BufEnter *.cls setlocal filetype=java
+  autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+  autocmd BufEnter Makefile setlocal noexpandtab
+  autocmd BufEnter *.sh setlocal tabstop=2
+  autocmd BufEnter *.sh setlocal shiftwidth=2
+  autocmd BufEnter *.sh setlocal softtabstop=2
+
+augroup END
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" $/^ doesn't do anything
+" nnoremap $ <nop>
+" nnoremap ^ <nop>
 
 "move lines around
 nnoremap <leader>k :m-2<cr>==
