@@ -67,6 +67,8 @@ nnoremap <C-H> <C-W><C-H>
 
 let mapleader = "," 
 
+nmap <leader>w :w!<cr>
+
 filetype plugin indent on
 " filetype indent on      " load filetype-specific indent files
 
