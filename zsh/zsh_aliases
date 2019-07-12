@@ -1,4 +1,5 @@
 
+alias markoff="open -a Markoff"
 alias hg='history | grep'
 alias mcp='mvn clean package'
 alias mc='mvn clean'

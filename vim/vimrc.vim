@@ -15,6 +15,11 @@ Plug 'joom/vim-commentary'
 Plug 'vim-scripts/mru.vim'
 Plug 'w0rp/ale'
 
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  " Both options are optional. You don't have to install fzf in ~/.fzf
+  " and you don't have to run the install script if you use fzf only in Vim.
+ 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
 
@@ -40,6 +45,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
 Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
 Plug 'stephpy/vim-yaml'
+
 call plug#end()
 
 " key Mappings
@@ -130,6 +136,10 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" set list lcs=trail:·,tab:»·
+" set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
+
 " let g:indentLine_char_list = ['┊', '|', '¦', '┆' ]
 " "let g:indentLine_char = '┊'
 " let g:indentLine_setColors = 0
@@ -151,8 +161,8 @@ augroup configgroup
 
   autocmd VimEnter * highlight clear SignColumn
   autocmd FileType java setlocal noexpandtab
-  autocmd FileType java setlocal list
-  autocmd FileType java setlocal listchars=tab:+\ ,eol:-
+  " autocmd FileType java setlocal list
+  " autocmd FileType java setlocal listchars=tab:+\ ,eol:-
   autocmd FileType java setlocal formatprg=par\ -w80\ -T4
 
   autocmd FileType python setlocal commentstring=#\ %s
@@ -162,8 +172,6 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal tabstop=2
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
-
-
 augroup END
 
 " move to beginning/end of line
@@ -285,8 +293,14 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
-" set list
+set list
+set listchars=tab:»·,trail:·,space:· " Display extra whitespace
+
 " set listchars=""                      " reset
 " set listchars=tab:→\
 " set listchars+=trail:·
 " set listchars+=space:·
+
+
+
+
