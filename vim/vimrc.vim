@@ -41,6 +41,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rakr/vim-one', {'as': 'one'}
 Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
+Plug 'https://github.com/ajh17/Spacegray.vim.git', {'as': 'spacegray'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
 Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
@@ -124,7 +125,7 @@ set autoindent
 
 "colorscheme dracula 
 " color peaksea
-colorscheme one
+colorscheme spacegray
 set background=dark
 set termguicolors
 
@@ -293,8 +294,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
-set list
-set listchars=tab:»·,trail:·,space:· " Display extra whitespace
+" set list
+" set listchars=tab:»·,trail:·,space:· " Display extra whitespace
 
 " set listchars=""                      " reset
 " set listchars=tab:→\

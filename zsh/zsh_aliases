@@ -1,10 +1,14 @@
+# -*- mode: zsh -*-
+# vim: set ft=sh :
 
+alias vim="/usr/local/bin/nvim"
 alias markoff="open -a Markoff"
 alias hg='history | grep'
 alias mcp='mvn clean package'
-alias mc='mvn clean'
-alias mp='mvn package'
+alias mvc='mvn clean'
+alias mvp='mvn package'
 #
 alias s='source ~/.zshrc'
 alias h='cd ~'
 alias e='exit'
+
