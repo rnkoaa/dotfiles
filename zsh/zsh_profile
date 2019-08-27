@@ -3,8 +3,7 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
-JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
-JAVA_10_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
+# JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
 JAVA_11_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
 
 export JAVA_HOME=$JAVA_8_HOME
@@ -22,13 +21,10 @@ export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 jdk8 () {
-	export JAVA_HOME=$JAVA_8_HOME
-        export PATH=$PATH:$JAVA_HOME/bin
-}
-
-jdk10() {
-	export JAVA_HOME=$JAVA_10_HOME
-	export PATH=$PATH:$JAVA_HOME/bin
+  echo "setting sdkman to use java 8"
+  sdk use java 8.0.212
+	# export JAVA_HOME=$JAVA_8_HOME
+        # export PATH=$PATH:$JAVA_HOME/bin
 }
 
 jdk11() {

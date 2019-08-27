@@ -17,6 +17,7 @@ Plug 'w0rp/ale'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
   " Both options are optional. You don't have to install fzf in ~/.fzf
   " and you don't have to run the install script if you use fzf only in Vim.
  
@@ -42,12 +43,16 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rakr/vim-one', {'as': 'one'}
 Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
 Plug 'https://github.com/ajh17/Spacegray.vim.git', {'as': 'spacegray'}
+Plug 'https://github.com/joshdick/onedark.vim.git', {'as': 'onedark'}
 Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
 Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
 Plug 'stephpy/vim-yaml'
 
 call plug#end()
+
+" folds
+set foldmethod=indent
 
 " key Mappings
 inoremap jk <ESC> 
@@ -123,9 +128,12 @@ set splitbelow
 set splitright
 set autoindent
 
-"colorscheme dracula 
+"
+" colorscheme one
+"" colorscheme dracula 
 " color peaksea
-colorscheme spacegray
+" colorscheme spacegray
+colorscheme onedark
 set background=dark
 set termguicolors
 
