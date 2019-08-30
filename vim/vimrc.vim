@@ -78,8 +78,18 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 let mapleader = "," 
+" Run commands with semicolon
+"
+nnoremap ; :
 
+" save current buffer
 nmap <leader>w :w!<cr>
+
+" save and exit
+noremap <leader>e :wq<cr>
+
+" exit without saving
+noremap <leader>q :q!<cr>
 
 filetype plugin indent on
 " filetype indent on      " load filetype-specific indent files
@@ -129,11 +139,11 @@ set splitright
 set autoindent
 
 "
-" colorscheme one
+colorscheme one
 "" colorscheme dracula 
 " color peaksea
 " colorscheme spacegray
-colorscheme onedark
+" colorscheme onedark
 set background=dark
 set termguicolors
 
@@ -214,7 +224,7 @@ vnoremap > >gv
 " map <leader>nf :NERDTreeFind<cr>
 
 let g:netrw_banner=0
-let g:netrw_winsize=20
+let g:netrw_winsize=30
 let g:netrw_liststyle=3
 let g:netrw_localrmdir='rm -r'
 
