@@ -52,7 +52,7 @@ Plug 'stephpy/vim-yaml'
 call plug#end()
 
 " folds
-set foldmethod=indent
+set foldmethod=manual
 
 " key Mappings
 inoremap jk <ESC> 

@@ -13,3 +13,9 @@ alias h='cd ~'
 alias e='exit'
 
 alias grc='./gradlew clean'
+
+# docker aliases
+alias dcd='docker-compose down'
+alias dcu='docker-compose up'
+alias dcud='docker-compose up -d'
+alias dpsa='docker ps -a'
