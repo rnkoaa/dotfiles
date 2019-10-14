@@ -52,7 +52,7 @@ Plug 'stephpy/vim-yaml'
 call plug#end()
 
 " folds
-set foldmethod=indent
+set foldmethod=manual
 
 " key Mappings
 inoremap jk <ESC> 
@@ -192,6 +192,9 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
 augroup END
+
+au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.adoc setlocal textwidth=80
 
 " move to beginning/end of line
 nnoremap B ^
