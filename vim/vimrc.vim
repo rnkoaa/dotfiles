@@ -5,14 +5,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mileszs/ack.vim'
-Plug 'vim-scripts/bufexplorer.zip'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'mileszs/ack.vim'
+" Plug 'vim-scripts/bufexplorer.zip'
 Plug 'itchyny/lightline.vim'
 Plug 'joom/vim-commentary'
-Plug 'vim-scripts/mru.vim'
+" Plug 'vim-scripts/mru.vim'
 Plug 'w0rp/ale'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
@@ -25,28 +25,28 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'tag': '*' }
 
 " Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " insert closing pairs
 Plug 'jiangmiao/auto-pairs'
 
 " cassandra(cql syntax highlighting)
-Plug 'elubow/cql-vim'
+" Plug 'elubow/cql-vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" Plug 'prettier/vim-prettier', {
+  " \ 'do': 'yarn install',
+  " \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 "themes
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rakr/vim-one', {'as': 'one'}
-Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
-Plug 'https://github.com/ajh17/Spacegray.vim.git', {'as': 'spacegray'}
-Plug 'https://github.com/joshdick/onedark.vim.git', {'as': 'onedark'}
-Plug 'arcticicestudio/nord-vim'
-Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
-Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
+" Plug 'vim-scripts/peaksea', { 'as': 'peaksea' }
+" Plug 'https://github.com/ajh17/Spacegray.vim.git', {'as': 'spacegray'}
+" Plug 'https://github.com/joshdick/onedark.vim.git', {'as': 'onedark'}
+" Plug 'arcticicestudio/nord-vim'
+" Plug 'liuchengxu/space-vim-dark', { 'as': 'space-vim-dark' }
+" Plug 'Heorhiy/VisualStudioDark.vim', {'as': 'VisualStudioDark'}
 Plug 'stephpy/vim-yaml'
 
 call plug#end()
@@ -55,7 +55,13 @@ call plug#end()
 set foldmethod=manual
 
 " key Mappings
-inoremap jk <ESC> 
+" inoremap jj <esc>
+" inoremap jJ <esc>
+" inoremap Jj <esc>
+" inoremap JJ <esc>
+inoremap jk <esc>
+" inoremap Jk <esc>
+" inoremap JK <esc>
 
 " normal mode mappings
 " copy to the end of the file
@@ -78,6 +84,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 let mapleader = "," 
+"
 " Run commands with semicolon
 "
 nnoremap ; :
@@ -87,6 +94,11 @@ nmap <leader>w :w!<cr>
 
 " save and exit
 noremap <leader>e :wq<cr>
+
+" cd to the directory containing the file in the buffer. Both the local
+" and global flavors.
+" nmap <leader>cd :cd %:h<CR>
+" nmap <leader>lcd :lcd %:h<CR>
 
 " exit without saving
 noremap <leader>q :q!<cr>
@@ -110,7 +122,7 @@ set showmatch           " highlight matching [{()}]
 set showcmd            " show command in bottom bar
 set hidden
 set ruler
-set ttyfast
+" set ttyfast
 set ttimeout
 set ttimeoutlen=50
 set tabstop=2
@@ -151,10 +163,17 @@ set termguicolors
 " nnoremap <leader>u :GundoToggle<CR>
 
 " CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" CtrlP
+" nnoremap <leader>t :CtrlP<cr>
+" nnoremap <leader>b :CtrlPBuffer<cr>
+" nnoremap <leader>l :CtrlPLine<cr>
+
+" Shortcut to yanking to the system clipboard
+" map <leader>y "*y
+" map <leader>p "*p
 
 " set list lcs=trail:·,tab:»·
 " set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
@@ -198,8 +217,7 @@ nnoremap B ^
 nnoremap E $
 
 " move vertically by visual line
-nnoremap j gj
-nnoremap k gk
+
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -209,10 +227,10 @@ nnoremap <leader><space> :nohlsearch<CR>
 " nnoremap ^ <nop>
 
 "move lines around
-nnoremap <leader>k :m-2<cr>==
-nnoremap <leader>j :m+<cr>==
-xnoremap <leader>k :m-2<cr>gv=gv
-xnoremap <leader>j :m'>+<cr>gv=gv
+" nnoremap <leader>k :m-2<cr>==
+" nnoremap <leader>j :m+<cr>==
+" xnoremap <leader>k :m-2<cr>gv=gv
+" xnoremap <leader>j :m'>+<cr>gv=gv
 
 "keep text selected after indentation
 vnoremap < <gv
@@ -223,25 +241,25 @@ vnoremap > >gv
 " map <leader>nb :NERDTreeFromBookmark 
 " map <leader>nf :NERDTreeFind<cr>
 
-let g:netrw_banner=0
-let g:netrw_winsize=30
-let g:netrw_liststyle=3
-let g:netrw_localrmdir='rm -r'
+" let g:netrw_banner=0
+" let g:netrw_winsize=30
+" let g:netrw_liststyle=3
+" let g:netrw_localrmdir='rm -r'
 
 "toggle netrw on the left side of the editor
-nnoremap <leader>n :Lexplore<CR>
+" nnoremap <leader>n :Lexplore<CR>
 
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
+" let g:go_def_mapping_enabled = 0
 
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\}
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'css': ['prettier'],
+" \}
+" let g:ale_linters_explicit = 1
+" let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 
 " command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " -------------------------------------------------------------------------------------------------
@@ -249,67 +267,67 @@ let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 " -------------------------------------------------------------------------------------------------
 
 " if hidden is not set, TextEdit might fail.
-set hidden
+" set hidden
 " Better display for messages
-set cmdheight=2
+" set cmdheight=2
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+" set updatetime=300
 " don't give |ins-completion-menu| messages.
-set shortmess+=c
+" set shortmess+=c
 " always show signcolumns
-set signcolumn=yes
+" set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+ " inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? \"\<C-n>" :
+"       \ <SID>check_back_space() ? \"\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? \"\<C-p>" : \"\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" nmap <silent> [c <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
+" nnoremap <silent> U :call <SID>show_documentation()<CR>
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+" nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 " set list
