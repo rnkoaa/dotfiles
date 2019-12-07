@@ -25,6 +25,8 @@ if [[ $(print -P "%#") =~ "#" ]]; then
 fi
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
 
-source ~/dotfiles/zsh/zsh_profile
+
+source /Users/$(whoami)/dotfiles/zsh/zsh_profile
+# source ~/dotfiles/zsh/zsh_profile
 source ~/dotfiles/zsh/zsh_aliases
 

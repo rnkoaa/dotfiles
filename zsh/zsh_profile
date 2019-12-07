@@ -1,14 +1,9 @@
 # Environment variables
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=100000
+HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
-JAVA_8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home
-JAVA_10_HOME=/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
-JAVA_11_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
-
-export JAVA_HOME=$JAVA_8_HOME
-export PATH=$PATH:$JAVA_HOME/bin
+export EDITOR=/usr/local/bin/vim
 
 export POSTGRES_HOME=/usr/local/Cellar/postgresql/10.5
 export PATH=$PATH:$POSTGRES_HOME/bin
@@ -16,19 +11,15 @@ export PATH=$PATH:$POSTGRES_HOME/bin
 export GO_HOME=/usr/local/go/bin
 export PATH=$PATH:$GO_HOME
 
-# export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
 export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 jdk8 () {
-	export JAVA_HOME=$JAVA_8_HOME
-        export PATH=$PATH:$JAVA_HOME/bin
-}
-
-jdk10() {
-	export JAVA_HOME=$JAVA_10_HOME
-	export PATH=$PATH:$JAVA_HOME/bin
+  echo "setting sdkman to use java 8"
+  sdk use java 8.0.212
+	# export JAVA_HOME=$JAVA_8_HOME
+        # export PATH=$PATH:$JAVA_HOME/bin
 }
 
 jdk11() {
@@ -70,7 +61,7 @@ bindkey '^[3;5~' delete-char
 
 alias c='clear'
 alias dc='docker-compose "$@"'
-alias vimrc='nvim ~/dotfiles/vim/.vimrc'
+# alias vimrc='nvim ~/dotfiles/vim/.vimrc'
 alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
 alias bfg='java -jar /usr/local/bin/bfg.jar'
 alias vim='/usr/local/bin/vim'
