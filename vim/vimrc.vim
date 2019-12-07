@@ -3,17 +3,17 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mileszs/ack.vim'
-Plug 'vim-scripts/bufexplorer.zip'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'mileszs/ack.vim'
+" Plug 'vim-scripts/bufexplorer.zip'
 Plug 'itchyny/lightline.vim'
-Plug 'joom/vim-commentary'
-Plug 'vim-scripts/mru.vim'
-Plug 'w0rp/ale'
+" Plug 'joom/vim-commentary'
+" Plug 'vim-scripts/mru.vim'
+" Plug 'w0rp/ale'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,13 +24,16 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'fatih/vim-go', { 'tag': '*' }
 
 " Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " insert closing pairs
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 
 " cassandra(cql syntax highlighting)
-Plug 'elubow/cql-vim'
+" Plug 'elubow/cql-vim'
+"
+" emmet-vim
+Plug 'mattn/emmet-vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -302,6 +305,8 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " set listchars+=trail:·
 " set listchars+=space:·
 
+let g:user_emmet_leader_key=','
 
-
-
+set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
