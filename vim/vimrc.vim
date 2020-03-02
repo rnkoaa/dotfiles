@@ -16,6 +16,7 @@ Plug 'itchyny/lightline.vim'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
   " Both options are optional. You don't have to install fzf in ~/.fzf
   " and you don't have to run the install script if you use fzf only in Vim.
  
@@ -47,7 +48,8 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-Plug 'sainnhe/edge'
+Plug 'arcticicestudio/nord-vim'
+
 "
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -68,13 +70,18 @@ call plug#end()
 " colortheme
 set background=dark
 set termguicolors
-colorscheme edge
+colorscheme nord
+
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
 
 " I want my leader key to be the comma.
 let mapleader = "," 
 
 nnoremap ; :
 inoremap jk <ESC> 
+inoremap jj <ESC> 
 
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -144,7 +151,7 @@ set mouse=a
 " automated tests using xterm as the terminal, a setting of ttymouse=xterm
 " does not work correctly beyond a certain column number (citation needed)
 " hence we use ttymouse=sgr
-set ttymouse=sgr
+" set ttymouse=sgr
 
 " Suggestion: By default, govim populates the quickfix window with diagnostics
 " reported by gopls after a period of inactivity, the time period being
@@ -154,7 +161,7 @@ set updatetime=500
 
 " Suggestion: To make govim/Vim more responsive/IDE-like, we suggest a short
 " balloondelay
-set balloondelay=250
+" set balloondelay=250
 
 " Suggestion: Turn on the sign column so you can see error marks on lines
 " where there are quickfix errors. Some users who already show line number
@@ -343,3 +350,6 @@ let g:user_emmet_leader_key=','
 set list
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
+
+" Fold methods
+" set foldmethod=indent
