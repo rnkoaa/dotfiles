@@ -32,12 +32,14 @@ Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 
 " emmet
 Plug 'mattn/emmet-vim'
+
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " colortheme
 set background=dark
 set termguicolors
-colorscheme edge
+colorscheme onedark
 
 " I want my leader key to be the comma.
 let mapleader = "," 
