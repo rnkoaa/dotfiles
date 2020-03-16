@@ -12,3 +12,6 @@ alias s='source ~/.zshrc'
 alias h='cd ~'
 alias e='exit'
 
+# fzf aliases
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}" | fzf'
+alias vifi='vim $(fzfi)'

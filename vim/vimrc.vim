@@ -17,14 +17,13 @@ Plug 'w0rp/ale'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  " Both options are optional. You don't have to install fzf in ~/.fzf
-  " and you don't have to run the install script if you use fzf only in Vim.
+Plug 'junegunn/fzf.vim'
  
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
 
 " Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " insert closing pairs
 Plug 'jiangmiao/auto-pairs'
@@ -51,22 +50,13 @@ call plug#end()
 
 " key Mappings
 inoremap jk <ESC> 
+inoremap jj <ESC> 
 
 " normal mode mappings
 " copy to the end of the file
 noremap Y y$
 
 "Better window navigation
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
-
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-j> <C-j>j
-" nnoremap <C-k> <C-k>k
-" nnoremap <C-l> <C-l>l
-
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>

@@ -1,0 +1,6 @@
+== Setting up Tmux
+
+`git clone https://github.com/gpakosz/.tmux.git`
+`ln -s ~/.tmux/.tmux.conf ~/`
+
+
