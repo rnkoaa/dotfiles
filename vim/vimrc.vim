@@ -1,6 +1,7 @@
 " so ~/dotfiles/vim/vimrc.vim
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
@@ -15,7 +16,9 @@ Plug 'itchyny/lightline.vim'
 " Plug 'w0rp/ale'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" If installed using Homebrew
+Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   " Both options are optional. You don't have to install fzf in ~/.fzf
   " and you don't have to run the install script if you use fzf only in Vim.
