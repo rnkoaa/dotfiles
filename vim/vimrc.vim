@@ -1,7 +1,39 @@
 " so ~/dotfiles/vim/vimrc.vim
 
 call plug#begin('~/.vim/plugged')
-" Initialize plugin system
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'mileszs/ack.vim'
+" Plug 'vim-scripts/bufexplorer.zip'
+Plug 'itchyny/lightline.vim'
+" Plug 'joom/vim-commentary'
+" Plug 'vim-scripts/mru.vim'
+" Plug 'w0rp/ale'
+
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+  " Both options are optional. You don't have to install fzf in ~/.fzf
+  " and you don't have to run the install script if you use fzf only in Vim.
+ 
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" insert closing pairs
+" Plug 'jiangmiao/auto-pairs'
+
+" cassandra(cql syntax highlighting)
+" Plug 'elubow/cql-vim'
+"
+" emmet-vim
+Plug 'mattn/emmet-vim'
 
 " goyo plugin for texting
 Plug 'junegunn/goyo.vim'
@@ -20,7 +52,8 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-Plug 'sainnhe/edge'
+Plug 'arcticicestudio/nord-vim'
+
 "
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
@@ -41,13 +74,19 @@ call plug#end()
 " colortheme
 set background=dark
 set termguicolors
+
 colorscheme onedark
+
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
 
 " I want my leader key to be the comma.
 let mapleader = "," 
 
 nnoremap ; :
 inoremap jk <ESC> 
+inoremap jj <ESC> 
 
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -117,7 +156,7 @@ set mouse=a
 " automated tests using xterm as the terminal, a setting of ttymouse=xterm
 " does not work correctly beyond a certain column number (citation needed)
 " hence we use ttymouse=sgr
-set ttymouse=sgr
+" set ttymouse=sgr
 
 " Suggestion: By default, govim populates the quickfix window with diagnostics
 " reported by gopls after a period of inactivity, the time period being
@@ -127,7 +166,7 @@ set updatetime=500
 
 " Suggestion: To make govim/Vim more responsive/IDE-like, we suggest a short
 " balloondelay
-set balloondelay=250
+" set balloondelay=250
 
 " Suggestion: Turn on the sign column so you can see error marks on lines
 " where there are quickfix errors. Some users who already show line number
@@ -302,6 +341,16 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " emmet
 let g:user_emmet_leader_key=','
 
+" set list
+" set listchars=tab:»·,trail:·,space:· " Display extra whitespace
+
+" set listchars=""                      " reset
+" set listchars=tab:→\
+" set listchars+=trail:·
+" set listchars+=space:·
+
+let g:user_emmet_leader_key=','
+
  " toggle invisible characters
 set list
 " This blog inspired me to change the tab marker
@@ -310,3 +359,6 @@ set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 highlight SpecialKey ctermfg=grey ctermbg=black
 " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
+
+" Fold methods
+" set foldmethod=indent
