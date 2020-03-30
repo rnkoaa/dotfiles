@@ -7,6 +7,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
+"fzf plugin
+" Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -17,20 +22,20 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
 Plug 'sainnhe/edge'
+Plug 'joshdick/onedark.vim'
 "
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " Coc extensions
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 
 " emmet
 Plug 'mattn/emmet-vim'
 
-Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " colortheme
@@ -112,7 +117,7 @@ set mouse=a
 " automated tests using xterm as the terminal, a setting of ttymouse=xterm
 " does not work correctly beyond a certain column number (citation needed)
 " hence we use ttymouse=sgr
-set ttymouse=sgr
+" set ttymouse=sgr
 
 " Suggestion: By default, govim populates the quickfix window with diagnostics
 " reported by gopls after a period of inactivity, the time period being
@@ -122,7 +127,7 @@ set updatetime=500
 
 " Suggestion: To make govim/Vim more responsive/IDE-like, we suggest a short
 " balloondelay
-set balloondelay=250
+" set balloondelay=250
 
 " Suggestion: Turn on the sign column so you can see error marks on lines
 " where there are quickfix errors. Some users who already show line number
@@ -297,7 +302,11 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " emmet
 let g:user_emmet_leader_key=','
 
+autocmd Filetype go setlocal tabstop=4
+
  " toggle invisible characters
 set list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
+" set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+highlight SpecialKey guifg=#333333 guibg=#111111
 set showbreak=↪
