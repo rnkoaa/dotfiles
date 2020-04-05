@@ -39,6 +39,12 @@ mk(){
     mkdir -p "$@"
 }
 
+ide(){
+  tmux split-window -v -p 30
+  tmux split-window -h -p 66
+  tmux split-window -h -p 50
+}
+
 # vim mode movement on the commandline
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
