@@ -3,25 +3,15 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'mileszs/ack.vim'
-" Plug 'vim-scripts/bufexplorer.zip'
 Plug 'itchyny/lightline.vim'
-" Plug 'joom/vim-commentary'
-" Plug 'vim-scripts/mru.vim'
-" Plug 'w0rp/ale'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 " If installed using Homebrew
 Plug '/usr/local/opt/fzf'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-  " Both options are optional. You don't have to install fzf in ~/.fzf
-  " and you don't have to run the install script if you use fzf only in Vim.
  
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -35,8 +25,6 @@ Plug 'fatih/vim-go', { 'tag': '*' }
 " cassandra(cql syntax highlighting)
 " Plug 'elubow/cql-vim'
 "
-" emmet-vim
-Plug 'mattn/emmet-vim'
 
 " goyo plugin for texting
 Plug 'junegunn/goyo.vim'
@@ -289,6 +277,10 @@ augroup mygroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+" -------------------------------------------------------------------------------------------------
+" coc.nvim default settings
+" -------------------------------------------------------------------------------------------------
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
