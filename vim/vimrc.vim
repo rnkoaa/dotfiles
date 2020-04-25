@@ -1,7 +1,45 @@
+" # -*- mode: ruby -*-
+" # vi: set ft=vimrc :
+
 " so ~/dotfiles/vim/vimrc.vim
 
 call plug#begin('~/.vim/plugged')
-" Initialize plugin system
+
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'mileszs/ack.vim'
+" Plug 'vim-scripts/bufexplorer.zip'
+Plug 'itchyny/lightline.vim'
+" Plug 'joom/vim-commentary'
+" Plug 'vim-scripts/mru.vim'
+" Plug 'w0rp/ale'
+
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+" If installed using Homebrew
+Plug '/usr/local/opt/fzf'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+  " Both options are optional. You don't have to install fzf in ~/.fzf
+  " and you don't have to run the install script if you use fzf only in Vim.
+ 
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" insert closing pairs
+" Plug 'jiangmiao/auto-pairs'
+
+" cassandra(cql syntax highlighting)
+" Plug 'elubow/cql-vim'
+"
+" emmet-vim
+Plug 'mattn/emmet-vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -11,8 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
-"fzf plugin
-" Plug '/usr/local/opt/fzf'
+" fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -25,16 +62,17 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-Plug 'sainnhe/edge'
+" Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
+
 "
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " Coc extensions
-" Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
@@ -51,7 +89,12 @@ set linebreak
 " colortheme
 set background=dark
 set termguicolors
+
 colorscheme onedark
+
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
 
 " I want my leader key to be the comma.
 let mapleader = "," 
@@ -327,12 +370,24 @@ nnoremap <silent> <leader>B :!asciidoctor %<CR>
 " emmet
 let g:user_emmet_leader_key=','
 
-autocmd Filetype go setlocal tabstop=4
+" set list
+" set listchars=tab:»·,trail:·,space:· " Display extra whitespace
+
+" set listchars=""                      " reset
+" set listchars=tab:→\
+" set listchars+=trail:·
+" set listchars+=space:·
+
+let g:user_emmet_leader_key=','
 
  " toggle invisible characters
 set list
+" This blog inspired me to change the tab marker
+" https://hashrocket.com/blog/posts/cool-looking-tabs-in-vim
 set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
+highlight SpecialKey ctermfg=grey ctermbg=black
 " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-highlight SpecialKey guifg=#333333 guibg=#111111
 set showbreak=↪
 
+" Fold methods
+" set foldmethod=indent
