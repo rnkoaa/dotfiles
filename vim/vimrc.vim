@@ -3,6 +3,10 @@
 call plug#begin('~/.vim/plugged')
 " Initialize plugin system
 
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+
 " goyo plugin for texting
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -30,13 +34,19 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " Coc extensions
 " Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 
 " emmet
 Plug 'mattn/emmet-vim'
 
 call plug#end()
+
+" wrap
+set wrap
+set linebreak
 
 " colortheme
 set background=dark
@@ -48,12 +58,29 @@ let mapleader = ","
 
 nnoremap ; :
 inoremap jk <ESC> 
+inoremap jj <ESC> 
 
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+inoremap <leader>w <ESC>:w <CR>
+nnoremap <leader>w :w <CR>
+
+inoremap <C-y> <ESC>:w <CR>:source %<CR>
+nnoremap <C-y> :w <CR>:source %<CR>
+
+inoremap <C-u> <ESC>:buffers<CR> 
+nnoremap <C-u> :buffers<CR> 
+
+inoremap <C-p> <ESC>:Files<CR> 
+nnoremap <C-p> :Files<CR> 
+
+" Goyo Configurations
+let g:goyo_width = 140
+
 
 " go-vim plugin specific commands
 " Also run `goimports` on your current file on every save
@@ -66,12 +93,6 @@ let g:go_auto_type_info = 1
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
-
-
-" coc-prettier
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-"au filetype go inoremap <buffer> . .<C-x><C-o>
 
 " NERDTree plugin specific commands
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -258,7 +279,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of
-
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
@@ -268,6 +288,8 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+command! -nargs=* Wrap set wrap linebreak nolist
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -299,6 +321,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" Asciidoc Build command
+nnoremap <silent> <leader>B :!asciidoctor %<CR>
+
 " emmet
 let g:user_emmet_leader_key=','
 
@@ -310,3 +335,4 @@ set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 " set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 highlight SpecialKey guifg=#333333 guibg=#111111
 set showbreak=↪
+

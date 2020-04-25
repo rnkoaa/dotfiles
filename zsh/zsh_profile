@@ -15,11 +15,18 @@ export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
+ide () {
+  tmux split-window -v -p 20
+}
+
+ide2 () {
+  tmux split-window -v -p 20
+  tmux split-window -h -p 50
+}
+
 jdk8 () {
   echo "setting sdkman to use java 8"
   sdk use java 8.0.212
-	# export JAVA_HOME=$JAVA_8_HOME
-        # export PATH=$PATH:$JAVA_HOME/bin
 }
 
 jdk11() {

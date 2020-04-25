@@ -11,7 +11,7 @@ alias hg='history | grep'
 # alias vimrc='nvim ~/dotfiles/vim/.vimrc'
 alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
 alias bfg='java -jar /usr/local/bin/bfg.jar'
-alias vim='/usr/local/bin/vim'
+alias vim='/usr/local/bin/nvim'
 alias markoff="open -a Markoff"
 
 # maven aliases
