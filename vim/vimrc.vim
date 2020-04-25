@@ -1,6 +1,3 @@
-" # -*- mode: ruby -*-
-" # vi: set ft=vimrc :
-
 " so ~/dotfiles/vim/vimrc.vim
 
 call plug#begin('~/.vim/plugged')
@@ -62,8 +59,9 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-" Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/edge'
 Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
 
 "
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -370,13 +368,14 @@ nnoremap <silent> <leader>B :!asciidoctor %<CR>
 " emmet
 let g:user_emmet_leader_key=','
 
-" set list
-" set listchars=tab:»·,trail:·,space:· " Display extra whitespace
 
-" set listchars=""                      " reset
-" set listchars=tab:→\
-" set listchars+=trail:·
-" set listchars+=space:·
+autocmd Filetype go setlocal tabstop=4
+
+ " toggle invisible characters
+" set list
+" set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
+" set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+" highlight SpecialKey guifg=#333333 guibg=#111111
 
 let g:user_emmet_leader_key=','
 
