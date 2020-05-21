@@ -12,6 +12,18 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+
+" Use alt + hjkl to resize windows
+nnoremap <M-j>    :resize -2<CR>
+nnoremap <M-k>    :resize +2<CR>
+nnoremap <M-h>    :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
+
+" Easy CAPS
+inoremap <c-u> <ESC>viwUi
+nnoremap <c-u> viwU<Esc>
+
+" easy save files
 inoremap <leader>w <ESC>:w <CR>
 nnoremap <leader>w :w <CR>
 
@@ -26,6 +38,13 @@ nnoremap <C-p> :Files<CR>
 
 nnoremap <leader>f :Files<CR> 
 nnoremap <leader>b :Buffers<CR> 
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap <Leader>o o<Esc>^Da
+nnoremap <Leader>O O<Esc>^Da
 
 " Asciidoc Build command
 nnoremap <silent> <leader>B :!asciidoctor %<CR>

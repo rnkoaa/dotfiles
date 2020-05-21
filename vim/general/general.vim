@@ -8,7 +8,6 @@ set linebreak
 
 set number
 set relativenumber
-set nocompatible
 set nobackup
 set nowritebackup
 set noswapfile
@@ -54,6 +53,7 @@ set smartindent
 filetype indent on
 
 set tabstop=2
+set smarttab
 set softtabstop=0
 set shiftwidth=2
 set expandtab
@@ -72,11 +72,16 @@ set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
+set iskeyword+=-                      	" treat dash separated words as a word text object"
+set conceallevel=0                      " So that I can see `` in markdown files
+
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+" au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 " yank to clipboard
 if has("clipboard")
