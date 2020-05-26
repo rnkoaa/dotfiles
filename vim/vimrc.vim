@@ -2,7 +2,9 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
@@ -51,15 +53,19 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " Coc extensions
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 
 " emmet
 Plug 'mattn/emmet-vim'
 
 Plug 'joshdick/onedark.vim'
+
+" floaterm
+" Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
 " colortheme
@@ -335,6 +341,20 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " emmet
 let g:user_emmet_leader_key=','
+
+" Floaterm keys
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+
+" Floaterm
+let g:floaterm_gitcommit='floaterm'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1
 
 " set list
 " set listchars=tab:»·,trail:·,space:· " Display extra whitespace
