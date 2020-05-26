@@ -1,9 +1,8 @@
 # Colors (One Dark)
 #
-# colors:
-  # Default colors
-  #
-# available, otherwise `xterm-256color` is used.
+####### helpful alacritty setup
+# https://github.com/fatih/dotfiles/blob/master/alacritty.yml
+
 TERM: xterm-256color
 
 # Colors (One Dark)
