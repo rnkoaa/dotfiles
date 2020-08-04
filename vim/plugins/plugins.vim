@@ -40,6 +40,9 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
+Plug 'morhetz/gruvbox'
+
+" Themes and color schemes
 Plug 'joshdick/onedark.vim'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
