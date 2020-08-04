@@ -36,8 +36,8 @@ nnoremap <C-u> :buffers<CR>
 inoremap <C-p> <ESC>:Files<CR> 
 nnoremap <C-p> :Files<CR> 
 
-nnoremap <leader>f :Files<CR> 
-nnoremap <leader>b :Buffers<CR> 
+" nnoremap <leader>f :Files<CR> 
+" nnoremap <leader>b :Buffers<CR> 
 
 " Better tabbing
 vnoremap < <gv
@@ -57,3 +57,5 @@ nnoremap <silent> <leader>B :!asciidoctor %<CR>
 
 let g:user_emmet_leader_key=','
 
+inoremap <silent> <leader>p <ESC>:Prettier<CR> 
+nnoremap <silent> <leader>p :Prettier<CR> 

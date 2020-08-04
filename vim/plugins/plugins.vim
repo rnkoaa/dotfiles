@@ -9,11 +9,8 @@ Plug 'unblevable/quick-scope'
 
 Plug 'justinmk/vim-sneak'
 
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
 " insert closing pairs
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " cassandra(cql syntax highlighting)
 Plug 'elubow/cql-vim'
@@ -43,17 +40,19 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-" Plug 'sainnhe/edge'
 Plug 'joshdick/onedark.vim'
-" Plug 'arcticicestudio/nord-vim'
 
-"
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'honza/vim-snippets'
+
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+Plug 'ap/vim-css-color'
 
 call plug#end()
 

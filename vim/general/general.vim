@@ -102,3 +102,16 @@ set showbreak=↪
 
 " Fold methods
 " set foldmethod=indent
+" Enable enable this when you open or enter a JavaScript or TypeScript buffer, and disable it when you leave:
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+
+" Prettier config 
+" enable prettier using .prettierrc
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_config_present = 1
+
+command! -bang -nargs=*  All
+  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'cown': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
+nnoremap <silent> <leader>o :All<cr>

@@ -1,3 +1,8 @@
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-prettier'
+  \ ]
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -52,7 +57,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json,js,javascript setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -110,8 +115,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Explorer
-nmap <C-e> :CocCommand explorer<CR>
-nmap <C-f> :CocCommand explorer --preset floating<CR>
+nmap <C-e> :CocCommand explorer --preset floating<CR>
+" nmap <C-f> :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " Snippets
@@ -129,3 +134,6 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Format :CocCommand prettier.formatFile
