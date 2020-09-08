@@ -19,6 +19,8 @@ export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
+export PATH=~/.npm-global/bin:$PATH
+
 jdk8 () {
   echo "setting sdkman to use java 8"
   sdk use java 8.0.212

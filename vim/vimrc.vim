@@ -2,25 +2,22 @@
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Use release branch (Recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Show git status of changes in files
+Plug 'mhinz/vim-signify'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 " If installed using Homebrew
 Plug '/usr/local/opt/fzf'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
 " insert closing pairs
 " Plug 'jiangmiao/auto-pairs'
 
@@ -38,33 +35,22 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-Plug 'arcticicestudio/nord-vim'
 
-"
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-" Coc extensions
-" Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 
 " emmet
 Plug 'mattn/emmet-vim'
 
 Plug 'joshdick/onedark.vim'
-
-" floaterm
-" Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -356,14 +342,6 @@ let g:floaterm_height=0.8
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
 
-" set list
-" set listchars=tab:»·,trail:·,space:· " Display extra whitespace
-
-" set listchars=""                      " reset
-" set listchars=tab:→\
-" set listchars+=trail:·
-" set listchars+=space:·
-
 let g:user_emmet_leader_key=','
 
  " toggle invisible characters
@@ -377,3 +355,27 @@ set showbreak=↪
 
 " Fold methods
 " set foldmethod=indent
+
+" signify configs
+" Change these if you want
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_change            = '~'
+
+" I find the numbers disctracting
+let g:signify_sign_show_count = 0
+let g:signify_sign_show_text = 1
+
+
+" Jump though hunks
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader>gJ 9999<leader>gJ
+nmap <leader>gK 9999<leader>gk
+
+
+" If you like colors instead
+" highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
+" highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
+" highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00

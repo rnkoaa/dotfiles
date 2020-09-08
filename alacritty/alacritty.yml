@@ -37,15 +37,35 @@ colors:
     cyan:    '0x56b6c2'
     white:   '0xffffff'
 
+# Font configuration (changes require restart)
 font:
-  family: 'Cascadia Code'
-  style: Regular
+  # The normal (roman) font face to use.
+  normal:
+    family: Cascadia Code PL
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: Cascadia Code PL
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: Cascadia Code PL
+    style: Regular Italic
+
+  # Point size of the font
   size: 14.0
 
+  # Offset is the extra space around each character. offset.y can be thought of
+  # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: 0
     y: 0
 
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
   glyph_offset:
     x: 0
     y: 0
@@ -53,7 +73,7 @@ font:
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
   # false.
-  use_thin_strokes: false
+  use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -86,4 +106,4 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: full
+  # decorations: fully
