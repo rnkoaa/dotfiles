@@ -8,7 +8,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Show git status of changes in files
 Plug 'mhinz/vim-signify'
@@ -19,7 +19,7 @@ Plug '/usr/local/opt/fzf'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  
 " insert closing pairs
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " cassandra(cql syntax highlighting)
 " Plug 'elubow/cql-vim'
@@ -51,7 +51,6 @@ Plug 'prettier/vim-prettier', {
 Plug 'mattn/emmet-vim'
 
 Plug 'joshdick/onedark.vim'
-
 call plug#end()
 
 " colortheme
@@ -68,8 +67,21 @@ let g:lightline = {
 let mapleader = "," 
 
 nnoremap ; :
-inoremap jk <ESC> 
+inoremap jk  <ESC> 
 inoremap jj <ESC> 
+
+" fzf short cuts
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>pg :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
+nmap // :BLines!<CR>
+nmap ?? :Rg!<CR>
+
+nnoremap <silent> <C-n> :NERDTree<CR>
+
+" quickly modify vim configs
+command! Config execute ":e $MYVIMRC"
+command! Reload execute ":source $MYVIMRC"
 
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -88,7 +100,6 @@ let g:go_auto_type_info = 1
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
-
 
 " coc-prettier
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -112,7 +123,6 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 " We also include a number of suggested settings that we think the majority of
 " users will like/prefer.
 " key Mappings
-
 
 set number
 set relativenumber
@@ -284,7 +294,6 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of
-
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
