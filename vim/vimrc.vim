@@ -2,41 +2,28 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'scrooloose/syntastic'
+" Use release branch (Recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'mileszs/ack.vim'
-" Plug 'vim-scripts/bufexplorer.zip'
 Plug 'itchyny/lightline.vim'
-" Plug 'joom/vim-commentary'
-" Plug 'vim-scripts/mru.vim'
-" Plug 'w0rp/ale'
+Plug 'christoomey/vim-tmux-navigator'
+
+" Show git status of changes in files
+Plug 'mhinz/vim-signify'
 
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 " If installed using Homebrew
 Plug '/usr/local/opt/fzf'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-  " Both options are optional. You don't have to install fzf in ~/.fzf
-  " and you don't have to run the install script if you use fzf only in Vim.
  
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
 " insert closing pairs
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " cassandra(cql syntax highlighting)
 " Plug 'elubow/cql-vim'
 "
-" emmet-vim
-Plug 'mattn/emmet-vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -52,7 +39,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 
 " Markdown preview
@@ -63,7 +49,6 @@ Plug 'sainnhe/edge'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
 
-"
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -98,8 +83,21 @@ let g:lightline = {
 let mapleader = "," 
 
 nnoremap ; :
-inoremap jk <ESC> 
+inoremap jk  <ESC> 
 inoremap jj <ESC> 
+
+" fzf short cuts
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>pg :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
+nmap // :BLines!<CR>
+nmap ?? :Rg!<CR>
+
+nnoremap <silent> <C-n> :NERDTree<CR>
+
+" quickly modify vim configs
+command! Config execute ":e $MYVIMRC"
+command! Reload execute ":source $MYVIMRC"
 
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -152,7 +150,6 @@ nnoremap <leader>nf :NERDTreeFind<cr>
 " We also include a number of suggested settings that we think the majority of
 " users will like/prefer.
 " key Mappings
-
 
 set number
 set relativenumber
@@ -310,6 +307,10 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+" -------------------------------------------------------------------------------------------------
+" coc.nvim default settings
+" -------------------------------------------------------------------------------------------------
+
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -390,3 +391,27 @@ set showbreak=↪
 
 " Fold methods
 " set foldmethod=indent
+
+" signify configs
+" Change these if you want
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_change            = '~'
+
+" I find the numbers disctracting
+let g:signify_sign_show_count = 0
+let g:signify_sign_show_text = 1
+
+
+" Jump though hunks
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+nmap <leader>gJ 9999<leader>gJ
+nmap <leader>gK 9999<leader>gk
+
+
+" If you like colors instead
+" highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
+" highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
+" highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
