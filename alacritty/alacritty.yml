@@ -55,7 +55,7 @@ font:
     style: Regular Italic
 
   # Point size of the font
-  size: 16.0
+  size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -74,23 +74,6 @@ font:
   # for retina displays, but for non-retina you probably want this set to
   # false.
   use_thin_strokes: true
-# font:
-#   family: 'Cascadia Code PL'
-#   style: Regular
-#   size: 14.0
-
-#   offset:
-#     x: 0
-#     y: 0
-
-#   glyph_offset:
-#     x: 0
-#     y: 0
-
-#   # OS X only: use thin stroke font rendering. Thin strokes are suitable
-#   # for retina displays, but for non-retina ou probably want this set to
-#   # false.
-#   use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -108,8 +91,8 @@ window:
   # Window dimensions in character columns and lines
   # (changes require restart)
   dimensions:
-    columns: 180
-    lines: 60
+    columns: 140
+    lines: 40
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.

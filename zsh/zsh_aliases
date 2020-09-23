@@ -29,6 +29,8 @@ alias dcd='docker-compose down'
 alias dcu='docker-compose up'
 alias dcud='docker-compose up -d'
 alias dpsa='docker ps -a'
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.gradle,.idea,.git}" | fzf'
+alias vifi='vim $(fzfi)'
 
 alias t='task'
 alias tx='tmux'

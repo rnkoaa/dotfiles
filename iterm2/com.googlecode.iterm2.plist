@@ -6,6 +6,8 @@
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -395,9 +397,9 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dotfiles/iterm2</string>
+	<string>~/Library/Mobile Documents/com~apple~CloudDocs/terminal/backgrounds</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
+	<string>{799, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -439,12 +441,14 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSNavPanelAutosaveName</key>
+	<string>235 218 799 448 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 295 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>125 290 918 423 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>11 26 970 751 0 0 1280 777 </string>
+	<string>187 49 1032 728 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 30 970 747 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
@@ -646,7 +650,9 @@
 				<real>0.16862745098039217</real>
 			</dict>
 			<key>Background Image Location</key>
-			<string></string>
+			<string>/Users/rnkoaa/Library/Mobile Documents/com~apple~CloudDocs/terminal/backgrounds/blackboard.jpg</string>
+			<key>Background Image Mode</key>
+			<integer>2</integer>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -2084,15 +2090,19 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.2</string>
-		<string>3.2.9</string>
-		<string>3.3.1</string>
-		<string>3.3.7</string>
-		<string>3.3.3</string>
 		<string>3.3.6</string>
+		<string>3.3.8</string>
+		<string>3.3.12</string>
+		<string>3.3.1</string>
+		<string>3.3.3</string>
+		<string>3.3.7</string>
+		<string>3.3.9</string>
+		<string>3.2.9</string>
+		<string>3.3.2</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
+		<string>Cascadia Code PL</string>
 		<string>Source Code Pro for Powerline</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
@@ -2121,7 +2131,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>484149E1-0CD1-4EA4-AC33-6E9A6135FB76</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>72</integer>
+	<integer>147</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2920,9 +2930,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-01-13T00:52:09Z</date>
+	<date>2020-09-20T17:55:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>2525787166</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2938,6 +2950,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.7</string>
+	<string>3.3.12</string>
 </dict>
 </plist>
