@@ -1,3 +1,4 @@
+# vi: ft=vim
 
 call plug#begin('~/.vim/plugged')
 
@@ -40,17 +41,12 @@ Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Themes and color schemes
-Plug 'morhetz/gruvbox'
-
-" Themes and color schemes
 Plug 'joshdick/onedark.vim'
-
-" post install (yarn install | npm install) then load plugin only for editing supported files
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'honza/vim-snippets'
 
 Plug 'pangloss/vim-javascript'
+Plug 'stephpy/vim-yaml'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }

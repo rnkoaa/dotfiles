@@ -6,8 +6,9 @@ set linebreak
 " users will like/prefer.
 " key Mappings
 
-set number
-set relativenumber
+" set number
+" show the line number of the current cursor as well as the relative line numbers
+set number relativenumber
 set nobackup
 set nowritebackup
 set noswapfile
@@ -31,12 +32,6 @@ set mouse=a
 " does not work correctly beyond a certain column number (citation needed)
 " hence we use ttymouse=sgr
 " set ttymouse=sgr
-
-" Suggestion: By default, govim populates the quickfix window with diagnostics
-" reported by gopls after a period of inactivity, the time period being
-" defined by updatetime (help updatetime). Here we suggest a short updatetime
-" time in order that govim/Vim are more responsive/IDE-like
-set updatetime=500
 
 " Suggestion: To make govim/Vim more responsive/IDE-like, we suggest a short
 " balloondelay
@@ -105,13 +100,9 @@ set showbreak=↪
 " Enable enable this when you open or enter a JavaScript or TypeScript buffer, and disable it when you leave:
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
+au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 
 " Prettier config 
 " enable prettier using .prettierrc
 " let g:prettier#autoformat = 1
 " let g:prettier#autoformat_config_present = 1
-
-command! -bang -nargs=*  All
-  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'cown': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
-nnoremap <silent> <leader>o :All<cr>

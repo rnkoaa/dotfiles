@@ -31,6 +31,7 @@ alias dcud='docker-compose up -d'
 alias dpsa='docker ps -a'
 
 alias t='task'
+alias tx='tmux'
 alias z='vim ~/.zshrc'
 alias za='vim ~/dotfiles/zsh/zsh_aliases'
 alias zc='vim ~/dotfiles/zsh/zshrc'
