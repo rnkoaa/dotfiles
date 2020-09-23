@@ -33,6 +33,7 @@ alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.gra
 alias vifi='vim $(fzfi)'
 
 alias t='task'
+alias tx='tmux'
 alias z='vim ~/.zshrc'
 alias za='vim ~/dotfiles/zsh/zsh_aliases'
 alias zc='vim ~/dotfiles/zsh/zshrc'
@@ -43,3 +44,4 @@ alias vw='vault write'
 alias vr='vault read'
 
 alias gtcl='git log --oneline --decorate --color'
+alias jdkcerts='docker pull docker.target.com/redsky/redsky-jdk:latest && for JDK_PATH in $(find /opt/sdkman/java/ ! -path /opt/sdkman/java/ -type d -maxdepth 1); do echo "adding certs to ${JDK_PATH}" && [ -f $(find $JDK_PATH -name cacerts).orig ] && mv $(find $JDK_PATH -name cacerts).orig $(find $JDK_PATH -name cacerts) || echo '' && cp $(find $JDK_PATH -name cacerts) $(find $JDK_PATH -name cacerts).orig && docker run -it --rm --mount type=bind,source="$(cd ${JDK_PATH} && pwd -P)",target="${JDK_PATH}" docker.target.com/redsky/redsky-jdk:latest sh -c "/usr/local/bin/import_pem.sh \${TGT_CA_BUNDLE_PATH} changeit $(find $JDK_PATH -name cacerts)"; done' 
