@@ -1,4 +1,4 @@
-# vi: ft=vim
+" vi: ft=vim
 
 call plug#begin('~/.vim/plugged')
 
