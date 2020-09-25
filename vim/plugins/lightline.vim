@@ -1,4 +1,4 @@
-# vi: ft=vim
+" vi: ft=vim
 
 let g:lightline = {
       \ 'colorscheme': 'onedark',
