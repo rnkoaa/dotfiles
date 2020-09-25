@@ -33,8 +33,8 @@ nnoremap <C-y> :w <CR>:source %<CR>
 inoremap <C-u> <ESC>:buffers<CR> 
 nnoremap <C-u> :buffers<CR> 
 
-inoremap <C-p> <ESC>:Files<CR> 
-nnoremap <C-p> :Files<CR> 
+" inoremap <C-p> <ESC>:Files<CR> 
+" nnoremap <C-p> :Files<CR> 
 
 " nnoremap <leader>f :Files<CR> 
 " nnoremap <leader>b :Buffers<CR> 

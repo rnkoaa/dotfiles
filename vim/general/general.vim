@@ -100,7 +100,6 @@ set showbreak=↪
 " Enable enable this when you open or enter a JavaScript or TypeScript buffer, and disable it when you leave:
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 
 " Prettier config 
 " enable prettier using .prettierrc
