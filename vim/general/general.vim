@@ -91,7 +91,7 @@ set nowritebackup
 set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=200
+set updatetime=50
 
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set conceallevel=0                      " So that I can see `` in markdown files
@@ -126,6 +126,7 @@ set showbreak=↪
 " Enable enable this when you open or enter a JavaScript or TypeScript buffer, and disable it when you leave:
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
 " au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 
 
