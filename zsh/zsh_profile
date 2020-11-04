@@ -3,6 +3,10 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 
+# Issue: https://github.com/zsh-users/zsh-syntax-highlighting/issues/513
+# zsh syntax highlighting is slow when pasting long strings such as base64 jks files so this will prevent it from parsing the strings
+export ZSH_HIGHLIGHT_MAXLENGTH=30
+
 export EDITOR=/usr/local/bin/vim
 
 export POSTGRES_HOME=/usr/local/Cellar/postgresql/10.5
@@ -103,11 +107,10 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 export KEYTIMEOUT=20
 
 export RIPGREP_CONFIG_PATH="~/dotfiles/zsh/ripgrepignore"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules/*,.git/*,.gradle/*,.idea/*}"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*,!.idea/*,!.gradle/*,!node_modules/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}" | fzf'
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git,.idea}" | fzf'
 alias vifi='vim $(fzfi)'
-
-
 
