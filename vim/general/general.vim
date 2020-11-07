@@ -105,3 +105,6 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 " enable prettier using .prettierrc
 " let g:prettier#autoformat = 1
 " let g:prettier#autoformat_config_present = 1
+
+command! Config execute ":e $MYVIMRC"
+command! Reload execute ":source $MYVIMRC"
