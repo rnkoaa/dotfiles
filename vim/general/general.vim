@@ -188,3 +188,8 @@ autocmd BufEnter *.{yml,yaml} :syntax on
 " enable prettier using .prettierrc
 " let g:prettier#autoformat = 1
 " let g:prettier#autoformat_config_present = 1
+"
+" Google Code fmt
+
+command! Config execute ":e $MYVIMRC"
+command! Reload execute ":source $MYVIMRC"
