@@ -6,6 +6,25 @@ nnoremap ; :
 inoremap jk <ESC> 
 inoremap jj <ESC> 
 
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <C-space> ?
+
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -26,6 +45,15 @@ nnoremap <c-u> viwU<Esc>
 " easy save files
 inoremap <leader>w <ESC>:w <CR>
 nnoremap <leader>w :w <CR>
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" replace line with clipboard
+" nnoremap <leader>yp <S-v>p
+
+" duplicate lines
+inoremap <C-d> <ESC>yyp
+nnoremap <C-d> yyp
 
 inoremap <C-y> <ESC>:w <CR>:source %<CR>
 nnoremap <C-y> :w <CR>:source %<CR>
@@ -59,3 +87,23 @@ let g:user_emmet_leader_key=','
 
 inoremap <silent> <leader>p <ESC>:Prettier<CR> 
 nnoremap <silent> <leader>p :Prettier<CR> 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Move a line of text using ALT+[jk] or Command+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+

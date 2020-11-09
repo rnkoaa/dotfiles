@@ -1,4 +1,3 @@
-" so ~/dotfiles/vim/vimrc.vim
 
 source $HOME/dotfiles/vim/plugins/plugins.vim
 source $HOME/dotfiles/vim/plugins/goyo.vim
