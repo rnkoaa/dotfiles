@@ -1,6 +1,13 @@
 " vi: ft=vim
 
 call plug#begin('~/.vim/plugged')
+" starlark 
+Plug 'cappyzawa/starlark.vim'
+"
+" Add maktaba and bazel to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
 
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim'

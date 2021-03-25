@@ -1,3 +1,9 @@
+" Allow split to right
+set splitright
+
+" Allow split to be lower
+set splitbelow
+
 " wrap
 set wrap
 set linebreak
