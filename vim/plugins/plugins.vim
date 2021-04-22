@@ -3,11 +3,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
 Plug 'itchyny/lightline.vim'
-
 Plug 'unblevable/quick-scope'
-
 Plug 'justinmk/vim-sneak'
 
 " insert closing pairs
@@ -53,5 +50,25 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'ap/vim-css-color'
 
+" Google java format
+" https://github.com/google/vim-codefmt
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+
 call plug#end()
 
+" install glaive
+call glaive#Install()
+Glaive codefmt plugin[mappings]
+"
+Glaive codefmt google_java_executable="java -jar /opt/vim-codefmt/google-java-format-1.9-all-deps.jar"
+
+augroup autoformat_settings
+  " autocmd FileType bzl AutoFormatBuffer buildifier
+  " autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  " autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType java AutoFormatBuffer google-java-format
+augroup END
