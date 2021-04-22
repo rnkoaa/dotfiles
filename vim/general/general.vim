@@ -188,3 +188,8 @@ autocmd BufEnter *.{yml,yaml} :syntax on
 " enable prettier using .prettierrc
 " let g:prettier#autoformat = 1
 " let g:prettier#autoformat_config_present = 1
+"
+" Secure Gopass password editing
+" https://github.com/gopasspw/gopass/blob/master/docs/setup.md#securing-your-editor
+au BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile
+
