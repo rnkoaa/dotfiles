@@ -1,7 +1,8 @@
 
 " I want my leader key to be the comma.
-let mapleader = "," 
-
+" let japleader = "," 
+nnoremap <SPACE> <Nop>
+let mapleader = " "
 nnoremap ; :
 inoremap jk <ESC> 
 inoremap jj <ESC> 
@@ -23,7 +24,7 @@ map <space> /
 map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+nnoremap <silent> <leader>k :noh<cr>
 
 " buffer window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -43,7 +44,7 @@ inoremap <c-u> <ESC>viwUi
 nnoremap <c-u> viwU<Esc>
 
 " easy save files
-inoremap <leader>w <ESC>:w <CR>
+" inoremap <leader>w <ESC>:w <CR>
 nnoremap <leader>w :w <CR>
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -85,7 +86,7 @@ nnoremap <silent> <leader>B :!asciidoctor %<CR>
 
 let g:user_emmet_leader_key=','
 
-inoremap <silent> <leader>p <ESC>:Prettier<CR> 
+" inoremap <silent> <leader>p <ESC>:Prettier<CR> 
 nnoremap <silent> <leader>p :Prettier<CR> 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
