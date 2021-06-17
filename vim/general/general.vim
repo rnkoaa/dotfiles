@@ -193,3 +193,11 @@ autocmd BufEnter *.{yml,yaml} :syntax on
 " https://github.com/gopasspw/gopass/blob/master/docs/setup.md#securing-your-editor
 au BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile
 
+" neoformat
+" let g:neoformat_java_google = {
+"             \ 'exe': 'java',
+"             \ 'args': ['-jar /usr/local/bin/google-java-format-1.10.0.jar -'],
+"             \ 'stdin': 1, 
+"             \ }
+
+" let g:neoformat_enabled_java = ['google']

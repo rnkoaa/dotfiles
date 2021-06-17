@@ -53,5 +53,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'ap/vim-css-color'
 
+Plug 'sbdchd/neoformat'
+
 call plug#end()
 
