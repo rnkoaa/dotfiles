@@ -34,7 +34,7 @@ alias vifi='vim $(fzfi)'
 
 alias t='task'
 alias tx='tmux'
-alias z='vim ~/.zshrc'
+alias zrc='vim ~/.zshrc'
 alias za='vim ~/dotfiles/zsh/zsh_aliases'
 alias zc='vim ~/dotfiles/zsh/zshrc'
 alias zp='vim ~/dotfiles/zsh/zsh_profile'

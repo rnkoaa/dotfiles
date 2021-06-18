@@ -1,3 +1,9 @@
+" Allow split to right
+set splitright
+
+" Allow split to be lower
+set splitbelow
+
 " wrap
 set wrap
 set linebreak
@@ -189,15 +195,12 @@ autocmd BufEnter *.{yml,yaml} :syntax on
 " let g:prettier#autoformat = 1
 " let g:prettier#autoformat_config_present = 1
 "
+
 " Secure Gopass password editing
 " https://github.com/gopasspw/gopass/blob/master/docs/setup.md#securing-your-editor
 au BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile
 
-" neoformat
-" let g:neoformat_java_google = {
-"             \ 'exe': 'java',
-"             \ 'args': ['-jar /usr/local/bin/google-java-format-1.10.0.jar -'],
-"             \ 'stdin': 1, 
-"             \ }
+" Google Code fmt
 
-" let g:neoformat_enabled_java = ['google']
+command! Config execute ":e $MYVIMRC"
+command! Reload execute ":source $MYVIMRC"
