@@ -14,13 +14,13 @@ fi
 
 ARTIFACT_NAME="google-java-format-$GOOGLE_JAVA_FORMAT_VERSION-all-deps.jar"
 DOWNLOAD_URL="$GITHUB_BASE_DIR/google/google-java-format/releases/download/google-java-format-$GOOGLE_JAVA_FORMAT_VERSION/$ARTIFACT_NAME"
-DOWNLOAD_LOCATION="$CODE_FMT_DIR/$ARTIFACT_NAME"
+DOWNLOAD_LOCATION="$CODE_FMT_DIR"
 
 # download codefmt jar into 
 # wget https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar
 
-echo $DOWNLOAD_URL
+wget -q $DOWNLOAD_URL -P $DOWNLOAD_LOCATION
 
-wget $DOWNLOAD_URL -o $DOWNLOAD_LOCATION 
+chmod +x $DOWNLOAD_LOCATION/$ARTIFACT_NAME
 
 echo "done"

@@ -1,11 +1,22 @@
 " vi: ft=vim
 
 call plug#begin('~/.vim/plugged')
+" starlark 
+Plug 'cappyzawa/starlark.vim'
+"
+" Add maktaba and bazel to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'unblevable/quick-scope'
 Plug 'justinmk/vim-sneak'
+
+" open a floating terminal 
+Plug 'voldikss/vim-floaterm'
 
 " insert closing pairs
 Plug 'jiangmiao/auto-pairs'
@@ -17,6 +28,9 @@ Plug 'elubow/cql-vim'
 Plug 'mattn/emmet-vim'
 
 Plug 'tpope/vim-surround'
+
+" case sensitive search and replace
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 
@@ -59,6 +73,10 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
 call plug#end()
+
+syntax on
+set background=dark
+colorscheme onedark
 
 " install glaive
 call glaive#Install()

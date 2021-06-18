@@ -11,4 +11,3 @@ source $HOME/dotfiles/vim/plugins/lightline.vim
 source $HOME/dotfiles/vim/themes/themes.vim
 source $HOME/dotfiles/vim/plugins/nerdtree.vim
 source $HOME/dotfiles/vim/plugins/vimgo.vim
-
