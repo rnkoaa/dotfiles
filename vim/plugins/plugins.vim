@@ -64,13 +64,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'ap/vim-css-color'
 
-" Google java format
-" https://github.com/google/vim-codefmt
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
