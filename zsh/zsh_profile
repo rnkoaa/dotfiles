@@ -1,3 +1,6 @@
+source "/Users/Z002RGR/.sdkman/bin/sdkman-init.sh"
+
+
 # Environment variables
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
@@ -14,6 +17,7 @@ export PATH=$PATH:$POSTGRES_HOME/bin
 
 export GO111MODULE=on
 export GO_HOME=/usr/local/go/bin
+export GOPATH=$HOME/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GO_HOME
 
@@ -41,10 +45,6 @@ jdk8 () {
 jdk11() {
 	export JAVA_HOME=$JAVA_11_HOME
 	export PATH=$PATH:$JAVA_HOME/bin
-}
-
-jdk13() {
-  sdk use java 13.0.2-zulu
 }
 
 mkd(){
