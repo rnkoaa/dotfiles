@@ -23,6 +23,9 @@ export PATH=$PATH:$GO_HOME
 
 export PATH=$PATH:$GOPATH/bin
 
+export NODE_PACKAGES_HOME=~/.npm-packages
+export PATH=$PATH:$NODE_PACKAGES_HOME/bin
+
 export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
 export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
