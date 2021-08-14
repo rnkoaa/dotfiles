@@ -7,7 +7,7 @@ end
 
 vim.api.nvim_command('packadd packer.nvim')
 
-local no_errors = pcall(function()
+local no_errors, error_msg = pcall(function()
 
   local time
   local profile_info
@@ -113,6 +113,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/neoformat"
   },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nord.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
@@ -209,5 +213,5 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
-  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: ".v:exception | echom "Please check your config for correctness" | echohl None')
+  vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

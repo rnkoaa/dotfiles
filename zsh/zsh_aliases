@@ -9,9 +9,9 @@ alias ll='ls -l'
 alias hg='history | grep'
 
 # alias vimrc='nvim ~/dotfiles/vim/.vimrc'
+alias vim=$(which nvim)
 alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
 alias bfg='java -jar /usr/local/bin/bfg.jar'
-alias vim=$(which nvim)
 alias markoff="open -a Markoff"
 
 # maven aliases
@@ -45,3 +45,24 @@ alias vr='vault read'
 
 alias gtcl='git log --oneline --decorate --color'
 alias jdkcerts='docker pull docker.target.com/redsky/redsky-jdk:latest && for JDK_PATH in $(find /opt/sdkman/java/ ! -path /opt/sdkman/java/ -type d -maxdepth 1); do echo "adding certs to ${JDK_PATH}" && [ -f $(find $JDK_PATH -name cacerts).orig ] && mv $(find $JDK_PATH -name cacerts).orig $(find $JDK_PATH -name cacerts) || echo '' && cp $(find $JDK_PATH -name cacerts) $(find $JDK_PATH -name cacerts).orig && docker run -it --rm --mount type=bind,source="$(cd ${JDK_PATH} && pwd -P)",target="${JDK_PATH}" docker.target.com/redsky/redsky-jdk:latest sh -c "/usr/local/bin/import_pem.sh \${TGT_CA_BUNDLE_PATH} changeit $(find $JDK_PATH -name cacerts)"; done' 
+
+function gpup() {
+    current_branch=$(git branch --show-current)
+    if [[ $# -eq 1 ]]; then
+        echo "hello $1"
+        current_branch=$1
+    fi
+    echo $current_branch
+    git push -u upstream $current_branch
+}
+
+function gfum(){
+    current_branch=$(git branch --show-current)
+    if [[ $# -eq 1 ]]; then
+        echo "hello $1"
+        current_branch=$1
+    fi
+    echo $current_branch
+    git fetch upstream $current_branch
+    git merge upstream/$current_branch
+}

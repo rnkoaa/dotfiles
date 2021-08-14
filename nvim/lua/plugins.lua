@@ -40,11 +40,12 @@ return require('packer').startup(function()
 
     -- use 'joshdick/onedark.vim'         -- Theme inspired by Atom
     -- use { 'sainnhe/edge' }
-        use 'navarasu/onedark.nvim'
+    use 'navarasu/onedark.nvim'
+    use 'shaunsingh/nord.nvim'
     -- use 'itchyny/lightline.vim'        -- Fancier statusline
     --
     -- Add indentation guides even on blank lines
-    use { 'lukas-reineke/indent-blankline.nvim', branch="lua" }
+    use { 'lukas-reineke/indent-blankline.nvim', branch="master" }
 
     use 'sbdchd/neoformat'
 
