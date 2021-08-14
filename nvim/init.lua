@@ -68,12 +68,6 @@ vim.wo.signcolumn="yes"
 -- Set completeopt to have a better completion experience
 vim.o.completeopt="menuone,noinsert,noselect"
 
---Set statusbar
--- vim.g.lightline = { colorscheme = 'onedark';
---       active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } };
---       component_function = { gitbranch = 'fugitive#head', };
--- }
-
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
 vim.g.mapleader = " "
@@ -201,7 +195,7 @@ require('lsp.general-ls')
 
 require('lualine').setup {
     options = {
-        theme = 'onedark'
+        theme = 'nord'
     }
 }
 

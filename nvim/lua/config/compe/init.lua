@@ -4,9 +4,6 @@ local utils = require('utils')
 
 vim.cmd [[set shortmess+=c]]
 utils.opt('o', 'completeopt', 'menuone,noselect')
--- vim.o.completeopt = "menuone,noselect"
-
-
 
 require'compe'.setup {
   enabled = true;
@@ -21,7 +18,14 @@ require'compe'.setup {
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
-  documentation = true;
+  -- documentation = true;
+  documentation = {
+      border = "rounded",
+      max_width = 60,
+      min_width = 60,
+      max_height = math.floor(vim.o.lines * 0.3),
+      min_height = 1,
+  };
 
   source = {
     path = true;
