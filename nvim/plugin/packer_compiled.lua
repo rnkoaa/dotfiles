@@ -69,13 +69,13 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/LuaSnip"
+  },
   ["base16-vim"] = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/base16-vim"
-  },
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/completion-nvim"
   },
   ["dashboard-nvim"] = {
     loaded = true,
@@ -84,6 +84,10 @@ _G.packer_plugins = {
   ["diffview.nvim"] = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/diffview.nvim"
+  },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -109,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/neoformat"
@@ -129,6 +138,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nvim-dap"
+  },
   ["nvim-jdtls"] = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
@@ -148,6 +161,10 @@ _G.packer_plugins = {
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -181,6 +198,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ultisnips = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/ultisnips"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/vim-commentary"
@@ -208,6 +229,13 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

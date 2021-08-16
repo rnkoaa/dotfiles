@@ -1,4 +1,4 @@
-source "/Users/Z002RGR/.sdkman/bin/sdkman-init.sh"
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
 # Environment variables
@@ -31,6 +31,7 @@ export PATH=$PATH:$KAFKA_HOME/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 export PATH=~/.npm-global/bin:$PATH
+
 ide () {
   tmux split-window -v -p 20
 }
@@ -38,11 +39,6 @@ ide () {
 ide2 () {
   tmux split-window -v -p 20
   tmux split-window -h -p 50
-}
-
-jdk8 () {
-  echo "setting sdkman to use java 8"
-  sdk use java 8.0.212
 }
 
 jdk11() {

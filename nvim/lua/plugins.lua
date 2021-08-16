@@ -29,10 +29,10 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'       -- Package manager
 
     use 'windwp/nvim-autopairs'
+    use 'SirVer/ultisnips'
     use 'onsails/lspkind-nvim'
     
     use 'neovim/nvim-lspconfig'
-    use 'nvim-lua/completion-nvim'
     use 'anott03/nvim-lspinstall'
     use 'glepnir/lspsaga.nvim'
 
@@ -52,8 +52,10 @@ return require('packer').startup(function()
     -- Add git related info in the signs columns and popups
     use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
     use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
+    use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
     use {"nvim-treesitter/nvim-treesitter"}
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
     use {'nvim-treesitter/playground' }
 
     use {"chriskempson/base16-vim"}
@@ -80,8 +82,11 @@ return require('packer').startup(function()
     use 'kyazdani42/nvim-tree.lua'
 
    -- Icons
-    -- use {"kyazdani42/nvim-web-devicons", opt = true}
     use { 'kyazdani42/nvim-web-devicons'}
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
 
     -- Fugitive for Git
     use 'tpope/vim-fugitive'           -- Git commands in nvim
@@ -92,13 +97,18 @@ return require('packer').startup(function()
     use {'RRethy/nvim-base16'}
     use { 'sindrets/diffview.nvim' }
 
-    use {
-        'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-
     use { 'mfussenegger/nvim-jdtls'}
+
+    -- debugging support
+    use 'mfussenegger/nvim-dap'
+
+    use { 'mattn/emmet-vim' }
+
+    use {
+        'iamcco/markdown-preview.nvim',
+        ft = 'markdown',
+        run = 'cd app && yarn install'
+    }
 end
 )
 
--- require'nvim-web-devicons'.get_icons()

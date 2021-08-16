@@ -1,0 +1,16 @@
+# install.conf.yaml
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux.conf.local: tmux/tmux.conf.local
+    ~/.gitconfig: gitconfig
+
+- create:
+    ~/.config/nvim
+    ~/.config/alacritty
+    ~/.config/eclipse

@@ -1,3 +1,6 @@
+vim.api.nvim_exec([[
+  autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+]], false)
 
 require "lspconfig".gopls.setup{
     cmd = {"gopls", "serve"},
