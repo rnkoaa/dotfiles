@@ -109,6 +109,8 @@ return require('packer').startup(function()
         ft = 'markdown',
         run = 'cd app && yarn install'
     }
+
+    use { 'junegunn/goyo.vim'}
 end
 )
 
