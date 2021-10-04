@@ -6,6 +6,10 @@ vim.g.mapleader = ' '
 -- no hl
 map('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
+
+-- format
+map('n', '<leader><leader>f<CR>', ':Format', {noremap = true, silent = true})
+
 -- explorer
 map('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 map('n', '-', ':RnvimrToggle<CR>', {noremap = true, silent = true})
@@ -86,3 +90,10 @@ map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
 
 -- Markdown Preview
 map('n', '<M-p>', ':MarkdownPreview<CR>', {noremap = true, silent = true})
+
+-- java
+-- map('n', '<leader>kk', "<cmd>lua require('jdtls').code_action()<CR>")
+-- {"code_action", "n", "<a-CR>", "<Cmd>lua require'jdtls'.code_action()<CR>"},
+--     {"code_action", "n", "<leader>r", "<Cmd>lua require'jdtls'.code_action(false, 'refactor')<CR>"},
+--     {"code_action", "v", "<a-CR>", "<Esc><Cmd>lua require'jdtls'.code_action(true)<CR>"},
+--     {"code_action", "v", "<leader>r", "<Esc><Cmd>lua require'jdtls'.code_action(true, 'refactor')<CR>"},

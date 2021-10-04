@@ -1,69 +1,39 @@
 -- https://github.com/Nguyen-Hoang-Nam/nvim-dotfiles-kitty/blob/main/lua/lsp/jdtls.lua
 --https://github.com/ChrisAmelia/dotfiles/blob/master/nvim/lua/lsp.lua
+local finders = require'telescope.finders'
+local sorters = require'telescope.sorters'
+local actions = require'telescope.actions'
+local pickers = require'telescope.pickers'
+
+local root_markers = {'build.gradle', 'gradlew', 'pom.xml'}
+local root_dir = require('jdtls.setup').find_root(root_markers)
+local home = os.getenv('HOME')
+
+local workspace_folder = home .. "/.workspace" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+
+local java = require('languages.java')
 
 local M = {}
 
+-- array of mappings to setup; {<capability_name>, <mode>, <lhs>, <rhs>}
+
 function M.setup()
-    local on_attach = function(client, bufnr)
-      require'jdtls.setup'.add_commands()
-      require'jdtls'.setup_dap()
-      require'lsp-status'.register_progress()
-      require'compe'.setup {
-          enabled = true;
-          autocomplete = true;
-          debug = false;
-          min_length = 1;
-          preselect = 'enable';
-          throttle_time = 80;
-          source_timeout = 200;
-          incomplete_delay = 400;
-          max_abbr_width = 100;
-          max_kind_width = 100;
-          max_menu_width = 100;
-          documentation = true;
+    -- local on_attach = function(client, bufnr)
+    --     print("JDTLS Attached")
+    --     require'jdtls.setup'.add_commands()
+    --     require'lsp-status'.register_progress()
+      -- require'lspkind'.init()
+      -- require'lspsaga'.init_lsp_saga()
+      -- require'jdtls'.setup_dap()
+-- nnoremap <A-CR> <Cmd>lua require('jdtls').code_action()<CR>
+-- vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
 
-          source = {
-            path = true;
-            buffer = true;
-            calc = true;
-            vsnip = false;
-            nvim_lsp = true;
-            nvim_lua = true;
-            spell = true;
-            tags = true;
-            snippets_nvim = false;
-            treesitter = true;
-          };
-        }
 
-      require'lspkind'.init()
-      require'lspsaga'.init_lsp_saga()
 
       -- Kommentary
       -- vim.api.nvim_set_keymap("n", "<leader>/", "<plug>kommentary_line_default", {})
       -- vim.api.nvim_set_keymap("v", "<leader>/", "<plug>kommentary_visual_default", {})
 
-      -- --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED \
-  --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED \
-  --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED \
-  --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED \
-  --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED \ 
-      require'formatter'.setup{
-          filetype = {
-              java = {
-                  function()
-                      return {
-                          exe = [[
-                              java --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED 
-                            ]],
-                          -- exe = 'java',
-                          args = { '-jar', os.getenv('HOME') .. '/.local/jars/google-java-format-1.11.0-all-deps.jar', vim.api.nvim_buf_get_name(0) },
-                          stdin = true
-                      }
-                  end
-              }
-          }
-      }
 
       -- vim.api.nvim_exec([[
       --   augroup FormatAutogroup
@@ -72,18 +42,34 @@ function M.setup()
       --   augroup end
       -- ]], true)
 
-      -- local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-      -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-      -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-      -- Mappings.
       -- local opts = { noremap=true, silent=true }
-      -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-      -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-      -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-      -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-      -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    -- local function buf_set_keymap(mode, mapping, command)
+      --       api.nvim_buf_set_keymap(bufnr, mode, mapping, command, opts)
+      --   end
+
+      --   api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      -- -- Mappings.
+      -- buf_set_keymap('n', '<leader>gz', "<Cmd>lua require('jdtls').code_action()<CR>")
+      -- buf_set_keymap('v', '<leader>gz', "<Esc><Cmd>lua require('jdtls').code_action()<CR>")
+      -- buf_set_keymap('n', 'A-CR', "<Cmd>lua require('jdtls').code_action()<CR>")
+      -- buf_set_keymap('v', 'A-CR', "<Esc><Cmd>lua require('jdtls').code_action()<CR>")
+      -- buf_set_keymap('n', '<leader>r', "<Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>")
+
+      -- buf_set_keymap('n', 'A-o', "<Cmd>lua require'jdtls'.organize_imports()<CR>")
+      -- buf_set_keymap("n", "<leader>jt", "<Cmd>lua require'jdtls'.test_class()<CR>")
+      -- buf_set_keymap("n", "<leader>jtn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>")
+      -- buf_set_keymap('n', '<leader>jexv', "<Cmd>lua require('jdtls').extract_variable()<CR>")
+      -- buf_set_keymap('v', '<leader>jexv', "<Esc><Cmd>lua require('jdtls').extract_variable()<CR>")
+      -- buf_set_keymap('n', '<leader>jexc', "<Cmd>lua require('jdtls').extract_constant()<CR>")
+      -- buf_set_keymap('v', '<leader>jexc', "<Esc><Cmd>lua require('jdtls').extract_constant()<CR>")
+      -- buf_set_keymap('v', '<leader>jexm', "<Esc><Cmd>lua require('jdtls').extract_method()<CR>")
+
+      -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+      -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+      -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+      -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+      -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
       -- buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
       -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
       -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -94,7 +80,7 @@ function M.setup()
       -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
       -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
       -- buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-      -- Java specific
+      -- -- Java specific
       -- buf_set_keymap("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
       -- buf_set_keymap("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
       -- buf_set_keymap("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
@@ -115,11 +101,8 @@ function M.setup()
       --     augroup END
       -- ]], false)
 
-    end
+    -- end
 
-    local root_markers = {'build.gradle', 'gradlew', 'pom.xml'}
-    local root_dir = require('jdtls.setup').find_root(root_markers)
-    local home = os.getenv('HOME')
 
     local capabilities = {
         workspace = {
@@ -134,17 +117,19 @@ function M.setup()
         }
     }
 
-    local workspace_folder = home .. "/.workspace" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
     local config = {
         flags = {
-          allow_incremental_sync = true,
+            -- allow_incremental_sync = true,
+            server_side_fuzzy_completion = true,
         };
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = java.on_attach,
+        cmd = {'launch-jdtls.sh', workspace_folder},
     }
 
     config.settings = {
-        -- ['java.format.settings.url'] = home .. "/.config/nvim/language-servers/java-google-formatter.xml",
+        -- on_attach = java.on_attach,
+        -- ['java.format.settings.url'] = home .. "/.config/nvim/jdtls/eclipse-java-google-style.xml",
         -- ['java.format.settings.profile'] = "GoogleStyle",
         java = {
           signatureHelp = { enabled = true };
@@ -167,9 +152,9 @@ function M.setup()
             };
           };
           codeGeneration = {
-            toString = {
-              template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
-            }
+            -- toString = {
+            --   template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+            -- }
           };
           configuration = {
             runtimes = {
@@ -185,8 +170,8 @@ function M.setup()
           };
         };
     }
-    config.cmd = {'launch-jdtls.sh', workspace_folder}
-    config.on_attach = on_attach
+    -- config.cmd = {'launch-jdtls.sh', workspace_folder}
+    -- config.on_attach = on_attach
     config.on_init = function(client, _)
         client.notify('workspace/didChangeConfiguration', { settings = config.settings })
     end
@@ -214,10 +199,6 @@ function M.setup()
     }
 
     -- UI
-    local finders = require'telescope.finders'
-    local sorters = require'telescope.sorters'
-    local actions = require'telescope.actions'
-    local pickers = require'telescope.pickers'
     require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
       local opts = {}
       pickers.new(opts, {

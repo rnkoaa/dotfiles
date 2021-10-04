@@ -1,8 +1,5 @@
 local lsp_config = {}
-
-local map = function(mode, key, result)
-  vim.api.nvim_buf_set_keymap(0, mode, key, result, {noremap = true, silent = true})
-end
+local map = require('utils').map
 
 function lsp_config.on_attach(client, bufnr)
     map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')

@@ -1,3 +1,5 @@
+-- Config reference 
+-- https://github.com/mhartington/formatter.nvim/blob/master/CONFIG.md
 local home = os.getenv("HOME")
 require("formatter").setup({
 	logging = false,
@@ -48,7 +50,11 @@ require("formatter").setup({
 					args = {
                     "--add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
                     "-jar", 
-                    home .. "/.config/formatters/google-java-format-1.11.0-all-deps.jar", "-" },
+                    home .. "/.config/formatters/google-java-format-1.11.0-all-deps.jar", 
+                      "--aosp", -- 4 spaces
+                        vim.api.nvim_buf_get_name(0) 
+                        },
+                        -- "-" },
 					stdin = true,
 				}
 			end,
@@ -56,13 +62,13 @@ require("formatter").setup({
 	},
 })
 
-  -- autocmd BufWritePost *.js,*.rs,*.go,*.lua,*.java FormatWrite
--- vim.api.nvim_exec(
--- 	[[
--- augroup FormatAutogroup
---   autocmd!
---   autocmd BufWritePost *.js,*.rs,*.go FormatWrite
--- augroup END
--- ]],
--- 	true
--- )
+-- format on save 
+vim.api.nvim_exec(
+	[[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.java,*.rs,*.go FormatWrite
+augroup END
+]],
+	true
+)
