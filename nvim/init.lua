@@ -31,12 +31,12 @@ require('lsp.general-ls')
 require('lsp.go-ls')
 
 -- start jdtls for java files
-vim.api.nvim_exec([[
-  augroup jdtls
-    autocmd!
-    autocmd FileType java lua require'lsp.java-ls'.setup()
-  augroup end
-]], false)
+-- vim.api.nvim_exec([[
+--   augroup jdtls
+--     autocmd!
+--     autocmd FileType java lua require'lsp.java-ls'.setup()
+--   augroup end
+-- ]], false)
 
 
 require('nvimtree')

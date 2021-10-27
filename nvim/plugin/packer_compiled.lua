@@ -160,7 +160,12 @@ _G.packer_plugins = {
   ["markdown-preview.nvim"] = {
     loaded = false,
     needs_bufread = false,
+    only_cond = false,
     path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/rnkoaa/.local/share/nvim/site/pack/packer/start/nightfox.nvim"
   },
   ["nord.nvim"] = {
     loaded = true,

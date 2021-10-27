@@ -54,6 +54,8 @@ return require('packer').startup(function()
     -- use { 'sainnhe/edge' }
     use 'navarasu/onedark.nvim'
     use 'shaunsingh/nord.nvim'
+    -- For Packer
+    use 'EdenEast/nightfox.nvim'
     -- use 'itchyny/lightline.vim'        -- Fancier statusline
     --
     -- Add indentation guides even on blank lines
