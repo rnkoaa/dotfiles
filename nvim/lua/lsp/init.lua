@@ -1,87 +1,61 @@
-local lsp_config = {}
+-- LSP settings
+local nvim_lsp = require "lspconfig"
+local on_attach = function(_, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-local map = function(mode, key, result)
-  vim.api.nvim_buf_set_keymap(0, mode, key, result, {noremap = true, silent = true})
+  local opts = {noremap = true, silent = true}
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    "n",
+    "<leader>wl",
+    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+    opts
+  )
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    "n",
+    "<leader>so",
+    [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
+    opts
+  )
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-function lsp_config.on_attach(client, bufnr)
-    map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-    map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-    map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-    map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+-- nvim-cmp supports additional completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-    map('n', '<leader>dp', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-    map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-
-    map('n', '<leader>dn', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-    map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-
-    map('n', '<leader>law', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-    map('n', '<leader>lrw', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
-    map('n', '<leader>llw', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
-    map('n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    map('n', '<leader>lrn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-    map('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<CR>')
-    map('n', '<leader>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-    map('n', '<leader>ll', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-    map('n', '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-
-
-    -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
-        map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-    elseif client.resolved_capabilities.document_range_formatting then
-        map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>")
-    end
-end
-
--- symbols-outline.nvim
-vim.g.symbols_outline = {
-    highlight_hovered_item = true,
-    show_guides = true,
-    auto_preview = false, -- experimental
-    position = 'right',
-    keymaps = {
-        close = "<Esc>",
-        goto_location = "<Cr>",
-        focus_location = "o",
-        hover_symbol = "<C-space>",
-        rename_symbol = "r",
-        code_actions = "a"
-    },
-    lsp_blacklist = {}
+-- Enable the following language servers
+local servers = {
+  "bashls",
+  "cssls",
+  "dockerls",
+  "jsonls",
+  "sqls",
+  "tsserver",
+  "vimls",
+  "yamlls"
 }
-
--- LSP Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-        underline = true,
-        signs = true,
-        update_in_insert = false
-    })
-
--- Send diagnostics to quickfix list
-do
-    local method = "textDocument/publishDiagnostics"
-    local default_handler = vim.lsp.handlers[method]
-    vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr,
-                                        config)
-        default_handler(err, method, result, client_id, bufnr, config)
-        local diagnostics = vim.lsp.diagnostic.get_all()
-        local qflist = {}
-        for bufnr, diagnostic in pairs(diagnostics) do
-            for _, d in ipairs(diagnostic) do
-                d.bufnr = bufnr
-                d.lnum = d.range.start.line + 1
-                d.col = d.range.start.character + 1
-                d.text = d.message
-                table.insert(qflist, d)
-            end
-        end
-        vim.lsp.util.set_qflist(qflist)
-    end
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 end
 
-return lsp_config
