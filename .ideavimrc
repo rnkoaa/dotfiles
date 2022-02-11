@@ -1,48 +1,51 @@
-" source ~/.vimrc
-nnoremap <SPACE> <Nop>
+set number relativenumber
+set surround
+set commentary
+set highlightedyank
+
+let mapleader=" "
+
 nnoremap ; :
 inoremap jk <ESC> 
 inoremap jj <ESC> 
 
-"" Map leader to space ---------------------
-let mapleader=" "
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+inoremap <C-j> <Esc>:m +1<CR>gi
+inoremap <C-k> <Esc>:m -2<CR>gi
 
-""" Plugins  --------------------------------
-set surround
-set multiple-cursors
-set commentary
-" set argtextobj
-" set easymotion
-" set textobj-entire
-set ReplaceWithRegister
+" system clipboard
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>y "+yy
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
 
-""" Plugin settings -------------------------
-" let g:argtextobj_pairs="[:],(:),<:>"
+nnoremap L $
+nnoremap H ^
 
-""" Common settings -------------------------
-set showmode
-set so=5
-set incsearch
-set nu
+nnoremap <leader>e :action SearchEverywhere<CR>
+nnoremap <leader>g :action FindInPath<CR>
+nnoremap <leader>s :action FileStructurePopup<CR>
 
-""" Idea specific settings ------------------
-set ideajoin
-set ideastatusicon=gray
-set idearefactormode=keep
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
 
-""" Mappings --------------------------------
-" map <leader>f <Plug>(easymotion-s)
-" map <leader>e <Plug>(easymotion-f)
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
 
-" map <leader>d <Action>(Debug)
-" map <leader>r <Action>(RenameElement)
-" map <leader>c <Action>(Stop)
-" map <leader>z <Action>(ToggleDistractionFreeMode)
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
 
-" map <leader>s <Action>(SelectInProjectView)
-" map <leader>a <Action>(Annotate)
-" map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-" map <S-Space> <Action>(GotoNextError)
+nnoremap cc :action CommentByLineComment<CR>
+vnoremap cc :action CommentByLineComment<CR>
 
-" map <leader>b <Action>(ToggleLineBreakpoint)
-" map <leader>o <Action>(FileStructurePopup)
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
+nnoremap <leader>a :action GotoAction<CR>
+vnoremap <leader>a :action GotoAction<CR>
+
