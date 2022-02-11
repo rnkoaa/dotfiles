@@ -2,22 +2,16 @@
 - name: setup home directory
   hosts: localhost
   connection: local
-  gather_facts: false
+  # gather_facts: false
 
   tasks:
 
     # https://stackoverflow.com/questions/32374349/how-to-create-dynamic-variables-in-ansible
     - set_fact:
         user_home_dir: "{{lookup('env', 'HOME') }}"
-        system_arch: "{{lookup('env', 'ARCH') }}"
-          #
-    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
-    - name: Get processor architecture
-      ansible.builtin.shell: 'uname -m'
-      register: uname_result
 
     - name: "Install apps via brew on command line"
-      ansible.builtin.shell: "arch -{{ uname_result.stdout }} brew install {{ item }}"
+      ansible.builtin.shell: "arch -{{ ansible_architecture }} brew install {{ item }}"
       loop: 
       - exa
       - bat
@@ -29,10 +23,6 @@
       - ripgrep
       - zoxide
 
-    # loop
-
-    # - debug: msg="{{ uname_result.stdout }}"
-        
   # https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_module.html
   # - name: Install exa
     
