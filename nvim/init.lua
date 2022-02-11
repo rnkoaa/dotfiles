@@ -116,7 +116,7 @@ require("lsp.config.ro-nvimcmp")
 --   auto_select = true
 -- }
 
- require("settings.general")
+require("settings.general")
 require("lsp.config.ro-telescope")
 require("lsp.languages.ro-tsserver")
 require("keymappings")
