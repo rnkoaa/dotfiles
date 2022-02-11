@@ -1,4 +1,5 @@
-source "/Users/Z002RGR/.sdkman/bin/sdkman-init.sh"
+# source "/Users/Z002RGR/.sdkman/bin/sdkman-init.sh"
+source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 
 # Environment variables
