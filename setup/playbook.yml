@@ -1,0 +1,89 @@
+---
+- name: setup home directory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    # https://stackoverflow.com/questions/32374349/how-to-create-dynamic-variables-in-ansible
+    - set_fact:
+        user_home_dir: "{{lookup('env', 'HOME') }}"
+        system_arch: "{{lookup('env', 'ARCH') }}"
+          #
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+    - name: Get processor architecture
+      ansible.builtin.shell: 'uname -m'
+      register: uname_result
+
+    - name: "Install apps via brew on command line"
+      ansible.builtin.shell: "arch -{{ uname_result.stdout }} brew install {{ item }}"
+      loop: 
+      - exa
+      - bat
+      - broot
+      - fd
+      - jq
+      - fzf
+      - httpie
+      - ripgrep
+      - zoxide
+
+    # loop
+
+    # - debug: msg="{{ uname_result.stdout }}"
+        
+  # https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_module.html
+  # - name: Install exa
+    
+    # community.general.homebrew:
+    #   name: exa
+    #   state: present
+
+  # - name: Ensure .config directory exists
+  #   ansible.builtin.file:
+  #     path: ~/.config/
+  #     state: directory
+  #     mode: '0755'
+
+  # 1. Creates a nvim directory from dotfiles to ~/.config/nvim
+  # 2. Creates a alacritty directory from dotfiles to ~/.config/alacritty
+  # 3. Creates a iterm2 directory from dotfiles to ~/.config/alacritty
+  # 4. symlink from Users/rnkoaa/dotfiles/nvim/jdtls/launch-jdtls.sh to ~/bin/launch-jdtls (executable)
+  # 5. symlink .zshrc, .zsh_profile, .zsh_history
+  #
+  # Creates a symlink
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+  # - name: Create symlink for dotfiles
+  #   ansible.builtin.file:
+  #     src: ~/dotfiles/
+  #     dest: ~/mdotfiles
+  #     state: link
+
+## brew install
+# fzf
+# tmux
+# alacritty
+# wget
+# bat
+# sqlite3
+# httpie
+# ripgrep
+# exa
+# neovim
+# tree-sitter
+#
+# ### Neovim language servers
+# lua-language-server
+# typescript-language-server
+# typescript
+# prettier
+# liveserver
+# lua-fmt
+# bash-language-server
+# vim-language-server
+# yaml-language-server
+# dockerfile-language-server-nodejs
+#  jq
+#
+#  git clone  git@github.com:eclipse/eclipse.jdt.ls.git >> ~/.config/eclipse.jdt.ls
