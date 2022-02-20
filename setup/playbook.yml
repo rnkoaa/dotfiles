@@ -23,18 +23,24 @@
       - ripgrep
       - zoxide
 
-  # https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_module.html
-  # - name: Install exa
-    
-    # community.general.homebrew:
-    #   name: exa
-    #   state: present
+    - name: Ensure expected directories exists
+      ansible.builtin.file:
+        path: {{ item }}
+        state: directory
+        mode: '0755'
+      loop:
+        - ~/.config/
+        - ~/.config/nvim
+        - ~/.config/formatters
 
-  # - name: Ensure .config directory exists
-  #   ansible.builtin.file:
-  #     path: ~/.config/
-  #     state: directory
-  #     mode: '0755'
+# symlinks
+# ${HOME}/.zshrc -> ${HOME}/dotfiles/zsh/zshrc
+# ${HOME}/.zsh_profile -> ${HOME}/dotfiles/zsh/zsh_profile
+# ${HOME}/.zsh_aliases -> ${HOME}/dotfiles/zsh/zsh_aliases
+# ${HOME}/.tmux.conf -> ${HOME}/dotfiles/.tmux/.tmux.conf
+# ${HOME}/.config/nvim -> ${HOME}/dotfiles/nvim
+# ${HOME}/.config/alacritty -> ${HOME}/dotfiles/alacritty
+# ${HOME}/bin/launch_jdtls.sh -> ${HOME}/dotfiles/nvim/jdtls/launch-jdtls.sh
 
   # 1. Creates a nvim directory from dotfiles to ~/.config/nvim
   # 2. Creates a alacritty directory from dotfiles to ~/.config/alacritty
@@ -44,6 +50,14 @@
   #
   # Creates a symlink
   # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+
+  # https://github.com/google/google-java-format/releases/download/v1.14.0/google-java-format-1.14.0-all-deps.jar
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html
+  # - name: download google-java-format
+  #   ansible.builtin.get_url:
+  #     src: {{ google_java_formatter_url }}
+  #     dest: ~/.config/formatters/google-java-format-{{ google_java_version }}-all-deps.jar
+
   # - name: Create symlink for dotfiles
   #   ansible.builtin.file:
   #     src: ~/dotfiles/
@@ -74,6 +88,9 @@
 # vim-language-server
 # yaml-language-server
 # dockerfile-language-server-nodejs
+#
 #  jq
 #
 #  git clone  git@github.com:eclipse/eclipse.jdt.ls.git >> ~/.config/eclipse.jdt.ls
+#  https://github.com/fwcd/kotlin-language-server
+#  https://github.com/GroovyLanguageServer/groovy-language-server
