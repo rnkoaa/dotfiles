@@ -1,11 +1,9 @@
-local utils = require('settings.utils')
+local utils = require("settings.utils")
 
 require("telescope").setup {
   extensions = {
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown {
-        -- even more opts
-      }
+      require("telescope.themes").get_dropdown {}
     }
   },
   defaults = {
@@ -21,7 +19,6 @@ require("telescope").setup {
 -- load ui-select extension
 require("telescope").load_extension("ui-select")
 
-
 --Add leader shortcuts
 utils.map("n", "<C-p>", "<Cmd>lua require('telescope.builtin').find_files()<cr>")
 -- utils.map("n", "<leader>tf", [[<cmd>lua require('telescope.builtin').find_files()<cr>]], opts)
@@ -33,6 +30,7 @@ utils.map("n", "<C-p>", "<Cmd>lua require('telescope.builtin').find_files()<cr>"
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require("nvim-treesitter.configs").setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true -- false will disable the whole extension
   },
@@ -82,4 +80,3 @@ require("nvim-treesitter.configs").setup {
     }
   }
 }
-
