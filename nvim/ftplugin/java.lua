@@ -133,7 +133,7 @@ config.settings = {
       runtimes = {
         {
           name = "JavaSE-17",
-          path = home .. "/.sdkman/candidates/java/17.0.1-open"
+          path = home .. "/.sdkman/candidates/java/17.0.2-open"
         },
         {
           name = "JavaSE-11",
