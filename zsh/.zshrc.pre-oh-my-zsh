@@ -1,0 +1,4 @@
+-e 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/rnkoaa/.sdkman"
+[[ -s "/Users/rnkoaa/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/rnkoaa/.sdkman/bin/sdkman-init.sh"

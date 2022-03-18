@@ -116,7 +116,7 @@ require("lsp.config.ro-nvimcmp")
 --   auto_select = true
 -- }
 
-require("settings.general")
+ require("settings.general")
 require("lsp.config.ro-telescope")
 require("lsp.languages.ro-tsserver")
 require("lsp.languages.ro-kotlin")
@@ -125,4 +125,5 @@ require("lsp.config.ro-keybindings")
 require("lsp.config.ro-formatter")
 require("lsp.config.ro-nvimtree")
 require("lsp.config.ro-whichkey")
+require("lsp.rnkoaa.toggleterm")
 

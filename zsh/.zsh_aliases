@@ -1,0 +1,48 @@
+# -*- mode: zsh -*-
+# vim: set ft=sh :
+# alias vim="/usr/local/bin/nvim"
+alias c='clear'
+alias s='source ~/.zshrc'
+alias h='cd ~'
+alias e='exit'
+alias ll='ls -l'
+alias hg='history | grep'
+
+# alias vimrc='nvim ~/dotfiles/vim/.vimrc'
+alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
+alias bfg='java -jar /usr/local/bin/bfg.jar'
+alias vim=nvim
+# alias vim='/usr/local/bin/nvim'
+alias markoff="open -a Markoff"
+
+# maven aliases
+alias mcp='mvn clean package'
+alias mvc='mvn clean'
+alias mvp='mvn package'
+
+# Gradle aliases
+alias grcb='./gradlew clean build'
+alias grc='./gradlew clean'
+
+# docker aliases
+alias dc='docker-compose "$@"'
+alias dcd='docker-compose down'
+alias dcu='docker-compose up'
+alias dcud='docker-compose up -d'
+alias dpsa='docker ps -a'
+alias fzfi='rg --files -hidden --follow --no-ignore-vcs -g "!{node_modules,.gradle,.idea,.git}" | fzf'
+alias vifi='vim $(fzfi)'
+
+alias t='task'
+alias tx='tmux'
+alias z='vim ~/.zshrc'
+alias za='vim ~/dotfiles/zsh/zsh_aliases'
+alias zc='vim ~/dotfiles/zsh/zshrc'
+alias zp='vim ~/dotfiles/zsh/zsh_profile'
+alias zf='vim ~/dotfiles/zsh/zsh_functions'
+
+alias vw='vault write'
+alias vr='vault read'
+
+alias gtcl='git log --oneline --decorate --color'-
+

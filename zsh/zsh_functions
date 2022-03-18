@@ -1,3 +1,0 @@
-function jdk8 () {
-  sdk use java 8.0.212
-}

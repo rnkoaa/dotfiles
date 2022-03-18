@@ -1,0 +1,40 @@
+export GO111MODULE=on
+export GO_HOME=/usr/local/go/bin
+export USR_BIN=~/bin
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN:$USR_BIN
+
+# vim mode movement on the commandline
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+
+# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
+export KEYTIMEOUT=20
+
+export RIPGREP_CONFIG_PATH="~/dotfiles/zsh/ripgrepignore"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules/*,.git/*,.gradle/*,.idea/*}"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*,!.idea/*,!.gradle/*,!node_modules/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git,.idea}" | fzf'
+alias vifi='vim $(fzfi)'
+
+mkd(){
+    mkdir -p "$@" && cd "$@"
+}
+
+mk(){
+    mkdir -p "$@"
+}
+
+ide(){
+  tmux split-window -v -p 30
+}
+
+

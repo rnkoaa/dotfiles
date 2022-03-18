@@ -23,14 +23,14 @@ require("telescope").load_extension("ui-select")
 utils.map("n", "<C-p>", "<Cmd>lua require('telescope.builtin').find_files()<cr>")
 -- utils.map("n", "<leader>tf", [[<cmd>lua require('telescope.builtin').find_files()<cr>]], opts)
 -- utils.map("n", "<C-p>", [[<cmd>lua require('telescope.builtin').find_files()<cr>]], opts)
--- utils.map("n", "<leader>fg", [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], opts)
--- utils.map("n", "<leader>fb", [[<cmd>lua require('telescope.builtin').buffers()<cr>]], opts)
--- utils.map("n", "<leader>fh", [[<cmd>lua require('telescope.builtin').help_tags()<cr>]], opts)
+utils.map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+utils.map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
+utils.map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require("nvim-treesitter.configs").setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
   highlight = {
     enable = true -- false will disable the whole extension
   },
