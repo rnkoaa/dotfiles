@@ -4,4 +4,4 @@ vim.o.termguicolors = true
 -- vim.g.onedark_style = 'darker'
 -- require('onedark').setup()
 --
-require('nord').set()
+-- require('nord').set()

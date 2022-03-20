@@ -16,28 +16,73 @@
       - exa
       - bat
       - broot
+      - wget
+      - curl
       - fd
       - jq
       - fzf
       - httpie
       - ripgrep
+      - tree
+      - neovim
+      - tmux
+      - sqlite3
       - zoxide
+      - lua
+      - jq
+      - tree-sitter
+      - lua-language-server
+
+    - name: Install npm packages
+      community.general.npm:
+        name: "{{ item }}"
+        global: yes
+        state: present
+      loop:
+        - typescript
+        - liveserver
+        - prettier
+        - typescript-language-server
+        - lua-fmt
+        - yaml-language-server
+        - dockerfile-language-server-nodejs
+        - bash-language-server
+        - vim-language-server
+        
 
     - name: Ensure expected directories exists
       ansible.builtin.file:
-        path: {{ item }}
+        path: "{{ item }}"
         state: directory
         mode: '0755'
       loop:
         - ~/.config/
-        - ~/.config/nvim
+        # - ~/.config/nvim
         - ~/.config/formatters
 
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+      loop:
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.zshrc", dest: "{{user_home_dir}}/.zshrc"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.zsh_profile", dest: "{{user_home_dir}}/.zsh_profile"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.zsh_aliases", dest: "{{user_home_dir}}/.zsh_aliases"}
+        
+        # tmux configs
+        - {src: "{{user_home_dir}}/dotfiles/tmux/.tmux.conf", dest: "{{user_home_dir}}/.tmux.conf"}
+        - {src: "{{user_home_dir}}/dotfiles/tmux/.tmux.conf.local", dest: "{{user_home_dir}}/.tmux.conf.local"}
+
+        # .ideavimrc configs
+        - {src: "{{user_home_dir}}/dotfiles/ideavim/.ideavimrc", dest: "{{user_home_dir}}/.ideavimrc"}
+        
+        # .ideavimrc configs
+        - {src: "{{user_home_dir}}/dotfiles/nvim", dest: "{{user_home_dir}}/.config/nvim"}
+
+
+
 # symlinks
-# ${HOME}/.zshrc -> ${HOME}/dotfiles/zsh/zshrc
-# ${HOME}/.zsh_profile -> ${HOME}/dotfiles/zsh/zsh_profile
-# ${HOME}/.zsh_aliases -> ${HOME}/dotfiles/zsh/zsh_aliases
-# ${HOME}/.tmux.conf -> ${HOME}/dotfiles/.tmux/.tmux.conf
 # ${HOME}/.config/nvim -> ${HOME}/dotfiles/nvim
 # ${HOME}/.config/alacritty -> ${HOME}/dotfiles/alacritty
 # ${HOME}/bin/launch_jdtls.sh -> ${HOME}/dotfiles/nvim/jdtls/launch-jdtls.sh
@@ -49,7 +94,6 @@
   # 5. symlink .zshrc, .zsh_profile, .zsh_history
   #
   # Creates a symlink
-  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
 
   # https://github.com/google/google-java-format/releases/download/v1.14.0/google-java-format-1.14.0-all-deps.jar
   # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html
@@ -58,36 +102,8 @@
   #     src: {{ google_java_formatter_url }}
   #     dest: ~/.config/formatters/google-java-format-{{ google_java_version }}-all-deps.jar
 
-  # - name: Create symlink for dotfiles
-  #   ansible.builtin.file:
-  #     src: ~/dotfiles/
-  #     dest: ~/mdotfiles
-  #     state: link
 
-## brew install
-# fzf
-# tmux
-# alacritty
-# wget
-# bat
-# sqlite3
-# httpie
-# ripgrep
-# exa
-# neovim
-# tree-sitter
-#
-# ### Neovim language servers
-# lua-language-server
-# typescript-language-server
-# typescript
-# prettier
-# liveserver
-# lua-fmt
-# bash-language-server
-# vim-language-server
-# yaml-language-server
-# dockerfile-language-server-nodejs
+
 #
 #  jq
 #
