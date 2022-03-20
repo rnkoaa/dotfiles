@@ -11,7 +11,7 @@ SAVEHIST=$HISTSIZE
 # zsh syntax highlighting is slow when pasting long strings such as base64 jks files so this will prevent it from parsing the strings
 export ZSH_HIGHLIGHT_MAXLENGTH=30
 
-export EDITOR=/usr/local/bin/vim
+export EDITOR=$(which nvim)
 
 export POSTGRES_HOME=/usr/local/Cellar/postgresql/10.5
 export PATH=$PATH:$POSTGRES_HOME/bin

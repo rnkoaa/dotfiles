@@ -1,2 +1,4 @@
 .DS_Store
 node_modules/
+nvim/plugin/packer_compiled.lua
+

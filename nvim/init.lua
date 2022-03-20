@@ -22,7 +22,8 @@ require('plugins')
 require("nvim-autopairs").setup()
 require("lspkind").init()
 
-require("nightfox").load("nordfox")
+-- setup must be called before loading
+vim.cmd("colorscheme nightfox")
 
 require("lualine").setup(
   {
