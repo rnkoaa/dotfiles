@@ -1,5 +1,16 @@
 # MY dotfiles
 
+## Using Ansible to setup a new system
+
+```sh
+brew install ansible
+
+ansible-galaxy collection install community.general
+
+cd dotfiles/setup
+ansible-playbook -i inventory.yml playbook.yml
+```
+
 ## Atom 
 ln -s ~/dotfiles/atom/keymap.cson ~/.atom/keymap.cson
 
@@ -9,7 +20,7 @@ cp ~/Library/Application\ Support/Code/User/settings.json ~/dotfiles/VSCode/
 cp ~/Library/Application\ Support/Code/User/keybindings.json ~/dotfiles/VSCode/
 cp -R ~/Library/Application\ Support/Code/User/snippets/ ~/dotfiles/VSCode/
 
-## other machin
+## other machine
 
 ln -s ~/dotfiles/VSCode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/dotfiles/VSCode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
@@ -34,4 +45,6 @@ In `~/.vimrc`
 [Link](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
 
 
+## ansible ansible-galaxy
+https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_cask_module.html
 

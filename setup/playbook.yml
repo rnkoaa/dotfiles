@@ -1,0 +1,96 @@
+---
+- name: setup home directory
+  hosts: localhost
+  connection: local
+  # gather_facts: false
+
+  tasks:
+
+    # https://stackoverflow.com/questions/32374349/how-to-create-dynamic-variables-in-ansible
+    - set_fact:
+        user_home_dir: "{{lookup('env', 'HOME') }}"
+
+    - name: "Install apps via brew on command line"
+      ansible.builtin.shell: "arch -{{ ansible_architecture }} brew install {{ item }}"
+      loop: 
+      - exa
+      - bat
+      - broot
+      - fd
+      - jq
+      - fzf
+      - httpie
+      - ripgrep
+      - zoxide
+
+    - name: Ensure expected directories exists
+      ansible.builtin.file:
+        path: {{ item }}
+        state: directory
+        mode: '0755'
+      loop:
+        - ~/.config/
+        - ~/.config/nvim
+        - ~/.config/formatters
+
+# symlinks
+# ${HOME}/.zshrc -> ${HOME}/dotfiles/zsh/zshrc
+# ${HOME}/.zsh_profile -> ${HOME}/dotfiles/zsh/zsh_profile
+# ${HOME}/.zsh_aliases -> ${HOME}/dotfiles/zsh/zsh_aliases
+# ${HOME}/.tmux.conf -> ${HOME}/dotfiles/.tmux/.tmux.conf
+# ${HOME}/.config/nvim -> ${HOME}/dotfiles/nvim
+# ${HOME}/.config/alacritty -> ${HOME}/dotfiles/alacritty
+# ${HOME}/bin/launch_jdtls.sh -> ${HOME}/dotfiles/nvim/jdtls/launch-jdtls.sh
+
+  # 1. Creates a nvim directory from dotfiles to ~/.config/nvim
+  # 2. Creates a alacritty directory from dotfiles to ~/.config/alacritty
+  # 3. Creates a iterm2 directory from dotfiles to ~/.config/alacritty
+  # 4. symlink from Users/rnkoaa/dotfiles/nvim/jdtls/launch-jdtls.sh to ~/bin/launch-jdtls (executable)
+  # 5. symlink .zshrc, .zsh_profile, .zsh_history
+  #
+  # Creates a symlink
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+
+  # https://github.com/google/google-java-format/releases/download/v1.14.0/google-java-format-1.14.0-all-deps.jar
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html
+  # - name: download google-java-format
+  #   ansible.builtin.get_url:
+  #     src: {{ google_java_formatter_url }}
+  #     dest: ~/.config/formatters/google-java-format-{{ google_java_version }}-all-deps.jar
+
+  # - name: Create symlink for dotfiles
+  #   ansible.builtin.file:
+  #     src: ~/dotfiles/
+  #     dest: ~/mdotfiles
+  #     state: link
+
+## brew install
+# fzf
+# tmux
+# alacritty
+# wget
+# bat
+# sqlite3
+# httpie
+# ripgrep
+# exa
+# neovim
+# tree-sitter
+#
+# ### Neovim language servers
+# lua-language-server
+# typescript-language-server
+# typescript
+# prettier
+# liveserver
+# lua-fmt
+# bash-language-server
+# vim-language-server
+# yaml-language-server
+# dockerfile-language-server-nodejs
+#
+#  jq
+#
+#  git clone  git@github.com:eclipse/eclipse.jdt.ls.git >> ~/.config/eclipse.jdt.ls
+#  https://github.com/fwcd/kotlin-language-server
+#  https://github.com/GroovyLanguageServer/groovy-language-server
