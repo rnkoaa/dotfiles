@@ -31,6 +31,7 @@
       - lua
       - jq
       - tree-sitter
+      - pandoc # for markdown preview
       - lua-language-server
 
     - name: Install npm packages
@@ -40,7 +41,7 @@
         state: present
       loop:
         - typescript
-        - liveserver
+        - live-server
         - prettier
         - typescript-language-server
         - lua-fmt
@@ -81,17 +82,13 @@
         - {src: "{{user_home_dir}}/dotfiles/nvim", dest: "{{user_home_dir}}/.config/nvim"}
 
 
-
 # symlinks
-# ${HOME}/.config/nvim -> ${HOME}/dotfiles/nvim
 # ${HOME}/.config/alacritty -> ${HOME}/dotfiles/alacritty
 # ${HOME}/bin/launch_jdtls.sh -> ${HOME}/dotfiles/nvim/jdtls/launch-jdtls.sh
 
-  # 1. Creates a nvim directory from dotfiles to ~/.config/nvim
   # 2. Creates a alacritty directory from dotfiles to ~/.config/alacritty
   # 3. Creates a iterm2 directory from dotfiles to ~/.config/alacritty
   # 4. symlink from Users/rnkoaa/dotfiles/nvim/jdtls/launch-jdtls.sh to ~/bin/launch-jdtls (executable)
-  # 5. symlink .zshrc, .zsh_profile, .zsh_history
   #
   # Creates a symlink
 
@@ -107,6 +104,6 @@
 #
 #  jq
 #
-#  git clone  git@github.com:eclipse/eclipse.jdt.ls.git >> ~/.config/eclipse.jdt.ls
+#  git clone git@github.com:eclipse/eclipse.jdt.ls.git >> ~/.config/eclipse.jdt.ls
 #  https://github.com/fwcd/kotlin-language-server
 #  https://github.com/GroovyLanguageServer/groovy-language-server

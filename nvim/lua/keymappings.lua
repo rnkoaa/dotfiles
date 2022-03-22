@@ -28,3 +28,13 @@ utils.map("i", "jk", "<Esc>")
 utils.map("", "<leader>c", '"+y') --Copy to clipboard in normal, visual, select and operator modes
 utils.map("i", "<C-u>", "<C-g>u<C-u>") -- Make <C-u> undo-friendly
 utils.map("i", "<C-w>", "<C-g>u<C-w>") -- Make <C-w> undo-friendly
+
+
+-------------------- MAPPINGS ------------------------------
+utils.map('', '<leader>c', '"+y')       --Copy to clipboard in normal, visual, select and operator modes
+utils.map('i', '<C-u>', '<C-g>u<C-u>')  -- Make <C-u> undo-friendly
+utils.map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
+
+-- <Tab> to navigate the completion menu
+utils.map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+utils.map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})

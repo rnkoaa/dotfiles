@@ -7,6 +7,9 @@ function utils.opt(scope, key, value)
   if scope ~= "o" then
     scopes["o"][key] = value
   end
+  if scope ~= "w" then
+    scopes["w"][key] = value
+  end
 end
 
 function utils.map(mode, lhs, rhs, opts)
