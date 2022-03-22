@@ -5,6 +5,7 @@ alias c='clear'
 alias s='source ~/.zshrc'
 alias h='cd ~'
 alias e='exit'
+alias ls='exa'
 alias ll='ls -l'
 alias hg='history | grep'
 
