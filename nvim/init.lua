@@ -62,14 +62,6 @@ vim.wo.signcolumn = "yes"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
--- vim.g.onedark_terminal_italics = 2
-
---Set statusbar
--- vim.g.lightline = {
---   colorscheme = 'onedark',
---   active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
---   component_function = { gitbranch = 'fugitive#head' },
--- }
 
 --Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {noremap = true, silent = true})
@@ -80,9 +72,6 @@ vim.g.maplocalleader = " "
 local opts = {noremap = true, expr = true, silent = true}
 vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts)
 vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opts)
-
--- vim.api.nvim_set_keymap('i', 'jk', "<ESC>", opts)
--- vim.api.nvim_set_keymap('i', 'kj', "<ESC>", opts)
 
 -- Highlight on yank
 vim.api.nvim_exec(
@@ -107,8 +96,6 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Telescope
 require('lsp')
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
 
 require("lsp.config.ro-nvimcmp")
 -- require("nvim-autopairs.completion.cmp").setup {

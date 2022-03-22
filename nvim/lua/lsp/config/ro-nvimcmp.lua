@@ -7,15 +7,18 @@ local lspkind = require("lspkind")
 --     format = lspkind.cmp_format({with_text = false, maxwidth = 50})
 --   }
 local cmp = require "cmp"
+
 cmp.setup {
   formatting = {
     format = lspkind.cmp_format({with_text = false, maxwidth = 50})
   },
+
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end
   },
+
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),

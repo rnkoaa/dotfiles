@@ -15,6 +15,13 @@ require("packer").startup(
     }
 
     use {
+      "davidgranstrom/nvim-markdown-preview"
+    }
+    -- use {
+    --   "iamcco/markdown-preview.nvim"
+    -- }
+
+    use {
       "folke/which-key.nvim"
     }
 
