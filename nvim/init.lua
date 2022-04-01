@@ -32,7 +32,7 @@ require("lualine").setup(
 )
 
 --Incremental live completion (note: this is now a default on master)
-vim.o.inccommand = "nosplit"
+-- vim.o.inccommand = "nosplit"
 
 --Set highlight on search
 vim.o.hlsearch = false
@@ -111,7 +111,7 @@ require("lsp.languages.ro-kotlin")
 require("keymappings")
 require("lsp.config.ro-keybindings")
 require("lsp.config.ro-formatter")
-require("lsp.config.ro-nvimtree")
 require("lsp.config.ro-whichkey")
 require("lsp.rnkoaa.toggleterm")
+require("rnkoaa.nvim-tree")
 
