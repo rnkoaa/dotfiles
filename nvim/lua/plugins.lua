@@ -5,10 +5,10 @@ require("packer").startup(
     use "wbthomason/packer.nvim"
 
     -- Explorer
-    
+
     use {
       "kyazdani42/nvim-tree.lua",
-      requires = {"kyazdani42/nvim-web-devicons" },
+      requires = {"kyazdani42/nvim-web-devicons"},
       config = function()
         require "nvim-tree".setup {}
       end
@@ -67,5 +67,13 @@ require("packer").startup(
     use "mfussenegger/nvim-jdtls"
 
     use {"akinsho/toggleterm.nvim"}
+
+    use {
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function()
+        require("null-ls").setup()
+      end,
+      requires = {"nvim-lua/plenary.nvim"}
+    }
   end
 )
