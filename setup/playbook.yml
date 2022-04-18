@@ -45,6 +45,8 @@
         - prettier
         - typescript-language-server
         - lua-fmt
+        - markdownlint
+        - markdownlint-cli
         - yaml-language-server
         - dockerfile-language-server-nodejs
         - bash-language-server

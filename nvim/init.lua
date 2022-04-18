@@ -20,7 +20,7 @@ vim.api.nvim_exec(
 require("plugins")
 
 require("nvim-autopairs").setup()
-require("lspkind").init()
+-- require("lspkind").init()
 
 -- setup must be called before loading
 vim.cmd("colorscheme nordfox")
@@ -106,6 +106,7 @@ require("settings.general")
 require("lsp.config.ro-telescope")
 require("lsp.languages.ro-tsserver")
 require("lsp.languages.ro-kotlin")
+require("lsp.go-ls")
 -- require("lsp.config.ro-keybindings")
 require("lsp.config.ro-formatter")
 require("lsp.config.ro-whichkey")

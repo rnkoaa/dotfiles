@@ -1,6 +1,15 @@
 -- LSP settings
 local nvim_lsp = require "lspconfig"
-local on_attach = function(_, bufnr)
+
+local M = {}
+
+-- nvim-cmp supports additional completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local on_attach = function(client, bufnr)
+
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   local opts = {noremap = true, silent = true}
@@ -35,11 +44,16 @@ local on_attach = function(_, bufnr)
     opts
   )
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+
 end
 
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- Enable the following language servers
 local servers = {
@@ -59,3 +73,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+M.on_attach = on_attach
+
+return M

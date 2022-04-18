@@ -20,6 +20,7 @@ export GO111MODULE=on
 export GO_HOME=/usr/local/go/bin
 export GOPATH=$HOME/go
 export GOPATH=$HOME/go
+export GOPRIVATE=git.target.com
 export PATH=$PATH:$GO_HOME
 
 export PATH=$PATH:$GOPATH/bin

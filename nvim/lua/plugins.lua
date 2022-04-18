@@ -68,6 +68,9 @@ require("packer").startup(
 
     use {"akinsho/toggleterm.nvim"}
 
+    -- distraction free writing
+    use { "junegunn/goyo.vim" }
+
     use {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
