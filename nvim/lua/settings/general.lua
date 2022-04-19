@@ -16,7 +16,7 @@ cmd 'filetype plugin indent on'
 -- utils.opt('o', 'shiftround', true)
 -- utils.opt('o', 'smartcase', true)
 -- utils.opt('o', 'splitbelow', true)
--- utils.opt('o', 'splitright', true)
+utils.opt('o', 'splitright', true)
 -- utils.opt('o', 'wildmode', 'list:longest')
 
 -- utils.opt('b', 'tabstop', 2)
