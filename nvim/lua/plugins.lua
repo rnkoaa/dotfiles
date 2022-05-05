@@ -32,20 +32,6 @@ require("packer").startup(function()
 		"folke/which-key.nvim",
 	})
 
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup({
-        window = {
-          options = {
-            number  = false,
-            relativenumber  = false
-          }
-        }
-      })
-		end,
-	})
-
 	use("mhartington/formatter.nvim")
 	use("neovim/nvim-lspconfig")
 	use("glepnir/lspsaga.nvim")
@@ -80,6 +66,9 @@ require("packer").startup(function()
 	use("mfussenegger/nvim-jdtls")
 
 	use({ "akinsho/toggleterm.nvim" })
+
+	-- distraction free writing
+	use({ "junegunn/goyo.vim" })
 
 	use({
 		"jose-elias-alvarez/null-ls.nvim",

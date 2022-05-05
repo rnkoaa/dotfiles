@@ -27,5 +27,3 @@ utils.map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<
 utils.map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 utils.map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 
--- Treesitter configuration
--- Parsers must be installed manually via :TSInstall
