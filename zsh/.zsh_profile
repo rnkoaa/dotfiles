@@ -3,7 +3,11 @@ export GO_HOME=/usr/local/go/bin
 export USR_BIN=~/bin
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN:$USR_BIN
+
+export KAFKA_HOME=$HOME/bin/kafka_2.13-3.1.0
+export KAFKA_BIN=$KAFKA_HOME/bin
+
+export PATH=$PATH:$GOBIN:$KAFKA_BIN:$USR_BIN
 
 # vim mode movement on the commandline
 bindkey -v
@@ -37,4 +41,6 @@ ide(){
   tmux split-window -v -p 30
 }
 
-
+jdk11(){
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/
+}
