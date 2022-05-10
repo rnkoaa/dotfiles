@@ -15,8 +15,8 @@ cmd 'filetype plugin indent on'
 -- utils.opt('o', 'scrolloff', 4 )
 -- utils.opt('o', 'shiftround', true)
 -- utils.opt('o', 'smartcase', true)
--- utils.opt('o', 'splitbelow', true)
-utils.opt('o', 'splitright', true)
+-- vim.opt('o', 'splitbelow', true)
+-- vim.opt('o', 'splitright', true)
 -- utils.opt('o', 'wildmode', 'list:longest')
 
 -- utils.opt('b', 'tabstop', 2)
@@ -75,3 +75,7 @@ vim.opt.spell = false
 vim.opt.spelllang = "en"
 vim.opt.scrolloff = 8 -- is one of my fav
 vim.opt.sidescrolloff = 8
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+

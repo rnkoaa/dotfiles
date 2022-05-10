@@ -4,29 +4,18 @@ require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Explorer
-
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("nvim-tree").setup({})
-		end,
 	})
 
-	-- use {
-	--   "kyazdani42/nvim-tree.lua",
-	--   requires = "kyazdani42/nvim-web-devicons"
-	--   config = function()
-	--     require "nvim-tree".setup {}
-	--   end
-	-- }
-
+	-- markdown preview
+	-- use({
+	-- 	"davidgranstrom/nvim-markdown-preview",
+	-- })
 	use({
-		"davidgranstrom/nvim-markdown-preview",
+		"iamcco/markdown-preview.nvim",
 	})
-	-- use {
-	--   "iamcco/markdown-preview.nvim"
-	-- }
 
 	use({
 		"folke/which-key.nvim",
@@ -64,6 +53,8 @@ require("packer").startup(function()
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
 
 	use("mfussenegger/nvim-jdtls")
+
+	use("nanotee/sqls.nvim")
 
 	use({ "akinsho/toggleterm.nvim" })
 
