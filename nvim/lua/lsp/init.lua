@@ -74,5 +74,6 @@ for _, lsp in ipairs(servers) do
 end
 
 M.on_attach = on_attach
+M.capabilities = capabilities
 
 return M
