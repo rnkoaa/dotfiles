@@ -9,7 +9,7 @@ local servers = {
   },
   -- ghcide = {},
   html = {},
-  jsonls = {cmd = {'json-languageserver', '--stdio'}},
+  jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
   tsserver = {},
   vimls = {}
 }
