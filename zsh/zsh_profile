@@ -28,6 +28,9 @@ export PATH=$PATH:$GOPATH/bin
 export NODE_PACKAGES_HOME=~/.npm-packages
 export PATH=$PATH:$NODE_PACKAGES_HOME/bin
 
+export NODE_PATH="'$(npm root -g)'"
+export PATH=$PATH:$NODE_PATH/bin
+
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 export PATH=~/.npm-global/bin:$PATH
