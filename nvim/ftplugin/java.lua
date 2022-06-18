@@ -1,44 +1,62 @@
+local utils = require('utils')
 local root_dir = require('jdtls.setup').find_root({'.git', 'gradlew', 'pom.xml'})
--- local local_lsp = require('lsp')
 local home = os.getenv('HOME')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = home .. '/eclipse-workspace/' .. project_name
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
   local jdtls = require('jdtls')
   jdtls.setup.add_commands()
-  -- require'jdtls.setup'.add_commands()
+  require'jdtls.setup'.add_commands()
   -- require'jdtls'.setup_dap()
   -- require'lsp-status'.register_progress()
-  -- require'compe'.setup {
-  --   enabled = true;
-  --   autocomplete = true;
-  --   debug = false;
-  --   min_length = 1;
-  --   preselect = 'enable';
-  --   throttle_time = 80;
-  --   source_timeout = 200;
-  --   incomplete_delay = 400;
-  --   max_abbr_width = 100;
-  --   max_kind_width = 100;
-  --   max_menu_width = 100;
-  --   documentation = true;
 
-  --   source = {
-  --     path = true;
-  --     buffer = true;
-  --     calc = true;
-  --     vsnip = false;
-  --     nvim_lsp = true;
-  --     nvim_lua = true;
-  --     spell = true;
-  --     tags = true;
-  --     snippets_nvim = false;
-  --     treesitter = true;
-  --   };
-  -- }
+  require'lspkind'.init()
+  require'lspsaga'.init_lsp_saga()
 
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  local opts = {noremap = true, silent = true}
+  utils.map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    "n",
+    "<leader>wl",
+    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+    opts
+  )
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    "n",
+    "<leader>so",
+    [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
+    opts
+  )
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
 end
 
 local cmd = {
@@ -54,18 +72,16 @@ local cmd = {
   '--add-modules=ALL-SYSTEM',
   '--add-opens', 'java.base/java.util=ALL-UNNAMED',
   '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-  --'--add-modules', 'jdk.incubator.foreign',
-  --'--add-modules', 'jdk.incubator.vector',
 
   -- 💀
-  '-jar', vim.fn.glob('/Users/rnkoaa/.config/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar'),
+  '-jar', vim.fn.glob(home .. '/.config/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar'),
        -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
        -- Must point to the                                                     Change this to
        -- eclipse.jdt.ls installation                                           the actual version
 
 
   -- 💀
-  '-configuration', '/Users/rnkoaa/.config/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac',
+  '-configuration', home ..'/.config/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_mac',
                   -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
                   -- Must point to the                      Change to one of `linux`, `win` or `mac`
                   -- eclipse.jdt.ls installation            Depending on your system.
@@ -76,35 +92,22 @@ local cmd = {
   '-data', workspace_dir
 }
 
-
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- local capabilities = {
---   workspace = {
---     configuration = true
---   },
---   textDocument = {
---     completion = {
---       completionItem = {
---         snippetSupport = true
---       }
---     }
---   }
--- }
---
-capabilities.workspace = { configuration = true}
-capabilities.textDocument = {
-  completion = {
-    completionItem = {
-      snippetSupport = true
-    }
+local capabilities = {
+  workspace = {
+      configuration = true
+  },
+  textDocument = {
+      completion = {
+          completionItem = {
+              snippetSupport = true
+          }
+      }
   }
 }
-
 local settings = {
   java = {
+    signatureHelp = { enabled = true},
+    contentProvider = { preferred = 'fernflower' },
     completion = {
       "org.hamcrest.MatcherAssert.assertThat",
       "org.hamcrest.Matchers.*",
@@ -119,22 +122,56 @@ local settings = {
       "java.awt.*",
       "jdk.*",
       "sun.*",
+    },
+    sources = {
+      organizeImports = {
+        starThreshold = 9999,
+        staticStarThreshold = 9999,
+      },
+    },
+    codeGeneration = {
+      toString = {
+        template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+      }
+    },
+    configuration = {
+      runtimes = {
+        {
+          name = "JavaSE-11",
+          path = home .. "/.sdkman/candidates/java/11.0.15-ms/",
+        },
+        {
+          name = "JavaSE-17",
+          path = home .. "/.sdkman/candidates/java/17.0.2-open/",
+        },
+        {
+          name = "JavaSE-19",
+          path = home .. "/.sdkman/candidates/java/19.ea.26-open/",
+        },
+      }
     }
-
   }
 }
+
+local extendedClientCapabilities = require'jdtls'.extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local config = {
   -- flags = {
   --   allow_incremental_sync = true,
   -- },
   capabilities = capabilities,
+  init_options = {
+    extendedClientCapabilities = extendedClientCapabilities;
+  },
   on_attach = on_attach,
+  settings = settings,
   cmd = cmd
 }
--- config.cmd = {
---   'launch-jdtls.sh', workspace_dir
--- }
+
+config.on_init = function(client, _)
+  client.notify('workspace/didChangeConfiguration', { settings = config.settings })
+end
 
 require('jdtls').start_or_attach(config)
 

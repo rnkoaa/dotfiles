@@ -30,6 +30,18 @@ cmd 'filetype plugin indent on'
 -- utils.opt('o', 'clipboard','unnamed,unnamedplus') -- allows access to system clipboard
 -- utils.opt('o', 'completeopt','menuone,noselect')
 
+
+-- Highlight on yank
+vim.api.nvim_exec(
+	[[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]],
+	false
+)
+
 -- Highlight on yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}' 
 

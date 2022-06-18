@@ -39,17 +39,6 @@ local opts = { noremap = true, expr = true, silent = true }
 vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts)
 vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opts)
 
--- Highlight on yank
-vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-	false
-)
-
 -- Y yank until the end of line  (note: this is now a default on master)
 vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 
