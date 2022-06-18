@@ -9,18 +9,7 @@ require("packer").startup(
     use {
       "kyazdani42/nvim-tree.lua",
       requires = {"kyazdani42/nvim-web-devicons"},
-      config = function()
-        require "nvim-tree".setup {}
-      end
     }
-
-    -- use {
-    --   "kyazdani42/nvim-tree.lua",
-    --   requires = "kyazdani42/nvim-web-devicons"
-    --   config = function()
-    --     require "nvim-tree".setup {}
-    --   end
-    -- }
 
     use {
       "davidgranstrom/nvim-markdown-preview"
@@ -66,7 +55,9 @@ require("packer").startup(
 
     use "mfussenegger/nvim-jdtls"
 
-    use {"akinsho/toggleterm.nvim"}
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+      require("toggleterm").setup()
+    end}
 
     -- distraction free writing
     use { "junegunn/goyo.vim" }

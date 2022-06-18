@@ -1,6 +1,4 @@
 local lspconfig = require('lspconfig')
--- require "lspconfig".gopls.setup{
--- local lspconfig = require('lspconfig')
 local servers = {
   bashls = {},
   cssls = {
