@@ -51,6 +51,7 @@
         - dockerfile-language-server-nodejs
         - bash-language-server
         - vim-language-server
+        - sql-language-server
         
 
     - name: Ensure expected directories exists
