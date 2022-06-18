@@ -9,10 +9,6 @@ require("packer").startup(function()
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 
-	-- markdown preview
-	-- use({
-	-- 	"davidgranstrom/nvim-markdown-preview",
-	-- })
 	use({
 		"iamcco/markdown-preview.nvim",
 	})
@@ -21,10 +17,19 @@ require("packer").startup(function()
 		"folke/which-key.nvim",
 	})
 
-	use("mhartington/formatter.nvim")
+	-- use("mhartington/formatter.nvim")
 	use("neovim/nvim-lspconfig")
 	use("glepnir/lspsaga.nvim")
 	use("onsails/lspkind-nvim")
+
+  use {
+    "kyazdani42/nvim-tree.lua",
+    requires = {"kyazdani42/nvim-web-devicons"},
+  }
+
+  use {
+    "davidgranstrom/nvim-markdown-preview"
+  }
 
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
@@ -60,6 +65,9 @@ require("packer").startup(function()
 
 	-- distraction free writing
 	use({ "junegunn/goyo.vim" })
+  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+    require("toggleterm").setup()
+  end}
 
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
