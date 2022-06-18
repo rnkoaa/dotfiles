@@ -1,6 +1,4 @@
 local lspconfig = require('lspconfig')
--- require "lspconfig".gopls.setup{
--- local lspconfig = require('lspconfig')
 local servers = {
   bashls = {},
   cssls = {
@@ -9,7 +7,7 @@ local servers = {
   },
   -- ghcide = {},
   html = {},
-  jsonls = {cmd = {'json-languageserver', '--stdio'}},
+  jsonls = {cmd = {'vscode-json-languageserver', '--stdio'}},
   tsserver = {},
   vimls = {}
 }

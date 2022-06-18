@@ -42,7 +42,7 @@ augroup fmt
   autocmd BufWritePre *.go lua goimports(1000)
 
   " format on save
-  autocmd BufWritePre *.go undojoin | Neoformat
+  autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 augroup END
 
 

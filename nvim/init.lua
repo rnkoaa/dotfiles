@@ -1,101 +1,67 @@
-
 local utils = require("settings.utils")
+
 -- Install packer
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+	vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
 vim.api.nvim_exec(
-  [[
+	[[
   augroup Packer
     autocmd!
     autocmd BufWritePost init.lua PackerCompile
   augroup end
 ]],
-  false
+	false
 )
 
-require('plugins')
+require("plugins")
 
 require("nvim-autopairs").setup()
-require("lspkind").init()
+-- require("lspkind").init()
 
 -- setup must be called before loading
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme nordfox")
 
-require("lualine").setup(
-  {
-    theme = "nightfox"
-  }
-)
-
---Incremental live completion (note: this is now a default on master)
--- vim.o.inccommand = "nosplit"
-
---Set highlight on search
-vim.o.hlsearch = false
-
---Make line numbers default
-vim.wo.number = true
-
---Do not save when switching buffers (note: this is now a default on master)
-vim.o.hidden = true
-
---Enable mouse mode
-vim.o.mouse = "a"
-
---Enable break indent
-vim.o.breakindent = true
-
---Save undo history
-vim.opt.undofile = true
-
---Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
---Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = "yes"
-
---Set colorscheme (order is important here)
-vim.o.termguicolors = true
+require("lualine").setup({
+	theme = "nordfox",
+})
 
 --Remap space as leader key
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 --Remap for dealing with word wrap
-local opts = {noremap = true, expr = true, silent = true}
+local opts = { noremap = true, expr = true, silent = true }
 vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts)
 vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opts)
 
 -- Highlight on yank
 vim.api.nvim_exec(
-  [[
+	[[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]],
-  false
+	false
 )
 
 -- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap("n", "Y", "y$", {noremap = true})
+vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 
 --Map blankline
 vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = {"help", "packer"}
-vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
+vim.g.indent_blankline_filetype_exclude = { "help", "packer" }
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_char_highlight = "LineNr"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Telescope
-require('lsp')
+require("lsp")
 
 require("lsp.config.ro-nvimcmp")
 -- require("nvim-autopairs.completion.cmp").setup {
@@ -104,14 +70,17 @@ require("lsp.config.ro-nvimcmp")
 --   auto_select = true
 -- }
 
- require("settings.general")
+require'lspconfig'.sqls.setup{}
+
+require("settings.general")
 require("lsp.config.ro-telescope")
 require("lsp.languages.ro-tsserver")
 require("lsp.languages.ro-kotlin")
-require("keymappings")
-require("lsp.config.ro-keybindings")
-require("lsp.config.ro-formatter")
+require("lsp.go-ls")
+-- require("lsp.config.ro-keybindings")
+-- require("lsp.config.ro-formatter")
 require("lsp.config.ro-whichkey")
-require("lsp.rnkoaa.toggleterm")
+require("rnkoaa.toggleterm")
 require("rnkoaa.nvim-tree")
-
+require("rnkoaa.keymappings")
+require("rnkoaa.null-ls").setup()

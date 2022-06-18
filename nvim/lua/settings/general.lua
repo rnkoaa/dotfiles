@@ -15,8 +15,8 @@ cmd 'filetype plugin indent on'
 -- utils.opt('o', 'scrolloff', 4 )
 -- utils.opt('o', 'shiftround', true)
 -- utils.opt('o', 'smartcase', true)
--- utils.opt('o', 'splitbelow', true)
--- utils.opt('o', 'splitright', true)
+-- vim.opt('o', 'splitbelow', true)
+-- vim.opt('o', 'splitright', true)
 -- utils.opt('o', 'wildmode', 'list:longest')
 
 -- utils.opt('b', 'tabstop', 2)
@@ -60,7 +60,7 @@ vim.opt.title = true -- set the title of window to the value of the titlestring
 vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
 vim.opt.undofile = true -- enable persistent undo
-vim.opt.updatetime = 300 -- faster completion
+vim.opt.updatetime = 250 -- faster completion
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
@@ -75,3 +75,7 @@ vim.opt.spell = false
 vim.opt.spelllang = "en"
 vim.opt.scrolloff = 8 -- is one of my fav
 vim.opt.sidescrolloff = 8
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+

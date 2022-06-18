@@ -45,10 +45,13 @@
         - prettier
         - typescript-language-server
         - lua-fmt
+        - markdownlint
+        - markdownlint-cli
         - yaml-language-server
         - dockerfile-language-server-nodejs
         - bash-language-server
         - vim-language-server
+        - sql-language-server
         
 
     - name: Ensure expected directories exists
@@ -70,6 +73,8 @@
         - {src: "{{user_home_dir}}/dotfiles/zsh/.zshrc", dest: "{{user_home_dir}}/.zshrc"}
         - {src: "{{user_home_dir}}/dotfiles/zsh/.zsh_profile", dest: "{{user_home_dir}}/.zsh_profile"}
         - {src: "{{user_home_dir}}/dotfiles/zsh/.zsh_aliases", dest: "{{user_home_dir}}/.zsh_aliases"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.fzf.zsh", dest: "{{user_home_dir}}/.fzf.zsh"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.fzf.bash", dest: "{{user_home_dir}}/.fzf.bash"}
         
         # tmux configs
         - {src: "{{user_home_dir}}/dotfiles/tmux/.tmux.conf", dest: "{{user_home_dir}}/.tmux.conf"}

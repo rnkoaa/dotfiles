@@ -20,6 +20,7 @@ export GO111MODULE=on
 export GO_HOME=/usr/local/go/bin
 export GOPATH=$HOME/go
 export GOPATH=$HOME/go
+export GOPRIVATE=git.target.com
 export PATH=$PATH:$GO_HOME
 
 export PATH=$PATH:$GOPATH/bin
@@ -27,8 +28,9 @@ export PATH=$PATH:$GOPATH/bin
 export NODE_PACKAGES_HOME=~/.npm-packages
 export PATH=$PATH:$NODE_PACKAGES_HOME/bin
 
-export KAFKA_HOME=~/Tools/kafka/kafka_2.12-1.1.1
-export PATH=$PATH:$KAFKA_HOME/bin
+export NODE_PATH="'$(npm root -g)'"
+export PATH=$PATH:$NODE_PATH/bin
+
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 export PATH=~/.npm-global/bin:$PATH
@@ -111,7 +113,8 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=20
 
-export RIPGREP_CONFIG_PATH="~/dotfiles/zsh/ripgrepignore"
+# export RIPGREP_CONFIG_PATH="~/dotfiles/zsh/ripgrepignore"
+export RIPGREP_CONFIG_PATH="$HOME/.rgignore"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules/*,.git/*,.gradle/*,.idea/*}"'
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*,!.idea/*,!.gradle/*,!node_modules/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

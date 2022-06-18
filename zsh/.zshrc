@@ -15,7 +15,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_aliases
 source ~/.zsh_profile
-source ~/dotfiles/zsh/zsh_profile
+# source ~/dotfiles/zsh/zsh_profile
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 

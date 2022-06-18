@@ -1,5 +1,5 @@
 JAR="$HOME/.config/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar"
-JAVA_HOME="$HOME/.sdkman/candidates/java/17-open"
+JAVA_HOME="$HOME/.sdkman/candidates/java/17.0.2-open"
 GRADLE_HOME=$HOME/.sdkman/candidates/gradle $JAVA_HOME/bin/java \
   -Declipse.application=org.eclipse.jdt.ls.core.id1 \
   -Dosgi.bundles.defaultStartLevel=4 \
