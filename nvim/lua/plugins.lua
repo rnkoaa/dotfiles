@@ -31,13 +31,16 @@ require("packer").startup(function()
     "davidgranstrom/nvim-markdown-preview"
   }
 
+	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
-	use("EdenEast/nightfox.nvim")
-	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-path")
-	use("saadparwaiz1/cmp_luasnip")
+  use("hrsh7th/cmp-cmdline")
+
 	use("L3MON4D3/LuaSnip") -- Snippets plugin
+	use("saadparwaiz1/cmp_luasnip")
+
+	use("EdenEast/nightfox.nvim")
 	use("windwp/nvim-autopairs")
 	use("maxmellon/vim-jsx-pretty")
 	-- Highlight, edit, and navigate code using a fast incremental parsing library
@@ -73,4 +76,9 @@ require("packer").startup(function()
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
+
+  -- method signature support
+  use {
+    "ray-x/lsp_signature.nvim",
+  }
 end)

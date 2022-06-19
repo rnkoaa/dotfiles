@@ -55,7 +55,7 @@ require("lsp")
 require("lsp.config.ro-nvimcmp")
 -- require("nvim-autopairs.completion.cmp").setup {
 --   map_cr = true,
---   map_complete = true,
+--   malsp_attach_mappingp_complete = true,
 --   auto_select = true
 -- }
 
