@@ -42,3 +42,11 @@ utils.map("i", "<C-w>", "<C-g>u<C-w>") -- Make <C-w> undo-friendly
 -- <Tab> to navigate the completion menu
 utils.map("i", "<S-Tab>", 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', { expr = true })
 utils.map("i", "<Tab>", 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', { expr = true })
+
+--- Trouble Key maps
+utils.map("n", "<leader>tr", "<cmd>Trouble<cr>",opt)
+utils.map("n", "<leader>tw", "<cmd>Trouble workspace_diagnostics<cr>",opt)
+utils.map("n", "<leader>td", "<cmd>Trouble document_diagnostics<cr>",opt)
+utils.map("n", "<leader>tl", "<cmd>Trouble loclist<cr>",opt)
+utils.map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>",opt)
+utils.map("n", "gR", "<cmd>Trouble lsp_references<cr>",opt )

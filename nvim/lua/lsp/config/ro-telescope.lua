@@ -1,4 +1,5 @@
 local utils = require("settings.utils")
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup {
   extensions = {
@@ -10,7 +11,11 @@ require("telescope").setup {
     mappings = {
       i = {
         ["<C-u>"] = false,
-        ["<C-d>"] = false
+        ["<C-d>"] = false,
+        ["<c-t>"] = trouble.open_with_trouble
+      },
+      n = {
+        ["<c-t>"] = trouble.open_with_trouble
       }
     }
   }
