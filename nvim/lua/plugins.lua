@@ -19,29 +19,29 @@ require("packer").startup(function()
 
 	-- use("mhartington/formatter.nvim")
 	use("neovim/nvim-lspconfig")
-	use("glepnir/lspsaga.nvim")
 	use("onsails/lspkind-nvim")
 
-  use {
-    "kyazdani42/nvim-tree.lua",
-    requires = {"kyazdani42/nvim-web-devicons"},
-  }
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main"
+	})
 
-  use {
-    "davidgranstrom/nvim-markdown-preview"
-  }
+	use({
+		"davidgranstrom/nvim-markdown-preview",
+	})
 
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/cmp-cmdline")
 
 	use("L3MON4D3/LuaSnip") -- Snippets plugin
 	use("saadparwaiz1/cmp_luasnip")
 
 	use("EdenEast/nightfox.nvim")
 	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
 	use("maxmellon/vim-jsx-pretty")
 	-- Highlight, edit, and navigate code using a fast incremental parsing library
 	use("nvim-treesitter/nvim-treesitter")
@@ -64,26 +64,28 @@ require("packer").startup(function()
 
 	use("nanotee/sqls.nvim")
 
-	use({ "akinsho/toggleterm.nvim" })
-
 	-- distraction free writing
 	use({ "junegunn/goyo.vim" })
-  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup()
-  end}
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "v1.*",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
 
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 
-  -- method signature support
-  use {
-    "ray-x/lsp_signature.nvim",
-  }
+	-- method signature support
+	use({
+		"ray-x/lsp_signature.nvim",
+	})
 
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-  }
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 end)
