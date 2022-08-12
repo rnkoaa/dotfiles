@@ -6,7 +6,7 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"html",
 		"dockerfile",
-    "groovy",
+		"groovy",
 		"java",
 		"json",
 		"yaml",
