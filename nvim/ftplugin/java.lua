@@ -15,9 +15,9 @@ local on_attach = function(client, bufnr)
   -- require'jdtls'.setup_dap()
   -- require'lsp-status'.register_progress()
 
-  require'lspkind'.init()
-  require'lspsaga'.init_lsp_saga()
   require('rnkoaa.mappings').lsp_attach_mapping(client, bufnr)
+
+  -- mappings
 end
 
 local cmd = {
