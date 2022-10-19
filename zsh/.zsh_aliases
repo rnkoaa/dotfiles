@@ -23,6 +23,7 @@ alias mvp='mvn package'
 # Gradle aliases
 alias grcb='./gradlew clean build'
 alias grc='./gradlew clean'
+alias grt='./gradlew test'
 
 # docker aliases
 alias dc='docker-compose "$@"'

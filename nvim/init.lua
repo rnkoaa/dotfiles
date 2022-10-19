@@ -18,6 +18,7 @@ vim.api.nvim_exec(
 )
 
 require("plugins")
+require("mind").setup()
 
 require("nvim-autopairs").setup()
 -- require("lspkind").init()

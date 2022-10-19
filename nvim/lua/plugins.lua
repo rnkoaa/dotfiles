@@ -17,17 +17,25 @@ require("packer").startup(function()
 		"folke/which-key.nvim",
 	})
 
-	-- use("mhartington/formatter.nvim")
 	use("neovim/nvim-lspconfig")
 	use("onsails/lspkind-nvim")
 
 	use({
 		"glepnir/lspsaga.nvim",
-		branch = "main"
+		branch = "main",
 	})
 
 	use({
 		"davidgranstrom/nvim-markdown-preview",
+	})
+
+	use({
+		"phaazon/mind.nvim",
+		branch = "v2.2",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("mind").setup()
+		end,
 	})
 
 	use("hrsh7th/nvim-cmp")
@@ -68,7 +76,7 @@ require("packer").startup(function()
 	use({ "junegunn/goyo.vim" })
 	use({
 		"akinsho/toggleterm.nvim",
-		tag = "v1.*",
+		tag = "v2.*",
 		config = function()
 			require("toggleterm").setup()
 		end,
@@ -83,6 +91,8 @@ require("packer").startup(function()
 	use({
 		"ray-x/lsp_signature.nvim",
 	})
+
+	use("mattn/emmet-vim")
 
 	use({
 		"folke/trouble.nvim",

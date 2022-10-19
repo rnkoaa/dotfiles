@@ -4,7 +4,8 @@ local home = os.getenv("HOME")
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/eclipse-workspace/" .. project_name
-local default_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local default_capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 --
 local on_attach = function(client, bufnr)
