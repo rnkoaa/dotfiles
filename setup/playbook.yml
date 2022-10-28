@@ -28,6 +28,7 @@
       - tmux
       - sqlite3
       - zoxide
+      - lazygit
       - lua
       - jq
       - tree-sitter

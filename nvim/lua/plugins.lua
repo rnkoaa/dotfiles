@@ -25,6 +25,13 @@ require("packer").startup(function()
 		branch = "main",
 	})
 
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+
+	use({
+		"sindrets/diffview.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
 	use({
 		"davidgranstrom/nvim-markdown-preview",
 	})
