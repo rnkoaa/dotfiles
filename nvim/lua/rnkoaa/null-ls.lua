@@ -1,5 +1,6 @@
 local M = {}
 
+local lsp = require('lsp')
 CONFIG = {}
 
 function M.setup()
@@ -8,6 +9,7 @@ function M.setup()
 		nls.builtins.formatting.prettierd.with({
 			filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
 		}),
+
 		nls.builtins.formatting.eslint_d,
 		nls.builtins.diagnostics.shellcheck,
 		nls.builtins.formatting.stylua,

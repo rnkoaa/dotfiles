@@ -41,9 +41,9 @@ M.lsp_attach_mapping = function(client, bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 end
