@@ -1,22 +1,28 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
-		"http",
-		"go",
 		"bash",
 		"css",
-		"html",
 		"dockerfile",
+		"go",
 		"groovy",
+		"html",
+		"http",
 		"java",
-		"json",
-		"yaml",
-		"kotlin",
 		"javascript",
+    "javascriptreact",
+		"json",
+    "jsx",
+		"kotlin",
 		"lua",
-		"toml",
-		"vim",
-		"typescript",
 		"markdown",
+    "swift",
+		"toml",
+    "tsx",
+		"typescript",
+    "typescriptreact",
+		"vim",
+    "xml",
+		"yaml"
 	},
 	autotag = {
 		enable = true,
@@ -25,6 +31,10 @@ require("nvim-treesitter.configs").setup({
 		enable = true, -- false will disable the whole extension
 		disable = {}, -- list of language that will be disabled
 	},
+  indent = {
+		enable = true, -- false will disable the whole extension
+		disable = {}, -- list of language that will be disabled
+  },
 	playground = {
 		enable = true,
 		disable = {},
@@ -35,3 +45,6 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 })
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }

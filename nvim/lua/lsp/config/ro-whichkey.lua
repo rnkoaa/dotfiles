@@ -6,7 +6,7 @@ local mappings = {
   b = {":Telescope buffers<cr>", "Buffers"},
   g = {":Telescope live_grep<cr>", "Grep"},
   w = {":w<cr>", "Save"},
-  lf = {":lua vim.lsp.buf.formatting()<cr>", "Format"}
+  lf = {":lua vim.lsp.buf.format { async = true }<cr>", "Format"}
 }
 local opts = {
   prefix = "<leader>"
