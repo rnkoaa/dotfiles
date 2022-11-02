@@ -60,7 +60,7 @@ require("lsp.config.ro-nvimcmp")
 --   auto_select = true
 -- }
 
-require'lspconfig'.sqls.setup{}
+require("lspconfig").sqls.setup({})
 
 require("settings.general")
 require("lsp.config.ro-telescope")
@@ -76,3 +76,6 @@ require("rnkoaa.nvim-tree")
 require("rnkoaa.keymappings")
 require("rnkoaa.trouble")
 require("rnkoaa.null-ls").setup()
+require("nvim-ts-autotag").setup()
+require("gitsigns").setup()
+require("config.snip").setup()

@@ -26,6 +26,10 @@ require("packer").startup(function()
 	})
 
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+	use({
+		"lewis6991/gitsigns.nvim",
+		tag = "release", -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+	})
 
 	use({
 		"sindrets/diffview.nvim",
@@ -52,6 +56,8 @@ require("packer").startup(function()
 	use("hrsh7th/cmp-cmdline")
 
 	use("L3MON4D3/LuaSnip") -- Snippets plugin
+  use("rafamadriz/friendly-snippets")
+  use("honza/vim-snippets")
 	use("saadparwaiz1/cmp_luasnip")
 
 	use("EdenEast/nightfox.nvim")
@@ -104,5 +110,10 @@ require("packer").startup(function()
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
+	})
+
+	use({
+		"dsznajder/vscode-es7-javascript-react-snippets",
+		run = "yarn install --frozen-lockfile && yarn compile",
 	})
 end)

@@ -7,12 +7,20 @@
 --
 -- Set up completion using nvim_cmp with LSP source
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local on_attach = require('lsp').on_attach
+-- on_attach.client.server_capabilities.document_formatting = false
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local on_attach = function(client, bufnr)
+	client.server_capabilities.document_formatting = false
+	require("rnkoaa.mappings").lsp_attach_mapping(client, bufnr)
+end
+
 require("lspconfig").tsserver.setup({
-  on_attach = require('lsp').on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+	on_attach = on_attach,
+	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	cmd = { "typescript-language-server", "--stdio" },
+	capabilities = capabilities,
 })
