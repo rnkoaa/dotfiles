@@ -52,14 +52,7 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Telescope
 require("lsp")
-
 require("lsp.config.ro-nvimcmp")
--- require("nvim-autopairs.completion.cmp").setup {
---   map_cr = true,
---   malsp_attach_mappingp_complete = true,
---   auto_select = true
--- }
-
 require("lspconfig").sqls.setup({})
 
 require("settings.general")
