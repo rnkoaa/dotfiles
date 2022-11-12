@@ -1,68 +1,95 @@
 -- luasnip setup
-local luasnip = require "luasnip"
+local luasnip = require("luasnip")
 
 -- nvim-cmp setup
 local lspkind = require("lspkind")
 -- formatting = {
 --     format = lspkind.cmp_format({with_text = false, maxwidth = 50})
 --   }
-local cmp = require "cmp"
+local cmp = require("cmp")
 
-cmp.setup {
-  formatting = {
-    format = lspkind.cmp_format({with_text = false, maxwidth = 50})
-  },
+cmp.setup({
+	formatting = {
+		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+	},
 
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
+	snippet = {
+		-- expand = function(args)
+		-- 	luasnip.lsp_expand(args.body)
+		-- end,
+		expand = function(args)
+			local luasnip = prequire("luasnip")
+			if not luasnip then
+				return
+			end
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 
-  mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    },
-    ["<Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end,
-    ["<S-Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end
-  },
-  sources = {
-    {name = "nvim_lsp"},
-    {name = "luasnip"},
-    {name = "buffer"},
-    {name = "path"}
-  }
-}
+	mapping = {
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.close(),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		-- ["<Tab>"] = function(fallback)
+		--   if cmp.visible() then
+		--     cmp.select_next_item()
+		--   elseif luasnip.expand_or_jumpable() then
+		--     luasnip.expand_or_jump()
+		--   else
+		--     fallback()
+		--   end
+		-- end,
+		-- ["<S-Tab>"] = function(fallback)
+		--   if cmp.visible() then
+		--     cmp.select_prev_item()
+		--   elseif luasnip.jumpable(-1) then
+		--     luasnip.jump(-1)
+		--   else
+		--     fallback()
+		--   end
+		-- end
+	},
+	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "path" },
+	},
+})
 
 -- If you want insert `(` after select function or method item
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local cmp = require('cmp')
-cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
-
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp = require("cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
