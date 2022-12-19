@@ -17,6 +17,8 @@ source ~/.zsh_aliases
 source ~/.zsh_profile
 # source ~/dotfiles/zsh/zsh_profile
 
+export JAVA_HOME=${SDKMAN_DIR}/candidates/java/current
+
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

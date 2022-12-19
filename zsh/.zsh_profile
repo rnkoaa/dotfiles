@@ -4,7 +4,7 @@ export USR_BIN=~/bin
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 
-export KAFKA_HOME=$HOME/bin/kafka_2.13-3.1.0
+export KAFKA_HOME=$HOME/bin/kafka_2.13-3.1.1
 export KAFKA_BIN=$KAFKA_HOME/bin
 
 export PATH=$PATH:$GOBIN:$KAFKA_BIN:$USR_BIN
