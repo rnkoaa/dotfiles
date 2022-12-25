@@ -1,4 +1,8 @@
 require("rnkoaa.plugins.packer")
+
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+require("rnkoaa.core.keymaps")
+
 require("plugins")
 require("rnkoaa.plugins.lualine")
 require("rnkoaa.plugins.comment")
@@ -8,11 +12,11 @@ require("rnkoaa.plugins.telescope")
 require("rnkoaa.plugins.treesitter")
 require("rnkoaa.plugins.neodev")
 require("rnkoaa.plugins.cmp")
+require("rnkoaa.plugins.nvim-tree")
 require("rnkoaa.lsp")
 
 require("rnkoaa.core.settings")
 require("rnkoaa.core.colors")
-require("rnkoaa.core.keymaps")
 
 -- Turn on lsp status information
 require('fidget').setup()

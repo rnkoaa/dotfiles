@@ -7,6 +7,13 @@ packer.startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+-- Explorer
+	use({
+		"kyazdani42/nvim-tree.lua",
+		requires = { "kyazdani42/nvim-web-devicons" },
+	})  
+
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
