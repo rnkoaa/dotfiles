@@ -2,14 +2,14 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 local keymap = vim.keymap
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- explorer
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
@@ -27,15 +27,20 @@ keymap.set("i", "kj", "<ESC>")
 keymap.set("i", "jj", "<ESC>")
 
 keymap.set("n", "<leader>p", '"_dp')
+keymap.set("n", "x", "_x")
+keymap.set("n", "<leader>nl", ":noh<CR>")
 
 -- quick splits
-keymap.set("n", "<leader>v", ":vsplit<CR>")
-keymap.set("n", "<leader>h", ":split<CR>")
+keymap.set("n", "<leader>sv", ":vsplit<CR>")
+keymap.set("n", "<leader>sh", ":split<CR>")
+keymap.set("n", "<leader>se", "<C-w>=")
+keymap.set("n", "<leader>sx", ":close<CR>")
+keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
 -- Y yank until the end of line
 keymap.set("n", "Y", "y$")
 
-keymap.set('n', '<leader>/', '<cmd>noh<CR>') -- Clear highlights
+keymap.set("n", "<leader>/", "<cmd>noh<CR>") -- Clear highlights
 keymap.set("n", "<A-/>", "<cmd>noh<CR>") -- Clear highlights
 keymap.set("i", "jk", "<Esc>")
 keymap.set("", "<leader>c", '"+y') --Copy to clipboard in normal, visual, select and operator modes
@@ -60,22 +65,22 @@ keymap.set("n", "<leader>tq", "<cmd>Trouble quickfix<cr>")
 keymap.set("n", "gR", "<cmd>Trouble lsp_references<cr>")
 
 -- Remap for dealing with word wrap
-keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- Diagnostic keymaps
-keymap.set('n', '[d', vim.diagnostic.goto_prev)
-keymap.set('n', ']d', vim.diagnostic.goto_next)
-keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+keymap.set("n", "[d", vim.diagnostic.goto_prev)
+keymap.set("n", "]d", vim.diagnostic.goto_next)
+keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+keymap.set("n", "<leader>q", vim.diagnostic.setloclist)

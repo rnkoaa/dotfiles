@@ -1,6 +1,6 @@
 local M = {}
 
-local lsp = require('lsp')
+local lsp = require("lsp")
 CONFIG = {}
 
 function M.setup()
