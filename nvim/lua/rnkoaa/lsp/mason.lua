@@ -23,11 +23,17 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		"tsserver",
-		"html",
 		"cssls",
-		"sumneko_lua",
+		"dockerls",
 		"emmet_ls",
+		"gradle_ls",
+		"groovyls",
+		"html",
+		"jsonls",
+		"sumneko_lua",
+		"sqlls",
+		"tsserver",
+		"yamlls",
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed

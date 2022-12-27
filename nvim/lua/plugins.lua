@@ -130,6 +130,6 @@ packer.startup(function(use)
 	end
 
 	if is_bootstrap then
-		require("packer").sync()
+		packer.sync()
 	end
 end)
