@@ -65,6 +65,7 @@ Quickly configure nvim for writing code in the following languages
 -   https://github.com/systemcoding/dotfiles
 
 https://github.com/rest-nvim/rest.nvim
+https://github.com/arcticicestudio/nord-vim
 https://github.com/amy-juan-li/nvim-lua
 https://github.com/jose-elias-alvarez/typescript.nvim#features
 https://alpha2phi.medium.com/vim-neovim-plugins-for-a-better-integrated-experience-6accd4c2a52c
