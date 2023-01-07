@@ -11,13 +11,14 @@ require("rnkoaa.plugins.gitsigns")
 require("rnkoaa.plugins.indent_blankline")
 require("rnkoaa.plugins.telescope")
 require("rnkoaa.plugins.treesitter")
--- require("rnkoaa.plugins.neodev")
+require("rnkoaa.plugins.neodev")
 require("rnkoaa.plugins.cmp")
+require("rnkoaa.plugins.lspsaga")
 require("rnkoaa.plugins.nvim-tree")
 
 -- lsp, linters and formatters
 require("rnkoaa.lsp")
-require("rnkoaa.lsp.mason")
+-- require("rnkoaa.lsp.mason")
 require("rnkoaa.lsp.lspconfig")
 require("rnkoaa.plugins.null-ls")
 

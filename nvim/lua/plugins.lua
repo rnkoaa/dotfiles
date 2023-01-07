@@ -95,7 +95,7 @@ packer.startup(function(use)
 
 	-- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
 
-	-- use 'bluz71/vim-nightfly-guicolors'
+	use("bluz71/vim-nightfly-guicolors")
 	-- use ("christoomey/vim-tmux-navigator")
 	use({
 		"rose-pine/neovim",
@@ -122,6 +122,8 @@ packer.startup(function(use)
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+
+	use("b0o/schemastore.nvim")
 
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
