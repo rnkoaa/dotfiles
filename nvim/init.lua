@@ -14,6 +14,7 @@ require("rnkoaa.plugins.treesitter")
 require("rnkoaa.plugins.neodev")
 require("rnkoaa.plugins.cmp")
 require("rnkoaa.plugins.lspsaga")
+require("rnkoaa.plugins.autopairs")
 require("rnkoaa.plugins.nvim-tree")
 
 -- lsp, linters and formatters
@@ -23,7 +24,7 @@ require("rnkoaa.lsp.lspconfig")
 require("rnkoaa.plugins.null-ls")
 
 -- Turn on lsp status information
--- require('fidget').setup()
+require("fidget").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

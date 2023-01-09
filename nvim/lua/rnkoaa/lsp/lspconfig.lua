@@ -112,6 +112,7 @@ lspconfig.sumneko_lua.setup({
 				-- Make the server aware of Neovim runtime files
 				-- library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
+
 				-- make language server aware of runtime files
 				library = {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
@@ -138,12 +139,15 @@ lspconfig.tsserver.setup({
 	on_attach = base_lsp.on_attach,
 	filetypes = { "javascript", "javascriptreact", "typescriptreact", "typescript", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
+	capabilities = capabilities,
 	root_dir = function()
 		return vim.loop.cwd()
 	end,
 })
 
-require("lspconfig").yamlls.setup({
+lspconfig.yamlls.setup({
+	on_attach = base_lsp.on_attach,
+	capabilities = capabilities,
 	-- ... -- other configuration for setup {}
 	settings = {
 		-- yaml = {
@@ -158,15 +162,6 @@ require("lspconfig").yamlls.setup({
 	},
 })
 
--- mason_lspconfig.setup_handlers({
--- 	function(server_name)
--- 		require("lspconfig")[server_name].setup({
--- 			capabilities = capabilities,
--- 			on_attach = base_lsp.on_attach,
--- 			settings = servers[server_name],
--- 		})
--- 	end,
--- })
 --
 --require'lspconfig'.yamlls.setup{
 --     on_attach=on_attach,

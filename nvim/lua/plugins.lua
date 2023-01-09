@@ -74,6 +74,9 @@ packer.startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
+	-- auto pairs
+	use("windwp/nvim-autopairs")
+
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
 	use({ -- Highlight, edit, and navigate code
@@ -124,6 +127,8 @@ packer.startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 
 	use("b0o/schemastore.nvim")
+
+	use("EdenEast/nightfox.nvim")
 
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")

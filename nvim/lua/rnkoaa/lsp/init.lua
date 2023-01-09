@@ -1,6 +1,6 @@
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	-- NOTE: Remember that lua is a real programming language, and as such it is possible
 	-- to define small helper and utility functions so you don't have to repeat yourself
 	-- many times.
@@ -15,24 +15,34 @@ local on_attach = function(_, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-	nmap("gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-	nmap("gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-	nmap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-	nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-	nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-	nmap("<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-	nmap("<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-	nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
-	nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-	nmap("K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-	nmap("<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+	nmap("gf", "<cmd>Lspsaga lsp_finder<CR>", "Show Definition") -- show definition, references
+	nmap("gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", "[G]o to [D]eclaration") -- got to declaration
+	nmap("gd", "<cmd>Lspsaga peek_definition<CR>", "[G]o to [D]efinition") -- see definition and make edits in window
+	nmap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", "[G]o to [I]mplementation") -- go to implementation
+	nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", "Show [C]ode [A]ctions") -- see available code actions
+	nmap("<leader>rn", "<cmd>Lspsaga rename<CR>", "[R]ename variable") -- smart rename
+	nmap("<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Diagnostics") -- show  diagnostics for line
+	nmap("<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", "Show Cursor Diagnostics") -- show diagnostics for cursor
+	nmap("[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Jump to previous Diagnostic in Buffer") -- jump to previous diagnostic in buffer
+	nmap("]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", "Jump to next Diagnostic in Buffer") -- jump to next diagnostic in buffer
+	nmap("K", "<cmd>Lspsaga hover_doc<CR>", "Hover over Cursor") -- show documentation for what is under cursor
+	nmap("<leader>o", "<cmd>LSoutlineToggle<CR>", "See outline on Right") -- see outline on right hand side
 
 	-- typescript specific keymaps (e.g. rename file and update imports)
 	if client.name == "tsserver" then
 		nmap("<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
 		nmap("<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
 		nmap("<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
+	end
+
+	if client.server_capabilities.documentFormattingProvider then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("Format", { clear = true }),
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.formatting_seq_sync()
+			end,
+		})
 	end
 
 	-- nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
