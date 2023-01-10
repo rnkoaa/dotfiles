@@ -12,7 +12,7 @@ local keymap = vim.keymap
 keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- explorer
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>")
 keymap.set("n", "-", ":RnvimrToggle<CR>")
 
 -- better window movement
