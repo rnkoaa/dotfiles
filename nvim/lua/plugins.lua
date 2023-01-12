@@ -76,6 +76,7 @@ packer.startup(function(use)
 
 	-- auto pairs
 	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
 
 	use("rafamadriz/friendly-snippets") -- useful snippets
 
@@ -96,8 +97,6 @@ packer.startup(function(use)
 	use("tpope/vim-rhubarb")
 	use("lewis6991/gitsigns.nvim")
 
-	-- use 'navarasu/onedark.nvim' -- Theme inspired by Atom
-
 	use("bluz71/vim-nightfly-guicolors")
 	-- use ("christoomey/vim-tmux-navigator")
 	use({
@@ -114,21 +113,40 @@ packer.startup(function(use)
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		requires = { "kkharji/sqlite.lua" },
+	})
 
 	use("szw/vim-maximizer")
 
 	use("tpope/vim-surround")
+	use("tpope/vim-repeat")
 	use("inkarkat/vim-ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
 	-- formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	-- use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
 	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 
 	use("b0o/schemastore.nvim")
 
 	use("EdenEast/nightfox.nvim")
+
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
+	use({
+		"folke/which-key.nvim",
+	})
+
+	-- terminal
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "v2.*",
+	})
 
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")

@@ -16,6 +16,9 @@ require("rnkoaa.plugins.cmp")
 require("rnkoaa.plugins.lspsaga")
 require("rnkoaa.plugins.autopairs")
 require("rnkoaa.plugins.nvim-tree")
+require("rnkoaa.plugins.toggleterm")
+require("rnkoaa.plugins.trouble")
+require("rnkoaa.plugins.which_key")
 
 -- lsp, linters and formatters
 require("rnkoaa.lsp")
