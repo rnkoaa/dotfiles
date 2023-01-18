@@ -68,6 +68,7 @@ vim.o.cursorline = true -- highlight the current line
 vim.o.numberwidth = 4 -- set number column width to 2 {default 4}
 vim.o.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
 vim.o.wrap = false -- display lines as one long line
+vim.o.linebreak = false -- display lines as one long line
 vim.o.spell = false
 vim.o.spelllang = "en"
 vim.o.scrolloff = 8 -- is one of my fav
