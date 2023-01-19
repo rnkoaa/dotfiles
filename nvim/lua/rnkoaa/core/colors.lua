@@ -19,6 +19,12 @@ if not status then
 	return
 end
 
+nightfox.setup({
+	options = {
+		transparent = true,
+		terminal_colors = true,
+	},
+})
 nightfox.load("nordfox")
 
 -- set background transparent

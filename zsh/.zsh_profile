@@ -7,7 +7,10 @@ export GOBIN=$GOPATH/bin
 export KAFKA_HOME=$HOME/bin/kafka_2.13-3.1.0
 export KAFKA_BIN=$KAFKA_HOME/bin
 
-export PATH=$PATH:$GOBIN:$KAFKA_BIN:$USR_BIN
+export KOTLIN_LSP_HOME=$HOME/bin/kotlin-lsp/server
+export KOTLIN_LSP_BIN=$KOTLIN_LSP_HOME/bin
+
+export PATH=$PATH:$GOBIN:$KAFKA_BIN:$KOTLIN_LSP_BIN:$USR_BIN
 
 export NODE_PACKAGES_HOME=~/.npm-packages
 export PATH=$PATH:$NODE_PACKAGES_HOME/bin

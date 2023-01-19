@@ -15,6 +15,17 @@ Quickly configure nvim for writing code in the following languages
   brew install lua-language-server
 ```
 
+-   Kotlin
+
+```sh
+    cd ~/.config/kotlin-language-server/
+    ./gradlew :server:installDist
+    cp -R ~/.config/kotlin-language-server/server/build/install/ ~/bin/kotlin-lsp/
+
+
+
+```
+
 -   Java
 -   Typescript
 -   JavaScript
