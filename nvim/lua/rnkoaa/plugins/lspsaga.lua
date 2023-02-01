@@ -13,17 +13,6 @@ if not lspsaga_action_status then
 	return
 end
 
--- change the lsp symbol kind
-local lspsaga_kind_status, lspsaga_kind = pcall(require, "lspsaga.lspkind")
-if not lspsaga_kind_status then
-	print("lspsaga Kind not found")
-	return
-end
--- saga_kind[type_number][2] = icon -- see lua/lspsaga/lspkind.lua
---
--- -- use default config
--- saga.init_lsp_saga()
---
 -- -- use custom config
 lspsaga.init_lsp_saga({
 	-- server_filetype_map = {

@@ -148,6 +148,9 @@ packer.startup(function(use)
 		tag = "v2.*",
 	})
 
+	-- Kotlin
+	use({ "udalov/kotlin-vim", ft = { "kotlin" }, disable = true })
+
 	-- markdown
 	use({
 		"iamcco/markdown-preview.nvim",

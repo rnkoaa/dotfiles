@@ -31,6 +31,9 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=20
 
+# export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+# export DOCKER_HOST="unix://${HOME}/.colima/docker.sock"
+
 export RIPGREP_CONFIG_PATH="~/dotfiles/zsh/ripgrepignore"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules/*,.git/*,.gradle/*,.idea/*}"'
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*,!.idea/*,!.gradle/*,!node_modules/*"'

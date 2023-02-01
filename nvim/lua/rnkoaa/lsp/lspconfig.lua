@@ -12,12 +12,6 @@ if not schemastore_status then
 	return
 end
 
--- import mason-lspconfig plugin safely
--- local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
--- if not mason_lspconfig_status then
--- 	return
--- end
-
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
 	return
@@ -30,41 +24,20 @@ capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 local servers = {
 	bashls = {},
-	dockerls = {},
-	eslint = {},
-	-- clangd = {},
-	gopls = {},
-	pyright = {},
-	-- 	require'lspconfig'.groovyls.setup{
-	--     -- Unix
-	--     cmd = { "java", "-jar", "path/to/groovyls/groovy-language-server-all.jar" },
-	--     ...
-	-- }
 	-- gradle_ls = {
 	-- 	settings = {
 	-- 		gradleWrapperEnabled = true,
 	-- 	},
 	-- },
-	html = {},
 
 	-- java
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
 	--
-	-- kotlin_language_server
-	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#kotlin_language_server
 
 	-- sqlls
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sqlls
-
 	cssls = {},
-	jsonls = {
-		settings = {
-			json = {
-				schemas = schemastore.json.schemas(),
-			},
-		},
-	},
-	yamlls = {},
+	dockerls = {},
 	emmet_ls = {
 		filetypes = {
 			"html",
@@ -77,7 +50,22 @@ local servers = {
 			"svelte",
 		},
 	},
+	eslint = {},
+	gopls = {},
+	html = {},
+	jsonls = {
+		settings = {
+			json = {
+				schemas = schemastore.json.schemas(),
+			},
+		},
+	},
+	-- kotlin_language_server = {
+	-- 	cmd = { "kotlin-language-server" },
+	-- },
+	pyright = {},
 	vimls = {},
+	yamlls = {},
 	-- -- rust_analyzer = {},
 	-- sumneko_lua = {
 	-- 	Lua = {
@@ -110,7 +98,6 @@ lspconfig.sumneko_lua.setup({
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
-				-- library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
 
 				-- make language server aware of runtime files
@@ -134,6 +121,12 @@ for _, server in ipairs(servers) do
 		-- settings = servers[server_name],
 	})
 end
+
+lspconfig.kotlin_language_server.setup({
+	on_attach = base_lsp.on_attach,
+	capabilities = capabilities,
+	filetypes = { "kt", "kts", "kotlin" },
+})
 
 lspconfig.tsserver.setup({
 	on_attach = base_lsp.on_attach,
