@@ -14,19 +14,21 @@ if not lspsaga_action_status then
 end
 
 -- -- use custom config
-lspsaga.init_lsp_saga({
-	-- server_filetype_map = {
-	-- 	typescript = "typescript",
-	-- },
-	move_in_saga = { prev = "<C-k>", next = "<C-j>" },
-	finder_action_keys = {
-		open = "<CR>",
-	},
-	definition_action_keys = {
-		edit = "<CR>",
-	},
-	-- put modified options in there
-})
+-- lspsaga.init_lsp_saga({
+-- 	-- server_filetype_map = {
+-- 	-- 	typescript = "typescript",
+-- 	-- },
+-- 	move_in_saga = { prev = "<C-k>", next = "<C-j>" },
+-- 	finder_action_keys = {
+-- 		open = "<CR>",
+-- 	},
+-- 	definition_action_keys = {
+-- 		edit = "<CR>",
+-- 	},
+-- 	-- put modified options in there
+-- })
+--
+lspsaga.setup({})
 
 -- -- code action
 -- local opts = { noremap = true, silent = true }
