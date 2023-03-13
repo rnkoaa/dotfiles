@@ -97,7 +97,7 @@ local servers = {
 	-- },
 }
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
 			runtime = {

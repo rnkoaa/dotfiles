@@ -10,6 +10,7 @@ local mappings = {
 	f = { ":Telescope find_files<cr>", "find files" },
 	b = { ":Telescope buffers<cr>", "Buffers" },
 	g = { ":Telescope live_grep<cr>", "Grep" },
+	t = { ":NvimTreeToggle<cr>", "Toggle Nvim" },
 	w = { ":w<cr>", "Save" },
 	lf = { ":lua vim.lsp.buf.format { async = true }<cr>", "Format" },
 }
