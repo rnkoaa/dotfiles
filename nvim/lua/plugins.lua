@@ -148,6 +148,17 @@ packer.startup(function(use)
 		tag = "v2.*",
 	})
 
+	-- markdown
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
+	use("junegunn/goyo.vim")
+
 	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
 	local has_plugins, plugins = pcall(require, "custom.plugins")
 	if has_plugins then

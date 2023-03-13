@@ -3,8 +3,8 @@ require("plugins")
 
 require("rnkoaa.core.keymaps")
 require("rnkoaa.plugins.comment")
-require("rnkoaa.core.settings")
 require("rnkoaa.core.colors")
+require("rnkoaa.core.settings")
 
 require("rnkoaa.plugins.lualine")
 require("rnkoaa.plugins.gitsigns")
