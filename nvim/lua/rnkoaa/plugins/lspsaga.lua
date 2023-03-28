@@ -1,20 +1,17 @@
--- local utils = require("utils")
--- local saga = require("lspsaga")
 local lspsaga_status, lspsaga = pcall(require, "lspsaga")
 if not lspsaga_status then
-	print("lspsaga not found")
+	print("Attempt to load lspsaga failed, lspsaga not found")
 	return
 end
 
--- local action = require("lspsaga.codeaction")
-local lspsaga_action_status, lspsaga_action = pcall(require, "lspsaga.codeaction")
+local lspsaga_action_status = pcall(require, "lspsaga.codeaction")
 if not lspsaga_action_status then
 	print("lspsaga CodeAction not found")
 	return
 end
 
 -- change the lsp symbol kind
-local lspsaga_kind_status, lspsaga_kind = pcall(require, "lspsaga.lspkind")
+local lspsaga_kind_status = pcall(require, "lspsaga.lspkind")
 if not lspsaga_kind_status then
 	print("lspsaga Kind not found")
 	return
