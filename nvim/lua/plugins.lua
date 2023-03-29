@@ -1,16 +1,17 @@
 require("lazy").setup({
 	-- Explorer
+	{ "numToStr/Comment.nvim", opts = {} },
 	{
-  "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    dependencies = { 
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  },
-		"iamcco/markdown-preview.nvim",
-		"folke/which-key.nvim",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+	},
+	"iamcco/markdown-preview.nvim",
+	"folke/which-key.nvim",
 
 	"neovim/nvim-lspconfig",
 	"onsails/lspkind-nvim",
@@ -33,10 +34,10 @@ require("lazy").setup({
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
 	"L3MON4D3/LuaSnip", -- Snippets plugin
-  "rafamadriz/friendly-snippets",
-  "honza/vim-snippets",
+	"rafamadriz/friendly-snippets",
+	"honza/vim-snippets",
 	"saadparwaiz1/cmp_luasnip",
-	'folke/tokyonight.nvim',
+	"folke/tokyonight.nvim",
 	"windwp/nvim-autopairs",
 	"windwp/nvim-ts-autotag",
 	"maxmellon/vim-jsx-pretty",
@@ -46,11 +47,10 @@ require("lazy").setup({
 	-- Additional textobjects for treesitter
 	"nvim-treesitter/nvim-treesitter-textobjects",
 
-	"tpope/vim-commentary", -- "gc" to comment visual regions/line,
 	"tpope/vim-surround", -- "ys\"" to surround a text with "", "cs'\"" to change surrounding quotes
 	"tpope/vim-repeat", -- "repeat commands"
 	"mattn/emmet-vim",
-	
+
 	-- Add indentation guides even on blank lines
 	"lukas-reineke/indent-blankline.nvim",
 	{
@@ -87,5 +87,5 @@ require("lazy").setup({
 	{
 		"dsznajder/vscode-es7-javascript-react-snippets",
 		build = "yarn install --frozen-lockfile && yarn compile",
-	}
+	},
 })
