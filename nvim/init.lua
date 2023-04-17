@@ -38,3 +38,6 @@ require("rnkoaa.plugins.which_key")
 require("rnkoaa.lsp")
 require("rnkoaa.lsp.lspconfig")
 require("rnkoaa.plugins.null-ls")
+
+-- languages
+require("rnkoaa.lsp.languages.ro-go")
