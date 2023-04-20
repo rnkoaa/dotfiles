@@ -1,5 +1,6 @@
 local utils = require("settings/utils")
 -- explorer
+--[[
 utils.map("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 utils.map("n", "-", ":RnvimrToggle<CR>", { noremap = true, silent = true })
 
@@ -50,3 +51,4 @@ utils.map("n", "<leader>td", "<cmd>Trouble document_diagnostics<cr>",opt)
 utils.map("n", "<leader>tl", "<cmd>Trouble loclist<cr>",opt)
 utils.map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>",opt)
 utils.map("n", "gR", "<cmd>Trouble lsp_references<cr>",opt )
+--]]
