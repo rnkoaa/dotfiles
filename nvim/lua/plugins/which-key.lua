@@ -20,6 +20,10 @@ return {
 			["<leader>u"] = { name = "+ui" },
 			["<leader>w"] = { name = "+windows" },
 			["<leader>x"] = { name = "+diagnostics/quickfix" },
+			-- g = { ":Telescope live_grep<cr>", "Grep" },
+			-- t = { ":NvimTreeToggle<cr>", "Toggle Nvim" },
+			-- w = { ":w<cr>", "Save" },
+			-- lf = { ":lua vim.lsp.buf.format { async = true }<cr>", "Format" },
 		},
 	},
 	config = function(_, opts)
