@@ -1,17 +1,13 @@
-
 local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
+	local keys = require("lazy.core.handler").handlers.keys
+	---@cast keys LazyKeysHandler
+	-- do not create the keymap if a lazy keys handler exists
+	if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+		opts = opts or {}
+		opts.silent = opts.silent ~= false
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
 end
-
--- map("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
--- map("n", "-", ":RnvimrToggle<CR>", { noremap = true, silent = true })
 
 -- better window movement
 map("n", "<C-h>", "<C-w>h", { silent = true })
@@ -24,6 +20,9 @@ map("i", "jk", "<ESC>")
 map("i", "kj", "<ESC>")
 map("i", "jj", "<ESC>")
 
+-- save
+map("i", "<leader>ww", "<cmd>w<cr>")
+map("n", "<leader>w", "<cmd>w<cr>")
 map("n", "<leader>p", '"_dp')
 
 -- quick splits
@@ -31,7 +30,7 @@ map("n", "<leader>v", ":vsplit<CR>")
 map("n", "<leader>h", ":split<CR>")
 
 --Remap for dealing with word wrap
-local opts = { noremap = true, expr = true, silent = true }
+-- local opts = { noremap = true, expr = true, silent = true }
 -- map("n", "k", "v:count == 0 ? 'gk' : 'k'", opts)
 -- map("n", "j", "v:count == 0 ? 'gj' : 'j'", opts)
 
@@ -64,7 +63,6 @@ local opts = { noremap = true, expr = true, silent = true }
 -- better up/down
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
@@ -101,75 +99,72 @@ else
 end
 --]]
 
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+-- map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+-- map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+-- map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
-map(
-  "n",
-  "<leader>ur",
-  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-  { desc = "Redraw / clear hlsearch / diff update" }
-)
+-- map(
+--   "n",
+--   "<leader>ur",
+--   "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+--   { desc = "Redraw / clear hlsearch / diff update" }
+-- )
 
-map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
+-- map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+-- map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+-- map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+-- map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+-- map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+-- map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+-- map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
+-- map("i", ",", ",<c-g>u")
+-- map("i", ".", ".<c-g>u")
+-- map("i", ";", ";<c-g>u")
 
 -- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+-- map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+-- map("v", "<", "<gv")
+-- map("v", ">", ">gv")
 
 -- lazy
-map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
+-- map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
 -- new file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+-- map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+--
+-- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+-- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 -- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+-- map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- highlights under cursor
-if vim.fn.has("nvim-0.9.0") == 1 then
-  map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-end
-
+-- if vim.fn.has("nvim-0.9.0") == 1 then
+--   map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
+-- end
 
 -- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
+-- map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+-- map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+-- map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+-- map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
+-- map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
+-- map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
 
 -- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-
-
+-- map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+-- map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+-- map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+-- map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+-- map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+-- map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })

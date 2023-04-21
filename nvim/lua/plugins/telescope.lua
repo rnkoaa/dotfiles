@@ -10,6 +10,13 @@
 
 return {
 	"nvim-telescope/telescope.nvim",
+	dependencies = {
+	"nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+	require("telescope").load_extension("fzf")
+      end,
+	},
 	keys = { -- disable the keymap to grep files
     {"<leader>/", false},
     -- change a keymap
