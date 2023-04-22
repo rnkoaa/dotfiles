@@ -1,19 +1,6 @@
 require("lazy").setup({
-	-- Explorer
-	{ "numToStr/Comment.nvim", opts = {} },
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		},
-	},
 	"iamcco/markdown-preview.nvim",
-	"folke/which-key.nvim",
 
-	"neovim/nvim-lspconfig",
 	"onsails/lspkind-nvim",
 	{
 		"glepnir/lspsaga.nvim",

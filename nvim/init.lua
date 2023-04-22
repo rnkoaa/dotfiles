@@ -6,7 +6,6 @@ require("config.keymaps")
 require("config.options")
 require("config.autocmds")
 
-
 -- Example using a list of specs with the default options
 --
 -- require("plugins")
