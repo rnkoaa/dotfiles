@@ -11,6 +11,7 @@ return {
 	"tpope/vim-surround", -- "ys\"" to surround a text with "", "cs'\"" to change surrounding quotes
 	"tpope/vim-repeat", -- "repeat commands"
 	"mattn/emmet-vim",
+	"windwp/nvim-ts-autotag",
 	"ray-x/lsp_signature.nvim",
 	{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	{ "nvim-tree/nvim-web-devicons", lazy = true },

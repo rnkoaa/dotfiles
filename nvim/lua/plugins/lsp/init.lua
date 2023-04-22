@@ -18,6 +18,26 @@ local M = {
 		},
 		opts = {
 			servers = {
+				cssls = {},
+				docker_ls = {},
+				emmet_ls = {
+					filetypes = {
+						"html",
+						"typescriptreact",
+						"javascriptreact",
+						"css",
+						"sass",
+						"scss",
+						"less",
+						"svelte",
+					},
+				},
+				html = {},
+				jsonls = {
+					settings = {
+						json = {},
+					},
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -32,7 +52,7 @@ local M = {
 						},
 					},
 				},
-				docker_ls = {},
+				yamlls = {},
 			},
 			setup = {
 				lua_ls = function(_, _)
