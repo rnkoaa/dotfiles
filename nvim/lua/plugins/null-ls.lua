@@ -20,6 +20,7 @@ end
 
 local M = {
 	"jose-elias-alvarez/null-ls.nvim",
+	dependencies = { "mason.nvim" },
 	opts = function(_, opts)
 		local nls = require("null-ls")
 
@@ -28,12 +29,13 @@ local M = {
 				filetypes = { "html", "javascript", "json", "typescript", "yaml", "markdown" },
 			}),
 
+			nls.builtins.formatting.prettier,
 			nls.builtins.formatting.eslint_d,
-			nls.builtins.diagnostics.shellcheck,
+			nls.builtins.formatting.shfmt,
 			nls.builtins.formatting.stylua,
 			nls.builtins.formatting.sqlfluff,
 			-- nls.builtins.code_actions.gitsigns,
-			nls.builtins.formatting.prettier,
+			nls.builtins.diagnostics.shellcheck,
 			nls.builtins.diagnostics.markdownlint,
 			-- nls.builtins.diagnostics.vale,
 		}

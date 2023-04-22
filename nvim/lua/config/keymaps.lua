@@ -20,14 +20,39 @@ map("i", "jk", "<ESC>")
 map("i", "kj", "<ESC>")
 map("i", "jj", "<ESC>")
 
+-- better  viewing
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "g,", "g,zvzz")
+map("n", "g;", "g;zvzz")
+
 -- save
 map("i", "<leader>ww", "<cmd>w<cr>")
 map("n", "<leader>w", "<cmd>w<cr>")
 map("n", "<leader>p", '"_dp')
+map("v", "p", '"_dP')
 
 -- quick splits
 map("n", "<leader>v", ":vsplit<CR>")
 map("n", "<leader>h", ":split<CR>")
+
+-- Better indent
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- Move Lines
+map("n", "<A-j>", ":m .+1<CR>==")
+map("v", "<A-j>", ":m '>+1<CR>gv=gv")
+map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+map("n", "<A-k>", ":m .-2<CR>==")
+map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+
+-- Resize window using <shift> arrow keys
+map("n", "<S-Up>", "<cmd>resize +2<CR>")
+map("n", "<S-Down>", "<cmd>resize -2<CR>")
+map("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 --Remap for dealing with word wrap
 -- local opts = { noremap = true, expr = true, silent = true }

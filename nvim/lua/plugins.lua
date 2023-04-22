@@ -15,6 +15,16 @@ return {
 	{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
+		"TimUntersberger/neogit",
+		cmd = "Neogit",
+		config = {
+			integrations = { diffview = true },
+		},
+		keys = {
+			{ "<leader>gs", "<cmd>Neogit kind=floating<cr>", desc = "Status" },
+		},
+	},
+	{
 		"b0o/SchemaStore.nvim",
 		version = false, -- last release is way too old
 	},

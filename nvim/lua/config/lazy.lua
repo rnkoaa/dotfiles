@@ -12,7 +12,8 @@ require("lazy").setup({
 		-- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		-- { import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "plugins" },
-		{ import = "plugins.lsp" },
+		-- { import = "plugins.lsp" },
 	},
 	-- { import = "options" },
 })
+vim.keymap.set("n", "<leader>zz", "<cmd>:Lazy<cr>", { desc = "Manage Plugins" })

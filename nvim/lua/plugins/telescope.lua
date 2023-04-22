@@ -1,36 +1,22 @@
--- local status, telescope = pcall(require, "telescope")
--- if not status then
--- 	return
--- end
-
--- local _, builtin = pcall(require, "telescope.builtin")
--- if not builtin_setup then
--- 	return
--- end
-
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-telescope/telescope-fzf-native.nvim",
+		"nvim-telescope/telescope-frecency.nvim",
 		"benfowler/telescope-luasnip.nvim",
+		"kkharji/sqlite.lua",
 		"tsakirist/telescope-lazy.nvim",
 	},
 	keys = { -- disable the keymap to grep files
 		{ "<leader>/", false },
 		-- change a keymap
 		{ "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-		{
-			"<leader>fg",
-			function()
-				require("telescope.builtin").live_grep()
-			end,
-			desc = "[S]earch by [G]rep",
-		},
-		-- { "<leader>fg", function() require("telescope.builtin").live_grep end, desc = "[S]search by [G]rep" },
-		-- { "<leader>fh", require("telescope.builtin").help_tags, desc = "[S]search [H]elp" },
-		-- { "<leader>fw", require("telescope.builtin").grep_string, desc = "[S]search [C]urrent [W]ord" },
-		-- add a keymap to browse plugin files
+		{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+		{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+		{ "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
+		{ "<leader>f/", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
 		{
 			"<leader>fp",
 			function()
@@ -53,13 +39,13 @@ return {
 				["<C-n>"] = actions.cycle_history_next,
 				["<C-p>"] = actions.cycle_history_prev,
 				["?"] = actions_layout.toggle_preview,
-				["<C-s>"] = custom_actions.visidata,
-				["<A-f>"] = custom_actions.file_browser,
+				-- ["<C-s>"] = custom_actions.visidata,
+				-- ["<A-f>"] = custom_actions.file_browser,
 			},
-			n = {
-				["s"] = custom_actions.visidata,
-				["<A-f>"] = custom_actions.file_browser,
-			},
+			-- n = {
+			-- ["s"] = custom_actions.visidata,
+			-- ["<A-f>"] = custom_actions.file_browser,
+			-- },
 		}
 
 		local opts = {

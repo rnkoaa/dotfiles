@@ -1,4 +1,3 @@
---[[
 local M = {}
 
 local lsp_utils = require("plugins.lsp.utils")
@@ -89,7 +88,7 @@ function M.setup(_, opts)
 
 	-- Add bun for Node.js-based servers
 	local lspconfig_util = require("lspconfig.util")
-	local add_bun_prefix = require("plugins.lsp.bun").add_bun_prefix
+	-- local add_bun_prefix = require("plugins.lsp.bun").add_bun_prefix
 	lspconfig_util.on_setup = lspconfig_util.add_hook_before(lspconfig_util.on_setup, add_bun_prefix)
 
 	-- get all the servers that are available thourgh mason-lspconfig
@@ -119,6 +118,3 @@ function M.setup(_, opts)
 end
 
 return M
-  --]]
---
-return {}
