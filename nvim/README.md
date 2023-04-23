@@ -17,7 +17,7 @@ Quickly configure nvim for writing code in the following languages
 ## Plugins
 
 -   nightfox
--   nvim-tree
+-   neo-tree
 -   formatter
 -   nvim-lspconfig
 -   nvim-treesitter
