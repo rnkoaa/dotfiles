@@ -1,5 +1,6 @@
 return {
   "MunifTanjim/nui.nvim",
+	"windwp/nvim-ts-autotag",
 {
 	"numToStr/Comment.nvim",
 	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -11,9 +12,6 @@ return {
 		}
 		require("Comment").setup(opts)
 	end,
-	-- config = function()
-	-- 	require("Comment").setup()
-	-- end,
 },
 	{
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -48,6 +46,20 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
+  {
+    "glepnir/lspsaga.nvim",
+    opt = true,
+    branch = "main",
+    event = "LspAttach",
+    config = function()
+        require("lspsaga").setup({})
+    end,
+    dependencies = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Please make sure you install markdown and markdown_inline parser
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+},
 	{
 		"dsznajder/vscode-es7-javascript-react-snippets",
 		build = "yarn install --frozen-lockfile && yarn compile",

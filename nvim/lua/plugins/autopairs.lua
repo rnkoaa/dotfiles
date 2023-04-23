@@ -1,6 +1,6 @@
+
 return {
 	"windwp/nvim-autopairs",
-	-- "windwp/nvim-ts-autotag",
 	config = function()
 		require("nvim-autopairs").setup({
 			check_ts = true, -- enable treesitter
@@ -12,3 +12,5 @@ return {
 		})
 	end,
 }
+
+
