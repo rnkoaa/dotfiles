@@ -11,7 +11,7 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		-- local icons = require("config.icons")
+		local icons = require("config.icons")
 
 		local has_words_before = function()
 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -79,6 +79,7 @@ return {
 						luasnip = "(Snippet)",
 						buffer = "(Buffer)",
 					}
+
 					local duplicates = {
 						buffer = 1,
 						path = 1,
@@ -87,9 +88,9 @@ return {
 					}
 					local duplicates_default = 0
 					if max_width ~= 0 and #item.abbr > max_width then
-						-- item.abbr = string.sub(item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
+						item.abbr = string.sub(item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
 					end
-					-- item.kind = icons.kind[item.kind]
+					item.kind = icons.kind[item.kind]
 					item.menu = source_names[entry.source.name]
 					item.dup = duplicates[entry.source.name] or duplicates_default
 					return item
