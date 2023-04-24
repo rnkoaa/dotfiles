@@ -50,8 +50,8 @@ return {
 
 		local opts = {
 			defaults = {
-			--	prompt_prefix = icons.ui.Telescope .. " ",
-			--	selection_caret = icons.ui.Forward .. " ",
+				--	prompt_prefix = icons.ui.Telescope .. " ",
+				--	selection_caret = icons.ui.Forward .. " ",
 				mappings = mappings,
 				border = {},
 				borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
