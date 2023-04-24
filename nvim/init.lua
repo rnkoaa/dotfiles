@@ -12,4 +12,3 @@ vim.api.nvim_create_autocmd("User", {
 		-- require "utils.contextmenu"
 	end,
 })
-
