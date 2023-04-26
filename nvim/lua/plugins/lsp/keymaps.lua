@@ -19,8 +19,9 @@ function M.on_attach(client, buffer)
 	self:map("<leader>ca", "Lspsaga code_action", { desc = "Code Action", mode = { "n", "v" }, has = "codeAction" })
 
 	local format = require("plugins.lsp.format").format
-	self:map("<leader>cf", format, { desc = "Format Document", has = "documentFormatting" })
-	self:map("<leader>cf", format, { desc = "Format Range", mode = "v", has = "documentRangeFormatting" })
+	self:map("<leader>bf", format, { desc = "Format Document", has = "documentFormatting" })
+	self:map("<leader>bf", format, { desc = "Format Range", mode = "v", has = "documentRangeFormatting" })
+
 	self:map("<leader>cr", M.rename, { expr = true, desc = "Rename", has = "rename" })
 
 	self:map("<leader>cs", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
