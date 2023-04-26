@@ -1,18 +1,18 @@
 return {
-  "MunifTanjim/nui.nvim",
+	"MunifTanjim/nui.nvim",
 	"windwp/nvim-ts-autotag",
-{
-	"numToStr/Comment.nvim",
-	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-	keys = { { "gc", mode = { "n", "v" } }, { "gcc", mode = { "n", "v" } }, { "gbc", mode = { "n", "v" } } },
-	config = function(_, _)
-		local opts = {
-			ignore = "^$",
-			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-		}
-		require("Comment").setup(opts)
-	end,
-},
+	{
+		"numToStr/Comment.nvim",
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		keys = { { "gc", mode = { "n", "v" } }, { "gcc", mode = { "n", "v" } }, { "gbc", mode = { "n", "v" } } },
+		config = function(_, _)
+			local opts = {
+				ignore = "^$",
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			}
+			require("Comment").setup(opts)
+		end,
+	},
 	{
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		config = function()
@@ -46,23 +46,40 @@ return {
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
-  {
-    "glepnir/lspsaga.nvim",
-    opt = true,
-    branch = "main",
-    -- event = "LspAttach",
+	{
+		"glepnir/lspsaga.nvim",
+		opt = true,
+		branch = "main",
+		-- event = "LspAttach",
 		event = "VeryLazy",
-    config = function()
-        require("lspsaga").setup({})
-    end,
-    dependencies = {
-        {"nvim-tree/nvim-web-devicons"},
-        --Please make sure you install markdown and markdown_inline parser
-        {"nvim-treesitter/nvim-treesitter"}
-    }
-},
+		config = function()
+			require("lspsaga").setup({})
+		end,
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			--Please make sure you install markdown and markdown_inline parser
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	},
 	{
 		"dsznajder/vscode-es7-javascript-react-snippets",
 		build = "yarn install --frozen-lockfile && yarn compile",
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = function()
+			local nls = require("null-ls")
+			return {
+				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+				sources = {
+					nls.builtins.formatting.fish_indent,
+					nls.builtins.diagnostics.fish,
+					nls.builtins.formatting.stylua,
+					nls.builtins.formatting.shfmt,
+					-- nls.builtins.diagnostics.flake8,
+				},
+			}
+		end,
 	},
 }
