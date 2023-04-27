@@ -65,6 +65,9 @@ return {
 		"dsznajder/vscode-es7-javascript-react-snippets",
 		build = "yarn install --frozen-lockfile && yarn compile",
 	},
+  {
+    "mfussenegger/nvim-jdtls"
+  },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
