@@ -33,6 +33,8 @@ Quickly configure nvim for writing code in the following languages
 -   indent-blankline
 -   nvim-jdtls
 
+npm install @microsoft/compose-language-service
+
 ## Links
 
 ## lazy nvim helper
