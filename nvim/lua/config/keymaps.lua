@@ -27,7 +27,7 @@ map("n", "g,", "g,zvzz")
 map("n", "g;", "g;zvzz")
 
 -- save
-map("i", "<leader>ww", "<cmd>w<cr>")
+-- map("i", "<leader>ww", "<cmd>w<cr>")
 map("n", "<leader>w", "<cmd>w<cr>")
 map("n", "<leader>p", '"_dp')
 map("v", "p", '"_dP')
