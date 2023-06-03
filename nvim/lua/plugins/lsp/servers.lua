@@ -104,4 +104,3 @@ function M.setup(_, opts)
 end
 
 return M
-

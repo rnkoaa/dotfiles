@@ -65,9 +65,9 @@ return {
 		"dsznajder/vscode-es7-javascript-react-snippets",
 		build = "yarn install --frozen-lockfile && yarn compile",
 	},
-  {
-    "mfussenegger/nvim-jdtls"
-  },
+	{
+		"mfussenegger/nvim-jdtls",
+	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -80,7 +80,6 @@ return {
 					nls.builtins.diagnostics.fish,
 					nls.builtins.formatting.stylua,
 					nls.builtins.formatting.shfmt,
-					-- nls.builtins.diagnostics.flake8,
 				},
 			}
 		end,
