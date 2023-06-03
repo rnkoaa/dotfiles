@@ -21,7 +21,12 @@ return {
 				bashls = {},
 				cssls = {},
 				dockerls = {},
-				docker_compose_language_server = {},
+				docker_compose_language_service = {},
+				emmet_ls = {},
+				gopls = {},
+				gradle_ls = {},
+				groovyls = {},
+				html = {},
 				jsonls = {},
 				lua_ls = {
 					settings = {
