@@ -42,3 +42,8 @@ https://medium.com/linux-with-michael/lazy-nvim-the-blazingly-fast-neovim-packag
 
 -   https://github.com/systemcoding/dotfiles
 -   https://github.com/igorgue/dotnvim/blob/main/lua/plugins/extras/lang/java.lua
+
+## Inspiration
+
+- https://github.com/alpha2phi/modern-neovim
+
