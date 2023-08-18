@@ -27,11 +27,17 @@ return {
 	{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
-		"TimUntersberger/neogit",
-		cmd = "Neogit",
-		config = {
-			integrations = { diffview = true },
+		"NeogitOrg/neogit",
+		-- cmd = "Neogit",
+		-- config = {
+		-- 	integrations = { diffview = true },
+		-- },
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
 		},
+		config = true,
 		keys = {
 			{ "<leader>gs", "<cmd>Neogit kind=floating<cr>", desc = "Status" },
 		},
