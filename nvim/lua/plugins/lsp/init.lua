@@ -45,7 +45,13 @@ return {
 				sqlls = {},
 				tsserver = {},
 				vimls = {},
-				yamlls = {},
+				yamlls = {
+					settings = {
+						yaml = {
+							keyOrdering = false,
+						},
+					},
+				},
 			},
 			setup = {
 				lua_ls = function(_, _)
