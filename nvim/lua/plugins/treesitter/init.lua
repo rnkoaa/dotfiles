@@ -41,6 +41,7 @@ return {
 			"bash",
 			"c",
 			"css",
+			"groovy",
 			"html",
 			"java",
 			"javascript",

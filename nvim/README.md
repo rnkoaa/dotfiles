@@ -47,3 +47,14 @@ https://medium.com/linux-with-michael/lazy-nvim-the-blazingly-fast-neovim-packag
 
 - https://github.com/alpha2phi/modern-neovim
 
+## kotlin language server
+
+How to setup kotlin language server
+
+```sh
+cd  ~/.config/kotlin-language-server
+./gradlew :server:installDist
+ln -s ~/.config/kotlin-language-server/server/build/install/server/bin/kotlin-language-server ~/bin/kotlin-language-server
+kotlin-language-server
+```
+
