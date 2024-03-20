@@ -28,7 +28,7 @@ return {
 				groovyls = {},
 				html = {},
 				jsonls = {},
-				kotlin_language_server = {},
+        kotlin_language_server = {},
 				lua_ls = {
 					settings = {
 						Lua = {
