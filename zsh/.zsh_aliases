@@ -1,6 +1,7 @@
 # -*- mode: zsh -*-
 # vim: set ft=sh :
 # alias vim="/usr/local/bin/nvim"
+
 alias c='clear'
 alias s='source ~/.zshrc'
 alias h='cd ~'
@@ -12,6 +13,7 @@ alias hg='history | grep'
 alias zshprofile='vim ~/dotfiles/zsh/.zsh_profile'
 alias bfg='java -jar /usr/local/bin/bfg.jar'
 alias vim=nvim
+alias vi=nvim
 # alias vim='/usr/local/bin/nvim'
 alias markoff="open -a Markoff"
 
