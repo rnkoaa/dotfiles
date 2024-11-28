@@ -48,3 +48,10 @@ In `~/.vimrc`
 ## ansible ansible-galaxy
 https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_cask_module.html
 
+
+## alacritty
+```sh
+ln -s ~/dotfiles/alacritty/alacritty.toml ~/.config/alacritty.toml
+```
+delete current nvim to set a new one `rm -rf ~/.local/share/nvim`
+
