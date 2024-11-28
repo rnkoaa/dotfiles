@@ -11,7 +11,8 @@ cd dotfiles/setup
 ansible-playbook -i inventory.yml playbook.yml
 ```
 
-## Atom 
+## zed
+
 ln -s ~/dotfiles/atom/keymap.cson ~/.atom/keymap.cson
 
 ## vscode
@@ -39,19 +40,21 @@ In `~/.vimrc`
 ```
 
 ## Powerlevel 9k
+
 [Gist Powerlevel 9k](https://gist.github.com/kevin-smets/8568070)
 
 ## Zsh Autosuggestions
+
 [Link](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
 
-
 ## ansible ansible-galaxy
-https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_cask_module.html
 
+[ansible galaxy](https://docs.ansible.com/ansible/latest/collections/community/general/homebrew_cask_module.html)
 
 ## alacritty
+
 ```sh
 ln -s ~/dotfiles/alacritty/alacritty.toml ~/.config/alacritty.toml
 ```
-delete current nvim to set a new one `rm -rf ~/.local/share/nvim`
 
+delete current nvim to set a new one `rm -rf ~/.local/share/nvim`
