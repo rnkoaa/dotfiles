@@ -1,0 +1,46 @@
+---
+- name: setup home directory
+  hosts: localhost
+  connection: local
+  # gather_facts: false
+
+  tasks:
+
+    # https://stackoverflow.com/questions/32374349/how-to-create-dynamic-variables-in-ansible
+    - set_fact:
+        user_home_dir: "{{lookup('env', 'HOME') }}"
+
+    - name: Ensure expected directories exists
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - ~/.config/
+        # - ~/.config/nvim
+        - ~/.config/formatters
+        - ~/.config/alacritty
+
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+              
+      loop:
+        - {src: "{{user_home_dir}}/dotfiles/alacritty/alacritty.toml", dest: "{{user_home_dir}}/.config/alacritty/alacritty.toml"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.zshrc", dest: "{{user_home_dir}}/.zshrc"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.zsh_profile", dest: "{{user_home_dir}}/.zsh_profile"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.zsh_aliases", dest: "{{user_home_dir}}/.zsh_aliases"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.fzf.zsh", dest: "{{user_home_dir}}/.fzf.zsh"}
+        - {src: "{{user_home_dir}}/dotfiles/zsh/.fzf.bash", dest: "{{user_home_dir}}/.fzf.bash"}
+        
+        # tmux configs
+        - {src: "{{user_home_dir}}/dotfiles/tmux/.tmux.conf", dest: "{{user_home_dir}}/.tmux.conf"}
+        - {src: "{{user_home_dir}}/dotfiles/tmux/.tmux.conf.local", dest: "{{user_home_dir}}/.tmux.conf.local"}
+
+        # .ideavimrc configs
+        - {src: "{{user_home_dir}}/dotfiles/ideavim/.ideavimrc", dest: "{{user_home_dir}}/.ideavimrc"}
+        
+        # .ideavimrc configs
+        - {src: "{{user_home_dir}}/dotfiles/nvim", dest: "{{user_home_dir}}/.config/nvim"}
