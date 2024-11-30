@@ -182,7 +182,7 @@ return {
         -- clangd = {},
         cssls = {},
         eslint = {},
-        gopls = {},
+        -- gopls = {},
         html = {},
         jsonls = {},
         pyright = {},
