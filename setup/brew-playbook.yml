@@ -1,0 +1,45 @@
+---
+- name: setup home directory
+  hosts: localhost
+  connection: local
+  # gather_facts: false
+
+  tasks:
+
+    # https://stackoverflow.com/questions/32374349/how-to-create-dynamic-variables-in-ansible
+    - set_fact:
+        user_home_dir: "{{lookup('env', 'HOME') }}"
+
+    - name: "Install apps via brew on command line"
+      ansible.builtin.shell: "arch -{{ ansible_architecture }} brew install {{ item }}"
+      loop: 
+      - alacritty
+      - ansible
+      - autoconf
+      - bat
+      - broot
+      - bruno
+      - curl
+      - eza
+      - fd
+      - font-jetbrains-mono-nerd-font
+      - font-caskaydia-cove-nerd-font
+      - font-caskaydia-mono-nerd-font
+      - fzf
+      - httpie
+      - jq
+      - lazygit
+      - lua
+      - lua-language-server
+      - neovim
+      - pandoc # for markdown preview
+      - powerlevel10k
+      - ripgrep
+      - sqlite3
+      - tmux
+      - tree
+      - tree-sitter
+      - wget
+      - zed
+      - zsh-autosuggestions
+      - zoxide
