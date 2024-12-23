@@ -10,6 +10,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("rnkoaa.plugins")
+-- require("lazy").setup("rnkoaa.plugins")
+require("lazy").setup({
+  spec = {
+    { import = "rnkoaa.plugins" },
+  },
+})
 --
 -- vim: ts=2 sts=2 sw=2 et

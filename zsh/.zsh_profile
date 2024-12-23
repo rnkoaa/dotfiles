@@ -12,8 +12,8 @@ export PATH=$PATH:$GOBIN:$KAFKA_BIN:$USR_BIN
 export NODE_PACKAGES_HOME=~/.npm-packages
 export PATH=$PATH:$NODE_PACKAGES_HOME/bin
 
-export NODE_PATH="'$(npm root -g)'"
-export PATH=$PATH:$NODE_PATH/bin
+# export NODE_PATH="'$(npm root -g)'"
+# export PATH=$PATH:$NODE_PATH/bin
 
 
 # vim mode movement on the commandline
