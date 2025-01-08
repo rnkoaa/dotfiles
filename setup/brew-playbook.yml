@@ -9,6 +9,9 @@
       - set_fact:
             user_home_dir: "{{lookup('env', 'HOME') }}"
 
+      - name: 'update any installed brew apps'
+        ansible.builtin.shell: 'arch -{{ ansible_architecture }} brew update && brew upgrade'
+
       - name: 'Install apps via brew on command line'
         ansible.builtin.shell: 'arch -{{ ansible_architecture }} brew install {{ item }}'
         loop:
@@ -45,3 +48,8 @@
             - zed
             - zsh-autosuggestions
             - zoxide
+
+      - name: 'Install cask apps via brew on command line'
+        ansible.builtin.shell: 'arch -{{ ansible_architecture }} brew install --cask {{ item }}'
+        loop:
+            - ghostty
